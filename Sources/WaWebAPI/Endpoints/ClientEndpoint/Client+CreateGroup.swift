@@ -18,14 +18,14 @@ extension ClientEndpoint {
         public let title: String
         
         /// A single Contact object or an ID as a string or an array of Contact objects or contact IDs to add to the group
-        public let participants: [ChatId]
+        public let participants: [WhatsAppChatId]
         
         /// An object that handles options for group creation
         public let options: CreateGroupOptions
         
         public init(
             title: String,
-            participants: [ChatId],
+            participants: [WhatsAppChatId],
             options: CreateGroupOptions
         ) {
             self.title = title
@@ -40,7 +40,7 @@ extension ClientEndpoint {
     /// - Returns: Promise containing Boolean
     public func createGroup(
         title: String,
-        participants: [ChatId],
+        participants: [WhatsAppChatId],
         options: CreateGroupOptions
     ) throws -> EventLoopFuture<APIResponsePayload<CreateGroupResult>>{
         do {

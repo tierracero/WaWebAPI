@@ -15,13 +15,13 @@ extension ChatEndpoint {
     public struct ChangeLabelsRequest: CrossPlatformContent {
         
         /// EG: 5218341231234@c.us
-        public let chatId: ChatId
+        public let chatId: WhatsAppChatId
         
         /// Array of (number or string)
         public let labelIds: String
         
         public init(
-            chatId: ChatId,
+            chatId: WhatsAppChatId,
             labelIds: String
         ) {
             self.chatId = chatId
@@ -32,10 +32,10 @@ extension ChatEndpoint {
     
     /// Archives this chat
     /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/archive
-    /// - Parameter chatId: ChatId
+    /// - Parameter chatId: WhatsAppChatId
     /// - Returns: Promise containing Boolean
     public func changeLabels(
-        chatId: ChatId,
+        chatId: WhatsAppChatId,
         labelIds: String
     ) throws -> EventLoopFuture<APIResponse>{
      

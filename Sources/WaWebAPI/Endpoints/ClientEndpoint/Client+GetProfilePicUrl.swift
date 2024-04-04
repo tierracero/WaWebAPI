@@ -14,10 +14,10 @@ extension ClientEndpoint {
     
     public struct GetProfilePicUrlRequests: CrossPlatformContent {
         
-        public let contactId: ChatId
+        public let contactId: WhatsAppChatId
         
         public init(
-            contactId: ChatId
+            contactId: WhatsAppChatId
         ) {
             self.contactId = contactId
         }
@@ -27,7 +27,7 @@ extension ClientEndpoint {
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getProfilePicUrl
     /// - Returns: Promise containing string
     public func getProfilePicUrl(
-        contactId: ChatId
+        contactId: WhatsAppChatId
     ) throws -> EventLoopFuture<APIResponsePayload<String>>{
         do {
             return try api.post(APIResponsePayload<String>.self, endpoint: .client("getProfilePicUrl"), payload: GetProfilePicUrlRequests(

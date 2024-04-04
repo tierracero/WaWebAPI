@@ -15,13 +15,13 @@ extension ChatEndpoint {
     public struct FetchMessagesRequst: CrossPlatformContent {
         
         /// EG: 5218341231234@c.us
-        public let chatId: ChatId
+        public let chatId: WhatsAppChatId
         
         /// Options for searching messages. Right now only limit and fromMe is supported.
         public let searchOptions: SearchOptions
         
         public init(
-            chatId: ChatId,
+            chatId: WhatsAppChatId,
             searchOptions: SearchOptions
         ) {
             self.chatId = chatId
@@ -32,11 +32,11 @@ extension ChatEndpoint {
     
     /// Loads chat messages, sorted from earliest to latest.
     /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/fetchMessages
-    /// - Parameter chatId: ChatId
+    /// - Parameter chatId: WhatsAppChatId
     /// - Parameter searchOptions: SearchOptions
     /// - Returns: Promise containing Array of Message
     public func fetchMessages(
-        chatId: ChatId,
+        chatId: WhatsAppChatId,
         searchOptions: SearchOptions
     ) throws -> EventLoopFuture<APIResponsePayload<[Message]>>{
         do {

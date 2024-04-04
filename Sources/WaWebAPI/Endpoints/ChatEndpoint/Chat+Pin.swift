@@ -15,10 +15,10 @@ extension ChatEndpoint {
     public struct PinRequst: CrossPlatformContent {
         
         /// EG: 5218341231234@c.us
-        public let chatId: ChatId
+        public let chatId: WhatsAppChatId
         
         public init(
-            chatId: ChatId
+            chatId: WhatsAppChatId
         ) {
             self.chatId = chatId
         }
@@ -27,10 +27,10 @@ extension ChatEndpoint {
     
     /// Pin Requst
     /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/pin
-    /// - Parameter chatId: ChatId
+    /// - Parameter chatId: WhatsAppChatId
     /// - Returns: New pin state. Could be false if the max number of pinned chats was reached.
     public func pin(
-        chatId: ChatId
+        chatId: WhatsAppChatId
     ) throws -> EventLoopFuture<APIResponse>{
         do {
             return try api.post( APIResponse.self, endpoint: .chat("pin"), payload: PinRequst(

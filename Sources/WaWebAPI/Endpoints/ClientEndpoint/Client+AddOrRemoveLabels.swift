@@ -17,11 +17,11 @@ extension ClientEndpoint {
         public let labelIds: [String]
         
         /// EG: 1234567890
-        public let chatIds: [ChatId]
+        public let chatIds: [WhatsAppChatId]
         
         public init(
             labelIds: [String],
-            chatIds: [ChatId]
+            chatIds: [WhatsAppChatId]
         ) {
             self.labelIds = labelIds
             self.chatIds = chatIds
@@ -34,7 +34,7 @@ extension ClientEndpoint {
     /// - Returns: Promise containing Boolean
     public func addOrRemoveLabels(
         labelIds: [String],
-        chatIds: [ChatId]
+        chatIds: [WhatsAppChatId]
     ) throws -> EventLoopFuture<APIResponse>{
         do {
             return try api.post(APIResponse.self, endpoint: .client("addOrRemoveLabels"), payload: AddOrRemoveLabelsRequest(

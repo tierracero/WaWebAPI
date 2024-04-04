@@ -5,13 +5,13 @@
 //  Created by Victor Cantu on 3/28/24.
 //
 
-
 import Foundation
+import TCFoundation
 
 public struct Call: Codable {
     
     public let canHandleLocally: Bool
-    public let from: ChatId
+    public let from: WhatsAppChatId
     public let fromMe: Bool
     public let id: String
     public let isGroup: Bool
@@ -34,7 +34,7 @@ public struct Call: Codable {
 
     public init(
         canHandleLocally: Bool,
-        from: ChatId,
+        from: WhatsAppChatId,
         fromMe: Bool,
         id: String,
         isGroup: Bool,

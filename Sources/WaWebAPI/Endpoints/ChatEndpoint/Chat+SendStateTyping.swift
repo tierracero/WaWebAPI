@@ -15,10 +15,10 @@ extension ChatEndpoint {
     public struct SendStateTypingRequst: CrossPlatformContent {
         
         /// EG: 5218341231234@c.us
-        public let chatId: ChatId
+        public let chatId: WhatsAppChatId
         
         public init(
-            chatId: ChatId
+            chatId: WhatsAppChatId
         ) {
             self.chatId = chatId
         }
@@ -27,10 +27,10 @@ extension ChatEndpoint {
     
     /// Simulate typing in chat. This will last for 25 seconds.
     /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/sendStateTyping
-    /// - Parameter chatId: ChatId
+    /// - Parameter chatId: WhatsAppChatId
     /// - Returns: Promise containing Boolean
     public func sendStateTyping(
-        chatId: ChatId
+        chatId: WhatsAppChatId
     ) throws -> EventLoopFuture<APIResponse>{
         do {
             return try api.post( APIResponse.self, endpoint: .chat("sendStateTyping"), payload: SendStateTypingRequst(

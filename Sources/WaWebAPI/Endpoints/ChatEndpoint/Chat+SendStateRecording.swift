@@ -15,10 +15,10 @@ extension ChatEndpoint {
     public struct SendStateRecordingRequst: CrossPlatformContent {
         
         /// EG: 5218341231234@c.us
-        public let chatId: ChatId
+        public let chatId: WhatsAppChatId
         
         public init(
-            chatId: ChatId
+            chatId: WhatsAppChatId
         ) {
             self.chatId = chatId
         }
@@ -27,10 +27,10 @@ extension ChatEndpoint {
     
     /// Simulate recording audio in chat. This will last for 25 seconds.
     /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/sendStateRecording
-    /// - Parameter chatId: ChatId
+    /// - Parameter chatId: WhatsAppChatId
     /// - Returns: Promise containing Boolean
     public func sendStateRecording(
-        chatId: ChatId
+        chatId: WhatsAppChatId
     ) throws -> EventLoopFuture<APIResponse>{
         do {
             return try api.post( APIResponse.self, endpoint: .chat("sendStateRecording"), payload: SendStateRecordingRequst(

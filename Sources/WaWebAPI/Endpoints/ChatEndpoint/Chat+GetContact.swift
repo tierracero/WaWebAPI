@@ -15,10 +15,10 @@ extension ChatEndpoint {
     public struct GetContactRequst: CrossPlatformContent {
         
         /// EG: 5218341231234@c.us
-        public let chatId: ChatId
+        public let chatId: WhatsAppChatId
         
         public init(
-            chatId: ChatId
+            chatId: WhatsAppChatId
         ) {
             self.chatId = chatId
         }
@@ -27,10 +27,10 @@ extension ChatEndpoint {
     
     /// Returns the Contact that corresponds to this Chat.
     /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/getContact
-    /// - Parameter chatId: ChatId
+    /// - Parameter chatId: WhatsAppChatId
     /// - Returns: Promise containing Contact
     public func getContact(
-        chatId: ChatId
+        chatId: WhatsAppChatId
     ) throws -> EventLoopFuture<APIResponsePayload<[Contact]>>{
         do {
             return try api.post( APIResponsePayload<[Contact]>.self, endpoint: .chat("getContact"), payload: GetContactRequst(

@@ -15,10 +15,10 @@ extension ChatEndpoint {
     public struct ClearMessagesRequest: CrossPlatformContent {
         
         /// EG: 5218341231234@c.us
-        public let chatId: ChatId
+        public let chatId: WhatsAppChatId
         
         public init(
-            chatId: ChatId
+            chatId: WhatsAppChatId
         ) {
             self.chatId = chatId
         }
@@ -27,10 +27,10 @@ extension ChatEndpoint {
     
     /// Clears all messages from the chat
     /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/clearMessages
-    /// - Parameter chatId: ChatId
+    /// - Parameter chatId: WhatsAppChatId
     /// - Returns: Promise containing Boolean
     public func clearMessages(
-        chatId: ChatId
+        chatId: WhatsAppChatId
     ) throws -> EventLoopFuture<APIResponse>{
         do {
             return try api.post( APIResponse.self, endpoint: .chat("clearMessages"), payload: ClearMessagesRequest(

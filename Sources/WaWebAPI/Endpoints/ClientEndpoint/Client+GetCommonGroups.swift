@@ -26,12 +26,12 @@ extension ClientEndpoint {
     
     /// Gets the Contact's common groups with you. Returns empty array if you don't have any common group.
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getCommonGroups
-    /// - Returns: Promise containing Array of WAWebJS.ChatId
+    /// - Returns: Promise containing Array of WAWebJS.WhatsAppChatId
     public func getChatsByLabelId(
         contactId: String
-    ) throws -> EventLoopFuture<APIResponsePayload<[ChatId]>>{
+    ) throws -> EventLoopFuture<APIResponsePayload<[WhatsAppChatId]>>{
         do {
-            return try api.post(APIResponsePayload<[ChatId]>.self, endpoint: .client("getCommonGroups"), payload: GetCommonGroupsRequest(
+            return try api.post(APIResponsePayload<[WhatsAppChatId]>.self, endpoint: .client("getCommonGroups"), payload: GetCommonGroupsRequest(
                 contactId: contactId
             ))
         }

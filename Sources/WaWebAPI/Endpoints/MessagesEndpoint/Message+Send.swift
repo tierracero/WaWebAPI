@@ -15,14 +15,14 @@ extension MessageEndpoint {
     public struct SendMessageTextRequst: CrossPlatformContent {
         
         /// EG: 5218341231234@c.us
-        public let chatId: ChatId
+        public let chatId: WhatsAppChatId
         
         public let message: String
         
         public let options: MessageSendOptions?
         
         public init(
-            chatId: ChatId,
+            chatId: WhatsAppChatId,
             message: String,
             options: MessageSendOptions?
         ) {
@@ -36,14 +36,14 @@ extension MessageEndpoint {
     public struct SendMessageMediaRequst: CrossPlatformContent {
         
         /// EG: 5218341231234@c.us
-        public let chatId: ChatId
+        public let chatId: WhatsAppChatId
         
         public let media: MessageMedia
         
         public let options: MessageSendOptions?
         
         public init(
-            chatId: ChatId,
+            chatId: WhatsAppChatId,
             media: MessageMedia,
             options: MessageSendOptions?
         ) {
@@ -57,14 +57,14 @@ extension MessageEndpoint {
     public struct SendMessageLocationRequst: CrossPlatformContent {
         
         /// EG: 5218341231234@c.us
-        public let chatId: ChatId
+        public let chatId: WhatsAppChatId
         
         public let location: Location
         
         public let options: MessageSendOptions?
         
         public init(
-            chatId: ChatId,
+            chatId: WhatsAppChatId,
             location: Location,
             options: MessageSendOptions?
         ) {
@@ -78,14 +78,14 @@ extension MessageEndpoint {
     public struct SendMessagePollRequst: CrossPlatformContent {
         
         /// EG: 5218341231234@c.us
-        public let chatId: ChatId
+        public let chatId: WhatsAppChatId
         
         public let poll: Poll
         
         public let options: MessageSendOptions?
         
         public init(
-            chatId: ChatId,
+            chatId: WhatsAppChatId,
             poll: Poll,
             options: MessageSendOptions?
         ) {
@@ -98,11 +98,11 @@ extension MessageEndpoint {
     
     /// Send a message to this chat
     /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/send/text
-    /// - Parameter chatId: ChatId
+    /// - Parameter chatId: WhatsAppChatId
     /// - Parameter message: String
     /// - Returns: Promise containing Message that was just sent.
     public func sendMessage(
-        chatId: ChatId,
+        chatId: WhatsAppChatId,
         message: String,
         options: MessageSendOptions?
     ) throws -> EventLoopFuture<APIResponse>{
@@ -120,11 +120,11 @@ extension MessageEndpoint {
     
     /// Send a message to this chat
     /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/send/media
-    /// - Parameter chatId: ChatId
+    /// - Parameter chatId: WhatsAppChatId
     /// - Parameter media: MessageMedia
     /// - Returns: Promise containing Message that was just sent.
     public func sendMessage(
-        chatId: ChatId,
+        chatId: WhatsAppChatId,
         media: MessageMedia,
         options: MessageSendOptions?
     ) throws -> EventLoopFuture<APIResponse>{
@@ -142,11 +142,11 @@ extension MessageEndpoint {
     
     /// Send a message to this chat
     /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/send/location
-    /// - Parameter chatId: ChatId
+    /// - Parameter chatId: WhatsAppChatId
     /// - Parameter location: Location
     /// - Returns: Promise containing Message that was just sent.
     public func sendMessage(
-        chatId: ChatId,
+        chatId: WhatsAppChatId,
         location: Location,
         options: MessageSendOptions?
     ) throws -> EventLoopFuture<APIResponse>{
@@ -164,11 +164,11 @@ extension MessageEndpoint {
     
     /// Send a message to this chat
     /// `POST` https://intratc.co/node/whatsapp/api/v1/message/send/poll
-    /// - Parameter chatId: ChatId
+    /// - Parameter chatId: WhatsAppChatId
     /// - Parameter poll: Poll
     /// - Returns: Promise containing Message that was just sent.
     public func sendMessage(
-        chatId: ChatId,
+        chatId: WhatsAppChatId,
         poll: Poll,
         options: MessageSendOptions?
     ) throws -> EventLoopFuture<APIResponse>{

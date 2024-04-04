@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import TCFoundation
 
 public struct MessageSendOptions: Codable {
     
@@ -38,7 +39,7 @@ public struct MessageSendOptions: Codable {
     public let quotedMessageId: String?
 
     /// Contacts that are being mentioned in the message; Convert to Contact if necesary.
-    public let mentions: [ChatId]?
+    public let mentions: [WhatsAppChatId]?
 
     /// Mark the conversation as seen after sending the message Defaults to true.
     public let sendSeen: Bool?
@@ -65,7 +66,7 @@ public struct MessageSendOptions: Codable {
         parseVCards: Bool?,
         caption: String?,
         quotedMessageId: String?,
-        mentions: [ChatId]?,
+        mentions: [WhatsAppChatId]?,
         sendSeen: Bool?,
         stickerAuthor: String?,
         stickerName: String?,

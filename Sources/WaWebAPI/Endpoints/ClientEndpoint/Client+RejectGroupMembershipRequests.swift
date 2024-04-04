@@ -21,7 +21,7 @@ extension ClientEndpoint {
         public let options: MembershipRequestActionOptions
         
         public init(
-            groupId: ChatId,
+            groupId: WhatsAppChatId,
             options: MembershipRequestActionOptions
         ) {
             self.groupId = groupId
@@ -33,7 +33,7 @@ extension ClientEndpoint {
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/rejectGroupMembershipRequests
     /// - Returns: Promise containing Array of MembershipRequestActionResult,  whose membership requests were rejected and an error for each requester, if any occurred during the operation. If there are no requests, an empty array will be returned
     public func rejectGroupMembershipRequests(
-        groupId: ChatId,
+        groupId: WhatsAppChatId,
         options: MembershipRequestActionOptions
     ) throws -> EventLoopFuture<APIResponsePayload<MembershipRequestActionOptions>>{
         do {

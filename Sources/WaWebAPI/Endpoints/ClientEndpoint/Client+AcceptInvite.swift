@@ -28,7 +28,7 @@ extension ClientEndpoint {
     public struct AcceptInviteResponse: Codable {
         
         /// EG: 1234567890
-        public let chatId: ChatId
+        public let chatId: WhatsAppChatId
         
     }
     

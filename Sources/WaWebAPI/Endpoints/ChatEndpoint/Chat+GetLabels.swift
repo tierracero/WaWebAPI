@@ -15,10 +15,10 @@ extension ChatEndpoint {
     public struct GetLabelsRequst: CrossPlatformContent {
         
         /// EG: 5218341231234@c.us
-        public let chatId: ChatId
+        public let chatId: WhatsAppChatId
         
         public init(
-            chatId: ChatId
+            chatId: WhatsAppChatId
         ) {
             self.chatId = chatId
         }
@@ -27,10 +27,10 @@ extension ChatEndpoint {
     
     /// Returns array of all Labels assigned to this Chat
     /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/getLabels
-    /// - Parameter chatId: ChatId
+    /// - Parameter chatId: WhatsAppChatId
     /// - Returns: Promise containing Array of Label
     public func getLabels(
-        chatId: ChatId
+        chatId: WhatsAppChatId
     ) throws -> EventLoopFuture<APIResponsePayload<[Label]>>{
         do {
             return try api.post( APIResponsePayload<[Label]>.self, endpoint: .chat("getLabels"), payload: GetLabelsRequst(
