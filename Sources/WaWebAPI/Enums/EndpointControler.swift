@@ -32,25 +32,25 @@ public enum EndpointControler {
     public var path: String {
         switch self {
         case .call:
-            return "/call"
+            return "call"
         case .chat:
-            return "/chat"
+            return "chat"
         case .client:
-            return "/client"
+            return "client"
         case .contact:
-            return "/contact"
+            return "contact"
         case .groop:
-            return "/groop"
+            return "groop"
         case .label:
-            return "/label"
+            return "label"
         case .message:
-            return "/message"
+            return "message"
         case .poll:
-            return "/poll"
+            return "poll"
         case .privateChat:
-            return "/privateChat"
+            return "privateChat"
         case .reaction:
-            return "/reaction"
+            return "reaction"
         }
     }
     

@@ -53,7 +53,7 @@ extension MessageEndpoint {
         }
         
     }
-    
+
     public struct SendMessageLocationRequst: CrossPlatformContent {
         
         /// EG: 5218341231234@c.us
@@ -105,9 +105,12 @@ extension MessageEndpoint {
         chatId: WhatsAppChatId,
         message: String,
         options: MessageSendOptions?
-    ) throws -> EventLoopFuture<APIResponse>{
+    ) throws -> EventLoopFuture<APIResponsePayload<Message>>{
+        
+        print("🟢  002")
+        
         do {
-            return try api.post( APIResponse.self, endpoint: .chat("send/text"), payload: SendMessageTextRequst(
+            return try api.post( APIResponsePayload<Message>.self, endpoint: .message("send/text"), payload: SendMessageTextRequst(
                 chatId: chatId,
                 message: message,
                 options: options
@@ -127,9 +130,9 @@ extension MessageEndpoint {
         chatId: WhatsAppChatId,
         media: MessageMedia,
         options: MessageSendOptions?
-    ) throws -> EventLoopFuture<APIResponse>{
+    ) throws -> EventLoopFuture<APIResponsePayload<Message>>{
         do {
-            return try api.post( APIResponse.self, endpoint: .chat("send/media"), payload: SendMessageMediaRequst(
+            return try api.post( APIResponsePayload<Message>.self, endpoint: .message("send/media"), payload: SendMessageMediaRequst(
                 chatId: chatId,
                 media: media,
                 options: options
@@ -149,9 +152,9 @@ extension MessageEndpoint {
         chatId: WhatsAppChatId,
         location: Location,
         options: MessageSendOptions?
-    ) throws -> EventLoopFuture<APIResponse>{
+    ) throws -> EventLoopFuture<APIResponsePayload<Message>>{
         do {
-            return try api.post( APIResponse.self, endpoint: .chat("send/location"), payload: SendMessageLocationRequst(
+            return try api.post( APIResponsePayload<Message>.self, endpoint: .message("send/location"), payload: SendMessageLocationRequst(
                 chatId: chatId,
                 location: location,
                 options: options
@@ -171,9 +174,9 @@ extension MessageEndpoint {
         chatId: WhatsAppChatId,
         poll: Poll,
         options: MessageSendOptions?
-    ) throws -> EventLoopFuture<APIResponse>{
+    ) throws -> EventLoopFuture<APIResponsePayload<Message>>{
         do {
-            return try api.post( APIResponse.self, endpoint: .chat("send/poll"), payload: SendMessagePollRequst(
+            return try api.post( APIResponsePayload<Message>.self, endpoint: .message("send/poll"), payload: SendMessagePollRequst(
                 chatId: chatId,
                 poll: poll,
                 options: options

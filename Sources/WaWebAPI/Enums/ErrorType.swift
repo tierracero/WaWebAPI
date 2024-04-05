@@ -9,6 +9,8 @@ import Foundation
 
 public enum ErrorType: String, Codable {
     
+    case generalError
+    
     case dbConnError
     
     case invalidPayload
@@ -32,5 +34,9 @@ public enum ErrorType: String, Codable {
     case inactiveAccount
     
     case hotlineAccount
+    
+    case resorceNotFound
+    
+    case invalidNumber
     
 }

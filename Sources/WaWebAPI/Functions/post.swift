@@ -14,7 +14,11 @@ extension API {
 
     func post<T:Codable>(_ type: T.Type, endpoint: EndpointControler, payload: any Content) throws -> EventLoopFuture<T>{
         
+        print("🟡   001")
+        
         return getWaWebTokens(app: application, token: WAWEBAPI_TOKEN).flatMap { token in
+            
+            print("🟡   002")
             
             guard let token else {
                 return application.eventLoop.future(error: TCErrors.generalError(error: "Token"))
@@ -22,8 +26,8 @@ extension API {
             
             var header = HTTPHeaders([
                 ("Accept", "application/json"),
-                ("token", "\(WAWEBAPI_TOKEN)"),
-                ("instanceId", profile.instanceId)
+                ("token", WAWEBAPI_TOKEN),
+                ("instanceid", profile.instanceId)
             ])
             
             if let secretPassword = token.secret?.data(using: .utf8) {
@@ -33,22 +37,35 @@ extension API {
                 let hkdfResultKey = HKDF<SHA256>.deriveKey(inputKeyMaterial: key, outputByteCount: 151) // Mark 2
                 
                 do {
+                    
                     let trustfulMessage = try JSONEncoder().encode(payload)
                     
                     let authenticationCode = HMAC<SHA256>.authenticationCode(for: trustfulMessage, using: hkdfResultKey) // Mark 2
                     
                     header.add(name: "x-wawebapi-hmac", value: authenticationCode.hex)
+
+                    if let json = String(data: trustfulMessage, encoding: .utf8) {
+                        
+                        print("- - - - - - - - - - - - - - - - - - - - -")
+                        
+                        print(json)
+                        
+                        print("- - - - - - - - - - - - - - - - - - - - -")
+                        
+                    }
                     
                 }
                 catch { }
                 
             }
             
-            print(header)
+            print("* - * - * - * - * - * - * - *")
             
-            var path = "api/v1/instances"
+            header.forEach { name, value in
+                print("\(name): \(value)")
+            }
             
-            path += "\(endpoint.path)"
+            var path = endpoint.path
             
             switch endpoint {
             case .call(let string):
@@ -95,9 +112,11 @@ extension API {
             
             let url = URI(
                 scheme: "https",
-                host: "intratc.co/node/whatsapp/api/v1",
-                path: path
+                host: "intratc.co",
+                path: "node/whatsapp/api/v1/\(path)"
             )
+            
+            print(url.description)
             
             var PAYLOAD = "EMPTY_PAYLOAD"
             
@@ -141,6 +160,20 @@ extension API {
                     
                 }
             }
+            .flatMapError { error in
+                
+                print("🔴  🔴  🔴  🔴  🔴  🔴  🔴  🔴  🔴  🔴  ")
+                
+                print(error)
+                
+                return application.eventLoop.future(error: TCErrors.generalError(
+                    error: "ERROR:\n\(String(describing: error))\n\n" +
+                    "URL: \(url.description)\n\n" +
+                    "PAYLOAD: \(PAYLOAD)\n\n" +
+                    "ERROR:\n\(String(describing: error))"
+                ))
+                
+            }
         }
     }
     
@@ -149,12 +182,10 @@ extension API {
         let header = HTTPHeaders([
             ("Accept", "application/json"),
             ("token", "\(WAWEBAPI_TOKEN)"),
-            ("instanceId", profile.instanceId)
+            ("instanceid", profile.instanceId)
         ])
         
-        var path = "api/v1/instances"
-        
-        path += "\(endpoint.path)"
+        var path = endpoint.path
         
         switch endpoint {
         case .call(let string):
@@ -201,13 +232,13 @@ extension API {
         
         let url = URI(
             scheme: "https",
-            host: "intratc.co/node/whatsapp/api/v1",
-            path: path
+            host: "intratc.co",
+            path: "node/whatsapp/api/v1/\(path)"
         )
         
         print(url.description)
         
-        return application.client.get(url, headers: header).flatMapThrowing { response in
+        return application.client.post(url, headers: header).flatMapThrowing { response in
             
             var RESPONSE_BODY = "EMPTY_BODY"
             
@@ -240,12 +271,10 @@ extension API {
         let header = HTTPHeaders([
             ("Accept", "application/json"),
             ("token", "\(WAWEBAPI_TOKEN)"),
-            ("instanceId", profile.instanceId)
+            ("instanceid", profile.instanceId)
         ])
         
-        var path = "api/v1/instances"
-        
-        path += "\(endpoint.path)"
+        var path = endpoint.path
         
         switch endpoint {
         case .call(let string):
@@ -292,8 +321,8 @@ extension API {
         
         let url = URI(
             scheme: "https",
-            host: "intratc.co/node/whatsapp/api/v1",
-            path: path
+            host: "intratc.co",
+            path: "node/whatsapp/api/v1/\(path)"
         )
         
         print(url.description)

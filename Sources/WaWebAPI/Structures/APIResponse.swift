@@ -9,9 +9,9 @@ import Foundation
 
 public struct APIResponse: Codable {
     
-    public let status: Bool
+    public let success: Bool
     
-    public let code: ErrorType
+    public let code: ErrorType?
     
     public let messsage: String?
     
@@ -19,9 +19,9 @@ public struct APIResponse: Codable {
 
 public struct APIResponsePayload<T>: Codable where T : Codable {
     
-    public let status: Bool
+    public let success: Bool
     
-    public let code: ErrorType
+    public let code: ErrorType?
     
     public let messsage: String?
     

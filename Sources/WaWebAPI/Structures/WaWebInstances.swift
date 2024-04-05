@@ -6,7 +6,6 @@
 //
 
 import TCFoundation
-
 import Foundation
 #if canImport(Bridges)
 import Bridges
@@ -112,6 +111,32 @@ public final class WaWebInstances: Table, Schemable {
         self.cc = cc
         self.mobile = mobile
         self.status = status
+    }
+ 
+    public init( profile: WhatsAppProfiles) {
+        
+        guard let waWebAccount = profile.vendorId else {
+            fatalError("WhatsAppProfiles Fail to init WhatsAppProfiles.vendorId is null")
+        }
+        
+        guard let instanceToken = profile.instanceToken else {
+            fatalError("WhatsAppProfiles Fail to init WhatsAppProfiles.instanceToken is null")
+        }
+        
+        var relationType: WaWebAccountRelation? = .account
+        
+        self.id = profile.id
+        self.createdAt = profile.createdAt
+        self.modifiedAt = profile.modifiedAt
+        self.waWebAccount = waWebAccount
+        self.instanceId = profile.instanceId
+        self.relationType = .account
+        self.relationId = profile.accountId
+        self.secret = instanceToken
+        self.webhook = "https://intratc.co/api/webhook/v1/whatsapp/wawebapi/\(profile.instanceId)/\(profile.secureToken)"
+        self.cc = .mexico
+        self.mobile = profile.mobile
+        self.status = .active
     }
     
 }
