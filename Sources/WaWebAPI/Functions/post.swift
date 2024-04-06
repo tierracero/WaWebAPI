@@ -14,11 +14,7 @@ extension API {
 
     func post<T:Codable>(_ type: T.Type, endpoint: EndpointControler, payload: any Content) throws -> EventLoopFuture<T>{
         
-        print("🟡   001")
-        
         return getWaWebTokens(app: application, token: WAWEBAPI_TOKEN).flatMap { token in
-            
-            print("🟡   002")
             
             guard let token else {
                 return application.eventLoop.future(error: TCErrors.generalError(error: "Token"))
@@ -34,35 +30,22 @@ extension API {
                 
                 let key = SymmetricKey(data: secretPassword)
                 
-                let hkdfResultKey = HKDF<SHA256>.deriveKey(inputKeyMaterial: key, outputByteCount: 151) // Mark 2
+                //let hkdfResultKey = HKDF<SHA256>.deriveKey(inputKeyMaterial: key, outputByteCount: 151) // Mark 2
                 
                 do {
                     
                     let trustfulMessage = try JSONEncoder().encode(payload)
                     
-                    let authenticationCode = HMAC<SHA256>.authenticationCode(for: trustfulMessage, using: hkdfResultKey) // Mark 2
+                    //let authenticationCode = HMAC<SHA256>.authenticationCode(for: trustfulMessage, using: hkdfResultKey) // Mark 2
+                    
+                    let authenticationCode = HMAC<SHA256>.authenticationCode(for: trustfulMessage, using: key) // Mark 2
                     
                     header.add(name: "x-wawebapi-hmac", value: authenticationCode.hex)
 
-                    if let json = String(data: trustfulMessage, encoding: .utf8) {
-                        
-                        print("- - - - - - - - - - - - - - - - - - - - -")
-                        
-                        print(json)
-                        
-                        print("- - - - - - - - - - - - - - - - - - - - -")
-                        
-                    }
                     
                 }
                 catch { }
                 
-            }
-            
-            print("* - * - * - * - * - * - * - *")
-            
-            header.forEach { name, value in
-                print("\(name): \(value)")
             }
             
             var path = endpoint.path
