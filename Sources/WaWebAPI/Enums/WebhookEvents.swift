@@ -40,7 +40,8 @@ public struct CreateWaWebWebhookEvents: EnumMigration {
                 .messageEdit,
                 .voteUpdate,
                 .pollCreation,
-                .pollUpdate
+                .pollUpdate,
+                .contactChanged
             )
             .execute(on: conn)
     }
@@ -126,5 +127,7 @@ public enum WebhookEvents: String, CrossPlatformEnum, CaseIterable {
     case pollCreation
  
     case pollUpdate
+    
+    case contactChanged
     
 }
