@@ -6,9 +6,55 @@
 //
 
 import Foundation
+#if canImport(Bridges)
+import Bridges
+
+public struct CreateWaWebWebhookEvents: EnumMigration {
+    
+    public typealias Enum = WebhookEvents
+    
+    public static func prepare(on conn: BridgeConnection) -> EventLoopFuture<Void> {
+        createBuilder
+            .add(
+                .message,
+                .loadingScreen,
+                .qr,
+                .authenticated,
+                .authFailure,
+                .ready,
+                .disconnected,
+                .groupAdminGhanged,
+                .messageCreate,
+                .messageRevokeEveryone,
+                .messageRevokeMe,
+                .messageAck,
+                .messageReaction,
+                .mediaUploaded,
+                .groupJoin,
+                .groupLeave,
+                .groupMembershipRequest,
+                .groupUpdate,
+                .changeState,
+                .call,
+                .incomingCall,
+                .messageEdit,
+                .voteUpdate,
+                .pollCreation,
+                .pollUpdate
+            )
+            .execute(on: conn)
+    }
+    
+    public static func revert(on conn: BridgeConnection) -> EventLoopFuture<Void> {
+        dropBuilder.execute(on: conn)
+    }
+}
+#endif
 
 /// message, loadingScreen, qr, authenticated, authFailure, ready, disconnected, messageCreate, messageRevokeEveryone, messageRevokeMe, messageAck, messageReaction, mediaUploaded, groupJoin, groupLeave, groupUpdate, changeState, call
-public enum WebhookEvents: String, Codable, CaseIterable {
+public enum WebhookEvents: String, CrossPlatformEnum, CaseIterable {
+    
+    public static var name = "wawebwebhookevents"
     
     /// Fired when you receive a message. The event contains all data related to the message like content and sender.
     case message
