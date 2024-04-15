@@ -217,9 +217,6 @@ public struct WaWebAccounts: Codable {
     /// CustFolioStatus: pending, active, pendingSpare, finalize, archive, collection (string value)
     public var status: BasicStatus
     
-    /// See `Table`
-    public init () {}
-    
     public init(
         id: UUID,
         createdAt: Int64,
