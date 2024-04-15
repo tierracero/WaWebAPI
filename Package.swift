@@ -2,6 +2,7 @@
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
+import Foundation
 
 // MARK: - Conveniences
 struct Dep {
@@ -43,17 +44,25 @@ var deps: [Dep] = []
 deps.appendFromMaster("git@github.com:tierracero/TCFoundation.git",
                              targets: .product(name: "TCFoundation", package: "TCFoundation"))
 
-deps.append("https://github.com/vapor/vapor.git", from: "4.0.0",
-            targets: .product(name: "Vapor", package: "vapor"))
+#if !os(iOS)
+let isWebber = (ProcessInfo.processInfo.environment["WEBBER"] == "TRUE")
+if !isWebber {
+    
 
-deps.append("https://github.com/SwifQL/VaporBridges.git", from: "1.0.0-rc",
-                targets: .product(name: "VaporBridges", package: "VaporBridges"))
+    deps.append("https://github.com/vapor/vapor.git", from: "4.0.0",
+                targets: .product(name: "Vapor", package: "vapor"))
 
-deps.append("https://github.com/tierracero/PostgresBridge.git", from: "1.0.0-rc",
-                targets: .product(name: "PostgresBridge", package: "PostgresBridge"))
+    deps.append("https://github.com/SwifQL/VaporBridges.git", from: "1.0.0-rc",
+                    targets: .product(name: "VaporBridges", package: "VaporBridges"))
 
-deps.append("https://github.com/SwifQL/SwifQL.git", from: "2.0.0-beta.3.21.0",
-                targets: .product(name: "SwifQL", package: "SwifQL"))
+    deps.append("https://github.com/tierracero/PostgresBridge.git", from: "1.0.0-rc",
+                    targets: .product(name: "PostgresBridge", package: "PostgresBridge"))
+
+    deps.append("https://github.com/SwifQL/SwifQL.git", from: "2.0.0-beta.3.21.0",
+                    targets: .product(name: "SwifQL", package: "SwifQL"))
+
+}
+#endif
 
 let package = Package(
     name: "WaWebAPI",
