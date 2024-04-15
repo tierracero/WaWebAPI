@@ -9,6 +9,7 @@ import Foundation
 import TCFoundation
 #if canImport(Vapor)
 import Vapor
+#endif
 
 extension ClientEndpoint {
     
@@ -25,6 +26,7 @@ extension ClientEndpoint {
         public let formattedNumber: String
     }
     
+#if canImport(Vapor)
     /// Get the formatted number of a WhatsApp ID.
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getFormattedNumber
     /// - Returns: Promise containing a string
@@ -40,6 +42,6 @@ extension ClientEndpoint {
             throw error
         }
     }
+#endif
     
 }
-#endif

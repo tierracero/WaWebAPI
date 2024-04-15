@@ -9,6 +9,7 @@ import Foundation
 import TCFoundation
 #if canImport(Vapor)
 import Vapor
+#endif
 
 extension ClientEndpoint {
     
@@ -23,6 +24,7 @@ extension ClientEndpoint {
         }
     }
     
+#if canImport(Vapor)
     /// Returns the contact ID's profile picture URL, if privacy settings allow it
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getProfilePicUrl
     /// - Returns: Promise containing string
@@ -38,6 +40,6 @@ extension ClientEndpoint {
             throw error
         }
     }
+#endif
     
 }
-#endif

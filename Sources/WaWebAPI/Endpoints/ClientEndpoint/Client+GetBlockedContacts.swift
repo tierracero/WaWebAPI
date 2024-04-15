@@ -9,9 +9,11 @@ import Foundation
 import TCFoundation
 #if canImport(Vapor)
 import Vapor
+#endif
 
 extension ClientEndpoint {
     
+#if canImport(Vapor)
     /// Gets all blocked contacts by host account
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getBlockedContacts
     /// - Returns: Gets all blocked contacts by host account
@@ -23,6 +25,6 @@ extension ClientEndpoint {
             throw error
         }
     }
+#endif
     
 }
-#endif

@@ -58,7 +58,7 @@ public final class WaWebInstances: Table, Schemable {
     @Column("instanceId")
     public var instanceId: String
     
-    /// account, subaccount
+    /// waweb, account, subaccount
     @Column("relationType")
     public var relationType: WaWebAccountRelation
     

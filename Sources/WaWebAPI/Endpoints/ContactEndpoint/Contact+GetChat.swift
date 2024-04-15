@@ -9,6 +9,7 @@ import Foundation
 import TCFoundation
 #if canImport(Vapor)
 import Vapor
+#endif
 
 extension ContactEndpoint {
     
@@ -24,6 +25,7 @@ extension ContactEndpoint {
         }
     }
     
+#if canImport(Vapor)
     /// Returns the Chat that corresponds to this Contact. Will return null when getting chat for currently logged in user.
     /// `POST` https://intratc.co/node/whatsapp/api/v1/contact/getChat
     /// - Parameter contactId: String
@@ -40,6 +42,6 @@ extension ContactEndpoint {
             throw error
         }
     }
+#endif
     
 }
-#endif

@@ -9,6 +9,7 @@ import Foundation
 import TCFoundation
 #if canImport(Vapor)
 import Vapor
+#endif
 
 extension ClientEndpoint {
     
@@ -27,6 +28,7 @@ extension ClientEndpoint {
         }
     }
     
+#if canImport(Vapor)
     /// Searches for messages
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/searchMessages
     /// - Returns: Promise containing Array of Message
@@ -44,6 +46,6 @@ extension ClientEndpoint {
             throw error
         }
     }
+#endif
     
 }
-#endif

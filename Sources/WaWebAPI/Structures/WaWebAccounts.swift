@@ -13,7 +13,6 @@ import Bridges
 #endif
 
 #if canImport(Bridges)
-
 public struct CreateWaWebAccounts: TableMigration {
     public typealias Table = WaWebAccounts
     
@@ -49,11 +48,6 @@ public struct CreateWaWebAccounts: TableMigration {
         dropBuilder.execute(on: conn)
     }
 }
-
-/*
- secret: String = callKey(32),
- token: String = callKey(64),
- */
 
 public final class WaWebAccounts: Table, Schemable {
     
@@ -275,7 +269,6 @@ public struct WaWebAccounts: Codable {
 }
 
 #endif
-
 
 extension WaWebAccounts: Hashable, Equatable {
     

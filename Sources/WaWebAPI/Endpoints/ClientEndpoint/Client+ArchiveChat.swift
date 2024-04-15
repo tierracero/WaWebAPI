@@ -9,10 +9,10 @@ import Foundation
 import TCFoundation
 #if canImport(Vapor)
 import Vapor
+#endif
 
 extension ClientEndpoint {
     
     // MARK: This methos is handeld in ChatEndpoint
     
 }
-#endif

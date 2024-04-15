@@ -9,6 +9,7 @@ import Foundation
 import TCFoundation
 #if canImport(Vapor)
 import Vapor
+#endif
 
 extension ContactEndpoint {
     
@@ -24,7 +25,7 @@ extension ContactEndpoint {
         }
     }
     
-    
+#if canImport(Vapor)
     /// Gets the Contact's common groups with you. Returns empty array if you don't have any common group.
     /// `POST` https://intratc.co/node/whatsapp/api/v1/contact/getCommonGroups
     /// - Parameter contactId: String
@@ -41,6 +42,6 @@ extension ContactEndpoint {
             throw error
         }
     }
+#endif
     
 }
-#endif

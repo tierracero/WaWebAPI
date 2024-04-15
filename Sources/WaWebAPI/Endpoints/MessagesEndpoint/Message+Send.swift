@@ -9,6 +9,7 @@ import Foundation
 import TCFoundation
 #if canImport(Vapor)
 import Vapor
+#endif
 
 extension MessageEndpoint {
     
@@ -96,6 +97,8 @@ extension MessageEndpoint {
         
     }
     
+    
+#if canImport(Vapor)
     /// Send a message to this chat
     /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/send/text
     /// - Parameter chatId: WhatsAppChatId
@@ -186,5 +189,5 @@ extension MessageEndpoint {
             throw error
         }
     }
-}
 #endif
+}

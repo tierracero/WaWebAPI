@@ -9,6 +9,7 @@ import Foundation
 import TCFoundation
 #if canImport(Vapor)
 import Vapor
+#endif
 
 extension ContactEndpoint {
     
@@ -36,6 +37,7 @@ extension ContactEndpoint {
         
     }
     
+#if canImport(Vapor)
     /// Blocks this contact from WhatsApp
     /// `POST` https://intratc.co/node/whatsapp/api/v1/contact/unblock
     /// - Parameter contactId: String
@@ -52,7 +54,7 @@ extension ContactEndpoint {
             throw error
         }
     }
+#endif
     
 }
-#endif
 

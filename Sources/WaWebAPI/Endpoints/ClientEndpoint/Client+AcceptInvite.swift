@@ -9,6 +9,7 @@ import Foundation
 import TCFoundation
 #if canImport(Vapor)
 import Vapor
+#endif
 
 extension ClientEndpoint {
     
@@ -32,6 +33,7 @@ extension ClientEndpoint {
         
     }
     
+#if canImport(Vapor)
     /// Archives this chat
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/acceptInvite
     /// - Parameter inviteCode: String
@@ -48,6 +50,6 @@ extension ClientEndpoint {
             throw error
         }
     }
+#endif
     
 }
-#endif

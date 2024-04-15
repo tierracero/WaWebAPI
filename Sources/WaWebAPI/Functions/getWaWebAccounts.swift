@@ -6,6 +6,10 @@
 //
 
 import Foundation
+#if canImport(Vapor)
+#if canImport(SwifQL)
+#if canImport(PostgresBridge)
+#if canImport(Bridges)
 import Vapor
 import SwifQL
 import PostgresBridge
@@ -37,3 +41,7 @@ func getWaWebAccounts(app: Application, id: UUID) -> EventLoopFuture<WaWebAccoun
         }
     }
 }
+#endif
+#endif
+#endif
+#endif

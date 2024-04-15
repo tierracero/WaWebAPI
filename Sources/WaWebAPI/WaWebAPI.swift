@@ -1,23 +1,33 @@
 // The Swift Programming Language
 // https://docs.swift.org/swift-book
 
-import Vapor
 import Foundation
 import TCFoundation
+#if canImport(PostgresBridge)
 import PostgresBridge
+#endif
+#if canImport(VaporBridges)
 import VaporBridges
+#endif
+#if canImport(Bridges)
 import Bridges
+#endif
+#if canImport(SwifQL)
 import SwifQL
+#endif
+#if canImport(Vapor)
+import Vapor
+#endif
 
 public struct WaWebAPI {
+    
+#if canImport(Vapor)
     
     let application: Application
     
     init (_ app: Application) {
         
         application = app
-        
-        //application.postgres.register(.psqlEnvironment)
         
     }
     
@@ -40,7 +50,6 @@ public struct WaWebAPI {
         }
     }
     
-    
     public func profile(profile: WaWebInstances) -> API {
         
         guard let token = Environment.get("WAWEBAPI_TOKEN") else {
@@ -59,8 +68,10 @@ public struct WaWebAPI {
         return .init(app: application, token: token, profile: profile)
     }
     
-    
+#endif
 }
+
+#if canImport(Vapor)
 
 extension Application {
     public var wawebapi: WaWebAPI { .init(self) }
@@ -89,7 +100,6 @@ extension WaWebAPI {
     }
 }
 
-#if canImport(Vapor)
 protocol CrossPlatformContent: Content {}
 
 #else

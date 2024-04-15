@@ -9,6 +9,7 @@ import Foundation
 import TCFoundation
 #if canImport(Vapor)
 import Vapor
+#endif
 
 extension ClientEndpoint {
     
@@ -26,6 +27,7 @@ extension ClientEndpoint {
         public let countryCode: String
     }
     
+#if canImport(Vapor)
     /// Get the country code of a WhatsApp ID.
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getCountryCode
     /// - Returns: Promise containing a string
@@ -41,6 +43,6 @@ extension ClientEndpoint {
             throw error
         }
     }
+#endif
     
 }
-#endif

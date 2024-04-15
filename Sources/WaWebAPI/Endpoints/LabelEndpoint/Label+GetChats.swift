@@ -7,6 +7,7 @@
 
 #if canImport(Vapor)
 import Vapor
+#endif
 
 extension LabelEndpoint {
     
@@ -23,6 +24,7 @@ extension LabelEndpoint {
         
     }
     
+#if canImport(Vapor)
     /// Returns array of all Labels assigned to this Chat
     /// `POST` https://intratc.co/node/whatsapp/api/v1/label/getChats
     /// - Parameter lableId: a123456789
@@ -39,6 +41,6 @@ extension LabelEndpoint {
             throw error
         }
     }
+#endif
     
 }
-#endif

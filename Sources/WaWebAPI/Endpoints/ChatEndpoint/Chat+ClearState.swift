@@ -9,6 +9,7 @@ import Foundation
 import TCFoundation
 #if canImport(Vapor)
 import Vapor
+#endif
 
 extension ChatEndpoint {
     
@@ -24,7 +25,7 @@ extension ChatEndpoint {
         }
         
     }
-    
+#if canImport(Vapor)
     /// Stops typing or recording in chat immediately.
     /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/clearState
     /// - Parameter chatId: WhatsAppChatId
@@ -41,6 +42,6 @@ extension ChatEndpoint {
             throw error
         }
     }
-    
-}
 #endif
+}
+

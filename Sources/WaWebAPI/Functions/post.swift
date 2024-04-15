@@ -7,11 +7,17 @@
 
 import Foundation
 import TCFoundation
+#if canImport(Vapor)
+#if canImport(Crypto)
 import Vapor
 import Crypto
+#endif
+#endif
 
 extension API {
 
+#if canImport(Vapor)
+#if canImport(Crypto)
     func post<T:Codable>(_ type: T.Type, endpoint: EndpointControler, payload: any Content) throws -> EventLoopFuture<T>{
         
         return getWaWebTokens(app: application, token: WAWEBAPI_TOKEN).flatMap { token in
@@ -330,5 +336,7 @@ extension API {
         }
         
     }
+#endif
+#endif
     
 }

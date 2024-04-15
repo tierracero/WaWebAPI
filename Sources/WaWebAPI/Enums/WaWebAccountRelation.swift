@@ -26,7 +26,7 @@ public struct CreateWaWebAccountRelation: EnumMigration {
 #endif
 
 /// waweb, account, subaccount
-public enum WaWebAccountRelation: String, BridgesEnum, CaseIterable {
+public enum WaWebAccountRelation: String, CrossPlatformEnum, CaseIterable {
     
     case waweb
     

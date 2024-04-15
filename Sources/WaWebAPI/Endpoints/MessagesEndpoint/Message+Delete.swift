@@ -9,6 +9,7 @@ import Foundation
 import TCFoundation
 #if canImport(Vapor)
 import Vapor
+#endif
 
 extension MessageEndpoint {
     
@@ -24,7 +25,7 @@ extension MessageEndpoint {
         
     }
     
-    ///
+#if canImport(Vapor)
     /// `POST` https://intratc.co/node/whatsapp/api/v1/message/delete
     /// - Parameter messageId: String
     /// - Returns:
@@ -40,6 +41,6 @@ extension MessageEndpoint {
             throw error
         }
     }
+#endif
     
 }
-#endif

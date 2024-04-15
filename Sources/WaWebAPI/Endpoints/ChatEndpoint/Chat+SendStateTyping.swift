@@ -9,6 +9,7 @@ import Foundation
 import TCFoundation
 #if canImport(Vapor)
 import Vapor
+#endif
 
 extension ChatEndpoint {
     
@@ -25,6 +26,7 @@ extension ChatEndpoint {
         
     }
     
+#if canImport(Vapor)
     /// Simulate typing in chat. This will last for 25 seconds.
     /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/sendStateTyping
     /// - Parameter chatId: WhatsAppChatId
@@ -41,6 +43,6 @@ extension ChatEndpoint {
             throw error
         }
     }
+#endif
     
 }
-#endif

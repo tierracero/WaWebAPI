@@ -9,6 +9,7 @@ import Foundation
 import TCFoundation
 #if canImport(Vapor)
 import Vapor
+#endif
 
 extension ClientEndpoint {
     
@@ -23,6 +24,7 @@ extension ClientEndpoint {
         }
     }
     
+#if canImport(Vapor)
     /// Returns an object with information about the invite code's group
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getLabelById
     /// - Returns: Promise containing Label
@@ -38,6 +40,6 @@ extension ClientEndpoint {
             throw error
         }
     }
+#endif
     
 }
-#endif

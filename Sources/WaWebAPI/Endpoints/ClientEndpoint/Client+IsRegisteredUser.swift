@@ -9,6 +9,7 @@ import Foundation
 import TCFoundation
 #if canImport(Vapor)
 import Vapor
+#endif
 
 extension ClientEndpoint {
     
@@ -28,6 +29,7 @@ extension ClientEndpoint {
         public let isRegisteredUser: Bool
     }
     
+#if canImport(Vapor)
     /// Check if a given ID is registered in whatsapp
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/isRegisteredUser
     /// - Returns: Promise containing Boolean
@@ -43,6 +45,6 @@ extension ClientEndpoint {
             throw error
         }
     }
+#endif
     
 }
-#endif

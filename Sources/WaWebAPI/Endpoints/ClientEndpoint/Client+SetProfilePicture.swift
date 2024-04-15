@@ -9,6 +9,7 @@ import Foundation
 import TCFoundation
 #if canImport(Vapor)
 import Vapor
+#endif
 
 extension ClientEndpoint {
     
@@ -24,6 +25,7 @@ extension ClientEndpoint {
         
     }
     
+#if canImport(Vapor)
     /// Sets the current user's profile picture.
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/setProfilePicture
     /// - Returns: Promise containing boolean, Returns true if the picture was properly updated.
@@ -39,6 +41,6 @@ extension ClientEndpoint {
             throw error
         }
     }
+#endif
     
 }
-#endif

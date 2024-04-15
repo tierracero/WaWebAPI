@@ -9,6 +9,7 @@ import Foundation
 import TCFoundation
 #if canImport(Vapor)
 import Vapor
+#endif
 
 extension ClientEndpoint {
     
@@ -25,6 +26,7 @@ extension ClientEndpoint {
         
     }
     
+#if canImport(Vapor)
     /// Sets the current user's status message.
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/setStatus
     /// - Returns: Promise containing boolean
@@ -40,6 +42,6 @@ extension ClientEndpoint {
             throw error
         }
     }
+#endif
     
 }
-#endif

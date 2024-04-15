@@ -9,6 +9,7 @@ import Foundation
 import TCFoundation
 #if canImport(Vapor)
 import Vapor
+#endif
 
 extension ClientEndpoint {
     
@@ -24,6 +25,7 @@ extension ClientEndpoint {
         
     }
     
+#if canImport(Vapor)
     /// Get all Labels assigned to a chat
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getChatLabels
     /// - Returns: Promise containing Array of Label
@@ -39,6 +41,6 @@ extension ClientEndpoint {
             throw error
         }
     }
+#endif
     
 }
-#endif

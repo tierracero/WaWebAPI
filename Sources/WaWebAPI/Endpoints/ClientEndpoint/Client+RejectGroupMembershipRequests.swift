@@ -9,6 +9,7 @@ import Foundation
 import TCFoundation
 #if canImport(Vapor)
 import Vapor
+#endif
 
 extension ClientEndpoint {
     
@@ -29,6 +30,7 @@ extension ClientEndpoint {
         }
     }
     
+#if canImport(Vapor)
     /// Rejects membership requests if any
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/rejectGroupMembershipRequests
     /// - Returns: Promise containing Array of MembershipRequestActionResult,  whose membership requests were rejected and an error for each requester, if any occurred during the operation. If there are no requests, an empty array will be returned
@@ -46,7 +48,7 @@ extension ClientEndpoint {
             throw error
         }
     }
+#endif
     
 }
-#endif
 

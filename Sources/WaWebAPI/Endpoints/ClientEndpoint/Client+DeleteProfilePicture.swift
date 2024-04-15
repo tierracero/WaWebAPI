@@ -9,9 +9,11 @@ import Foundation
 import TCFoundation
 #if canImport(Vapor)
 import Vapor
+#endif
 
 extension ClientEndpoint {
     
+#if canImport(Vapor)
     /// Deletes the current user's profile picture.
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/deleteProfilePicture
     /// - Returns: Promise containing Boolean
@@ -23,6 +25,6 @@ extension ClientEndpoint {
             throw error
         }
     }
+#endif
     
 }
-#endif

@@ -9,6 +9,7 @@ import Foundation
 import TCFoundation
 #if canImport(Vapor)
 import Vapor
+#endif
 
 extension ClientEndpoint {
     
@@ -24,6 +25,7 @@ extension ClientEndpoint {
         }
     }
     
+#if canImport(Vapor)
     /// Gets an array of membership requests
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getGroupMembershipRequests
     /// - Returns: Promise containing Array of GroupMembershipRequest
@@ -39,6 +41,6 @@ extension ClientEndpoint {
             throw error
         }
     }
+#endif
     
 }
-#endif

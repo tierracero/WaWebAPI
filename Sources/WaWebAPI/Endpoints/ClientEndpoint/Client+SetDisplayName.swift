@@ -9,6 +9,7 @@ import Foundation
 import TCFoundation
 #if canImport(Vapor)
 import Vapor
+#endif
 
 extension ClientEndpoint {
     
@@ -24,6 +25,7 @@ extension ClientEndpoint {
         
     }
     
+#if canImport(Vapor)
     /// Sets the current user's display name. This is the name shown to WhatsApp users that have not added you as a contact beside your number in groups and in your profile.
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/setDisplayName
     /// - Returns: Promise containing boolean
@@ -39,6 +41,6 @@ extension ClientEndpoint {
             throw error
         }
     }
+#endif
     
 }
-#endif

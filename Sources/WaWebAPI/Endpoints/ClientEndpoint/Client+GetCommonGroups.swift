@@ -9,6 +9,7 @@ import Foundation
 import TCFoundation
 #if canImport(Vapor)
 import Vapor
+#endif
 
 extension ClientEndpoint {
     
@@ -24,6 +25,7 @@ extension ClientEndpoint {
         
     }
     
+#if canImport(Vapor)
     /// Gets the Contact's common groups with you. Returns empty array if you don't have any common group.
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getCommonGroups
     /// - Returns: Promise containing Array of WAWebJS.WhatsAppChatId
@@ -39,6 +41,6 @@ extension ClientEndpoint {
             throw error
         }
     }
+#endif
     
 }
-#endif

@@ -9,7 +9,7 @@ import Foundation
 import TCFoundation
 #if canImport(Vapor)
 import Vapor
+#endif
 
 //MARK: markChatUnread handeld in ChatEndpoint/sendSeen
 
-#endif

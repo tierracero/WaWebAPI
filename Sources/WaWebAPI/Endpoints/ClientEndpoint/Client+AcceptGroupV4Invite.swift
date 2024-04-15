@@ -9,10 +9,10 @@ import Foundation
 import TCFoundation
 #if canImport(Vapor)
 import Vapor
+#endif
 
 extension ClientEndpoint {
     
     // TODO: Methed to be implemented
     
 }
-#endif

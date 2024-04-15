@@ -9,9 +9,11 @@ import Foundation
 import TCFoundation
 #if canImport(Vapor)
 import Vapor
+#endif
 
 extension ClientEndpoint {
     
+#if canImport(Vapor)
     /// Marks the client as online
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/sendPresenceAvailable
     /// - Returns: Promise containing void
@@ -23,7 +25,7 @@ extension ClientEndpoint {
             throw error
         }
     }
+#endif
     
 }
-#endif
 

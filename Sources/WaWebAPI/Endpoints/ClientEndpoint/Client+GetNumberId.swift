@@ -9,6 +9,7 @@ import Foundation
 import TCFoundation
 #if canImport(Vapor)
 import Vapor
+#endif
 
 extension ClientEndpoint {
     
@@ -23,6 +24,7 @@ extension ClientEndpoint {
         }
     }
     
+#if canImport(Vapor)
     /// Get the registered WhatsApp ID for a number. Will return null if the number is not registered on WhatsApp.
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getNumberId
     /// - Returns: Promise containing (Object or null)
@@ -38,6 +40,6 @@ extension ClientEndpoint {
             throw error
         }
     }
+#endif
     
 }
-#endif

@@ -6,9 +6,10 @@
 //
 
 import Foundation
-
-
-import Foundation
+#if canImport(Vapor)
+#if canImport(SwifQL)
+#if canImport(PostgresBridge)
+#if canImport(Bridges)
 import Vapor
 import SwifQL
 import PostgresBridge
@@ -40,3 +41,7 @@ func getWaWebTokens(app: Application, token: String) -> EventLoopFuture<WaWebTok
         }
     }
 }
+#endif
+#endif
+#endif
+#endif

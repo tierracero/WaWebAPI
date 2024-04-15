@@ -9,6 +9,7 @@ import Foundation
 import TCFoundation
 #if canImport(Vapor)
 import Vapor
+#endif
 
 extension ChatEndpoint {
     
@@ -30,6 +31,7 @@ extension ChatEndpoint {
         
     }
     
+#if canImport(Vapor)
     /// Mutes this chat forever, unless a date is specified
     /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/mute
     /// - Parameter chatId: WhatsAppChatId
@@ -49,6 +51,6 @@ extension ChatEndpoint {
             throw error
         }
     }
+#endif
     
 }
-#endif
