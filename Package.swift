@@ -50,16 +50,16 @@ if !isWebber {
     
 
     deps.append("https://github.com/vapor/vapor.git", from: "4.0.0",
-                targets: .product(name: "Vapor", package: "vapor"))
+                targets: .product(name: "Vapor", package: "vapor", condition: .when(platforms: [.macOS,.linux])))
 
     deps.append("https://github.com/SwifQL/VaporBridges.git", from: "1.0.0-rc",
-                    targets: .product(name: "VaporBridges", package: "VaporBridges"))
+                    targets: .product(name: "VaporBridges", package: "VaporBridges", condition: .when(platforms: [.macOS,.linux])))
 
     deps.append("https://github.com/tierracero/PostgresBridge.git", from: "1.0.0-rc",
-                    targets: .product(name: "PostgresBridge", package: "PostgresBridge"))
+                    targets: .product(name: "PostgresBridge", package: "PostgresBridge", condition: .when(platforms: [.macOS,.linux])))
 
     deps.append("https://github.com/SwifQL/SwifQL.git", from: "2.0.0-beta.3.21.0",
-                    targets: .product(name: "SwifQL", package: "SwifQL"))
+                    targets: .product(name: "SwifQL", package: "SwifQL", condition: .when(platforms: [.macOS,.linux])))
 
 }
 #endif
