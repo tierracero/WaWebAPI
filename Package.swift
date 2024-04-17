@@ -48,7 +48,6 @@ deps.appendFromMaster("git@github.com:tierracero/TCFoundation.git",
 let isWebber = (ProcessInfo.processInfo.environment["WEBBER"] == "TRUE")
 if !isWebber {
     
-
     deps.append("https://github.com/vapor/vapor.git", from: "4.0.0",
                 targets: .product(name: "Vapor", package: "vapor", condition: .when(platforms: [.macOS,.linux])))
 
@@ -60,7 +59,7 @@ if !isWebber {
 
     deps.append("https://github.com/SwifQL/SwifQL.git", from: "2.0.0-beta.3.21.0",
                     targets: .product(name: "SwifQL", package: "SwifQL", condition: .when(platforms: [.macOS,.linux])))
-
+    
 }
 #endif
 

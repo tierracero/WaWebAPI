@@ -28,8 +28,8 @@ public struct CreateWaWebInstances: TableMigration {
             .column("relationId", .uuid, .notNull)
             .column("secret", .text, .notNull)
             .column("webhook", .text, .notNull)
-            .column("cc", .text, .default(""))
-            .column("mobile", .text, .default(""))
+            .column("cc", .text, .notNull)
+            .column("mobile", .text)
             .column("status", .auto(from: BasicStatus.self), .notNull)
             .execute(on: conn)
     }
@@ -76,7 +76,7 @@ public final class WaWebInstances: Table, Schemable {
     public var cc: Countries
     
     @Column("mobile")
-    public var mobile: String
+    public var mobile: String?
     
     /// CustFolioStatus: pending, active, pendingSpare, finalize, archive, collection (string value)
     @Column("status")
@@ -96,7 +96,7 @@ public final class WaWebInstances: Table, Schemable {
         secret: String = callKey(32),
         webhook: String,
         cc: Countries,
-        mobile: String,
+        mobile: String?,
         status: BasicStatus
     ) {
         self.id = id
@@ -168,7 +168,7 @@ public struct WaWebInstances: Codable {
     
     public var cc: Countries
     
-    public var mobile: String
+    public var mobile: String?
     
     /// CustFolioStatus: pending, active, pendingSpare, finalize, archive, collection (string value)
     public var status: BasicStatus
@@ -184,7 +184,7 @@ public struct WaWebInstances: Codable {
         secret: String,
         webhook: String,
         cc: Countries,
-        mobile: String,
+        mobile: String?,
         status: BasicStatus
     ) {
         self.id = id
