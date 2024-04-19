@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// conflict, connected, deprecatedVersion, opening, pairing, proxyblock, SMBTosBlock, timeout, TOSBlock, unlaunched, unpaired, unpairedIdle
 public enum WAState: String, Codable {
     
     case conflict

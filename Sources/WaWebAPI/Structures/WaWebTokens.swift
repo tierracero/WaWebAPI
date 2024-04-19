@@ -91,7 +91,7 @@ public final class WaWebTokens: Table, Schemable {
         relationType: WaWebAccountRelation,
         relationId: UUID,
         secret: String?,
-        token: String = callKey(48),
+        token: String = callKey(Int.random(in: 64...128)),
         ip: [String]?
     ) {
         self.id = id

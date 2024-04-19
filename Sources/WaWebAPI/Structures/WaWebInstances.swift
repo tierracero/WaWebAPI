@@ -10,6 +10,9 @@ import Foundation
 #if canImport(Bridges)
 import Bridges
 #endif
+#if canImport(UIKitPlus)
+import UIKitPlus
+#endif
 
 #if canImport(Bridges)
 
@@ -90,7 +93,7 @@ public final class WaWebInstances: Table, Schemable {
         createdAt: Int64 = getNow(),
         modifiedAt: Int64 = getNow(),
         waWebAccount: UUID,
-        instanceId: String = "\(callKey(3))\(getNow().toString)\(callKey(12))",
+        instanceId: String,
         relationType: WaWebAccountRelation,
         relationId: UUID,
         secret: String = callKey(32),
@@ -215,3 +218,9 @@ extension WaWebInstances: Hashable, Equatable {
         hasher.combine(id)
     }
 }
+
+#if canImport(UIKitPlus)
+extension WaWebInstances: Identable {
+    public static var idKey: KeyPath<Self, UUID> { \.id }
+}
+#endif
