@@ -10,6 +10,8 @@ import Foundation
 /// conflict, connected, deprecatedVersion, opening, pairing, proxyblock, SMBTosBlock, timeout, TOSBlock, unlaunched, unpaired, unpairedIdle
 public enum WAState: String, Codable {
     
+    case offline
+    
     case conflict
     
     case connected
@@ -36,6 +38,8 @@ public enum WAState: String, Codable {
     
     public init?(rawValue: String) {
         switch rawValue {
+        case "offline":
+            self = .offline
         case "CONFLICT":
             self = .conflict
         case "conflict":
