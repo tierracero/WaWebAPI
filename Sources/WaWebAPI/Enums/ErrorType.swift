@@ -25,6 +25,8 @@ public enum ErrorType: String, Codable {
     
     case HMACValidationError
     
+    case instanceOffline
+    
     case invalidInstance
     
     case expiredInstance
