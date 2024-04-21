@@ -81,9 +81,9 @@ public final class WaWebInstances: Table, Schemable {
     @Column("mobile")
     public var mobile: String?
     
-    /// CustFolioStatus: pending, active, pendingSpare, finalize, archive, collection (string value)
+    /// offline, active, canceled, suspended
     @Column("status")
-    public var status: BasicStatus
+    public var status: WaWebInstancesStatus
     
     /// See `Table`
     public init () {}
@@ -100,7 +100,7 @@ public final class WaWebInstances: Table, Schemable {
         webhook: String,
         cc: Countries,
         mobile: String?,
-        status: BasicStatus
+        status: WaWebInstancesStatus
     ) {
         self.id = id
         self.createdAt = createdAt
@@ -173,8 +173,8 @@ public struct WaWebInstances: Codable {
     
     public var mobile: String?
     
-    /// CustFolioStatus: pending, active, pendingSpare, finalize, archive, collection (string value)
-    public var status: BasicStatus
+    /// offline, active, canceled, suspended
+    public var status: WaWebInstancesStatus
     
     public init(
         id: UUID,
@@ -188,7 +188,7 @@ public struct WaWebInstances: Codable {
         webhook: String,
         cc: Countries,
         mobile: String?,
-        status: BasicStatus
+        status: WaWebInstancesStatus
     ) {
         self.id = id
         self.createdAt = createdAt
