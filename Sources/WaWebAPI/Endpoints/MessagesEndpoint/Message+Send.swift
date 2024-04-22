@@ -100,7 +100,7 @@ extension MessageEndpoint {
     
 #if canImport(Vapor)
     /// Send a message to this chat
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/send/text
+    /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/send/message
     /// - Parameter chatId: WhatsAppChatId
     /// - Parameter message: String
     /// - Returns: Promise containing Message that was just sent.
@@ -113,7 +113,7 @@ extension MessageEndpoint {
         print("🟢  002")
         
         do {
-            return try api.post( APIResponsePayload<Message>.self, endpoint: .message("send/text"), payload: SendMessageTextRequst(
+            return try api.post( APIResponsePayload<Message>.self, endpoint: .message("send/message"), payload: SendMessageTextRequst(
                 chatId: chatId,
                 message: message,
                 options: options

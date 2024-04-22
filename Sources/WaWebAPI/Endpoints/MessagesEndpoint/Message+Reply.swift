@@ -28,14 +28,14 @@ extension MessageEndpoint {
     
 #if canImport(Vapor)
     ///
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/message/reply/text
+    /// `POST` https://intratc.co/node/whatsapp/api/v1/message/reply/message
     /// - Parameter messageId: String
     /// - Returns:
     public func reply(
         messageId: String
     ) throws -> EventLoopFuture<APIResponse>{
         do {
-            return try api.post( APIResponse.self, endpoint: .chat("reply/text"), payload: ReplyRequest(
+            return try api.post( APIResponse.self, endpoint: .chat("reply/message"), payload: ReplyRequest(
                 messageId: messageId
             ))
         }
