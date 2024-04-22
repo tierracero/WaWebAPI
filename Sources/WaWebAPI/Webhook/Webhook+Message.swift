@@ -10,7 +10,7 @@ import Foundation
 public struct WebhookMessage: Codable {
     
     /// File type `FileMimeType`
-    public var media: MessageMedia?
+    //public var media: MessageMedia?
     
     /// This  will be proccessd by `MessageObject.type`
     /// MessageType
