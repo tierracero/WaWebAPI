@@ -30,7 +30,7 @@ public struct Reaction: Codable {
     /// Sender id
     public let senderId: String
     
-    public let ack: Int64
+    public let ack: Int64?
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -47,11 +47,15 @@ public struct Reaction: Codable {
                 throw error
             }
         }
-        self.reaction = try container.decodeIfPresent(SocialPostReactionType.self, forKey: .reaction)
+        do {
+            self.reaction = try container.decodeIfPresent(SocialPostReactionType.self, forKey: .reaction)
+        } catch {
+            self.reaction = nil
+        }
         self.read = try container.decode(Bool.self, forKey: .read)
         self.msgId = try container.decode(MessageIdentifier.self, forKey: .msgId)
         self.senderId = try container.decode(String.self, forKey: .senderId)
-        self.ack = try container.decode(Int64.self, forKey: .ack)
+        self.ack = try container.decodeIfPresent(Int64.self, forKey: .ack)
     }
     
     
