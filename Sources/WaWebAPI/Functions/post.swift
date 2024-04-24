@@ -18,9 +18,14 @@ extension API {
 
 #if canImport(Vapor)
 #if canImport(Crypto)
+    
     func post<T:Codable>(_ type: T.Type, endpoint: EndpointControler, payload: any Content) throws -> EventLoopFuture<T>{
         
-        return getWaWebTokens(app: application, token: WAWEBAPI_TOKEN).flatMap { token in
+        return getWaWebTokens(
+            app: application,
+            waWebAccount: profile.waWebAccount,
+            instanceId: profile.instanceId
+        ).flatMap { token in
             
             guard let token else {
                 return application.eventLoop.future(error: TCErrors.generalError(error: "Token"))
@@ -28,7 +33,7 @@ extension API {
             
             var header = HTTPHeaders([
                 ("Accept", "application/json"),
-                ("token", WAWEBAPI_TOKEN),
+                ("token", "\(token.token)"),
                 ("instanceid", profile.instanceId)
             ])
             
@@ -168,174 +173,196 @@ extension API {
     
     func post<T:Codable>(_ type: T.Type, endpoint: EndpointControler) throws -> EventLoopFuture<T>{
         
-        let header = HTTPHeaders([
-            ("Accept", "application/json"),
-            ("token", "\(WAWEBAPI_TOKEN)"),
-            ("instanceid", profile.instanceId)
-        ])
-        
-        var path = endpoint.path
-        
-        switch endpoint {
-        case .call(let string):
-            if !string.isEmpty {
-                path += "/\(string)"
+        return getWaWebTokens(
+            app: application,
+            waWebAccount: profile.waWebAccount,
+            instanceId: profile.instanceId
+        ).flatMap { token in
+            
+            guard let token else {
+                return application.eventLoop.future(error: TCErrors.generalError(error: "Token"))
             }
-        case .chat(let string):
-            if !string.isEmpty {
-                path += "/\(string)"
+            
+            let header = HTTPHeaders([
+                ("Accept", "application/json"),
+                ("token", "\(token.token)"),
+                ("instanceid", profile.instanceId)
+            ])
+            
+            var path = endpoint.path
+            
+            switch endpoint {
+            case .call(let string):
+                if !string.isEmpty {
+                    path += "/\(string)"
+                }
+            case .chat(let string):
+                if !string.isEmpty {
+                    path += "/\(string)"
+                }
+            case .client(let string):
+                if !string.isEmpty {
+                    path += "/\(string)"
+                }
+            case .contact(let string):
+                if !string.isEmpty {
+                    path += "/\(string)"
+                }
+            case .groop(let string):
+                if !string.isEmpty {
+                    path += "/\(string)"
+                }
+            case .label(let string):
+                if !string.isEmpty {
+                    path += "/\(string)"
+                }
+            case .message(let string):
+                if !string.isEmpty {
+                    path += "/\(string)"
+                }
+            case .poll(let string):
+                if !string.isEmpty {
+                    path += "/\(string)"
+                }
+            case .privateChat(let string):
+                if !string.isEmpty {
+                    path += "/\(string)"
+                }
+            case .reaction(let string):
+                if !string.isEmpty {
+                    path += "/\(string)"
+                }
             }
-        case .client(let string):
-            if !string.isEmpty {
-                path += "/\(string)"
-            }
-        case .contact(let string):
-            if !string.isEmpty {
-                path += "/\(string)"
-            }
-        case .groop(let string):
-            if !string.isEmpty {
-                path += "/\(string)"
-            }
-        case .label(let string):
-            if !string.isEmpty {
-                path += "/\(string)"
-            }
-        case .message(let string):
-            if !string.isEmpty {
-                path += "/\(string)"
-            }
-        case .poll(let string):
-            if !string.isEmpty {
-                path += "/\(string)"
-            }
-        case .privateChat(let string):
-            if !string.isEmpty {
-                path += "/\(string)"
-            }
-        case .reaction(let string):
-            if !string.isEmpty {
-                path += "/\(string)"
+            
+            let url = URI(
+                scheme: "https",
+                host: "intratc.co",
+                path: "node/whatsapp/api/v1/\(path)"
+            )
+            
+            print(url.description)
+            
+            return application.client.post(url, headers: header).flatMapThrowing { response in
+                
+                var RESPONSE_BODY = "EMPTY_BODY"
+                
+                if let buffer = response.body {
+                    RESPONSE_BODY = String(buffer: buffer)
+                }
+                
+                print(RESPONSE_BODY)
+                
+                do{
+                    return try response.content.decode(T.self, using: JSONDecoder())
+                }
+                catch {
+                    
+                    print(error)
+                    
+                    throw TCErrors.generalError(
+                        error: "ERROR:\n\(String(describing: error))\n\n" +
+                        "URL: \(url.description)\n\n" +
+                        "PAYLOAD: NO_PAYLOAD\n\n" +
+                        "RESPONSE_BODY: \(RESPONSE_BODY)"
+                    )
+                    
+                }
             }
         }
         
-        let url = URI(
-            scheme: "https",
-            host: "intratc.co",
-            path: "node/whatsapp/api/v1/\(path)"
-        )
-        
-        print(url.description)
-        
-        return application.client.post(url, headers: header).flatMapThrowing { response in
-            
-            var RESPONSE_BODY = "EMPTY_BODY"
-            
-            if let buffer = response.body {
-                RESPONSE_BODY = String(buffer: buffer)
-            }
-            
-            print(RESPONSE_BODY)
-            
-            do{
-                return try response.content.decode(T.self, using: JSONDecoder())
-            }
-            catch {
-                
-                print(error)
-                
-                throw TCErrors.generalError(
-                    error: "ERROR:\n\(String(describing: error))\n\n" +
-                    "URL: \(url.description)\n\n" +
-                    "PAYLOAD: NO_PAYLOAD\n\n" +
-                    "RESPONSE_BODY: \(RESPONSE_BODY)"
-                )
-                
-            }
-        }
     }
     
     func post( endpoint: EndpointControler) throws -> EventLoopFuture<APIResponse>{
     
-        let header = HTTPHeaders([
-            ("Accept", "application/json"),
-            ("token", "\(WAWEBAPI_TOKEN)"),
-            ("instanceid", profile.instanceId)
-        ])
-        
-        var path = endpoint.path
-        
-        switch endpoint {
-        case .call(let string):
-            if !string.isEmpty {
-                path += "/\(string)"
-            }
-        case .chat(let string):
-            if !string.isEmpty {
-                path += "/\(string)"
-            }
-        case .client(let string):
-            if !string.isEmpty {
-                path += "/\(string)"
-            }
-        case .contact(let string):
-            if !string.isEmpty {
-                path += "/\(string)"
-            }
-        case .groop(let string):
-            if !string.isEmpty {
-                path += "/\(string)"
-            }
-        case .label(let string):
-            if !string.isEmpty {
-                path += "/\(string)"
-            }
-        case .message(let string):
-            if !string.isEmpty {
-                path += "/\(string)"
-            }
-        case .poll(let string):
-            if !string.isEmpty {
-                path += "/\(string)"
-            }
-        case .privateChat(let string):
-            if !string.isEmpty {
-                path += "/\(string)"
-            }
-        case .reaction(let string):
-            if !string.isEmpty {
-                path += "/\(string)"
-            }
-        }
-        
-        let url = URI(
-            scheme: "https",
-            host: "intratc.co",
-            path: "node/whatsapp/api/v1/\(path)"
-        )
-        
-        print(url.description)
-        
-        return application.client.post(url, headers: header).flatMapThrowing { response in
+        return getWaWebTokens(
+            app: application,
+            waWebAccount: profile.waWebAccount,
+            instanceId: profile.instanceId
+        ).flatMap { token in
             
-            do{
-                return try response.content.decode(APIResponse.self, using: JSONDecoder())
-            }
-            catch {
-                
-                print(error)
-                
-                throw TCErrors.generalError(
-                    error: "ERROR:\n\(String(describing: error))\n\n" +
-                    "URL: \(url.description)\n\n" +
-                    "PAYLOAD: NO_PAYLOAD"
-                )
-                
+            guard let token else {
+                return application.eventLoop.future(error: TCErrors.generalError(error: "Token"))
             }
             
+            let header = HTTPHeaders([
+                ("Accept", "application/json"),
+                ("token", "\(token.token)"),
+                ("instanceid", profile.instanceId)
+            ])
+            
+            var path = endpoint.path
+            
+            switch endpoint {
+            case .call(let string):
+                if !string.isEmpty {
+                    path += "/\(string)"
+                }
+            case .chat(let string):
+                if !string.isEmpty {
+                    path += "/\(string)"
+                }
+            case .client(let string):
+                if !string.isEmpty {
+                    path += "/\(string)"
+                }
+            case .contact(let string):
+                if !string.isEmpty {
+                    path += "/\(string)"
+                }
+            case .groop(let string):
+                if !string.isEmpty {
+                    path += "/\(string)"
+                }
+            case .label(let string):
+                if !string.isEmpty {
+                    path += "/\(string)"
+                }
+            case .message(let string):
+                if !string.isEmpty {
+                    path += "/\(string)"
+                }
+            case .poll(let string):
+                if !string.isEmpty {
+                    path += "/\(string)"
+                }
+            case .privateChat(let string):
+                if !string.isEmpty {
+                    path += "/\(string)"
+                }
+            case .reaction(let string):
+                if !string.isEmpty {
+                    path += "/\(string)"
+                }
+            }
+            
+            let url = URI(
+                scheme: "https",
+                host: "intratc.co",
+                path: "node/whatsapp/api/v1/\(path)"
+            )
+            
+            print(url.description)
+            
+            return application.client.post(url, headers: header).flatMapThrowing { response in
+                
+                do{
+                    return try response.content.decode(APIResponse.self, using: JSONDecoder())
+                }
+                catch {
+                    
+                    print(error)
+                    
+                    throw TCErrors.generalError(
+                        error: "ERROR:\n\(String(describing: error))\n\n" +
+                        "URL: \(url.description)\n\n" +
+                        "PAYLOAD: NO_PAYLOAD"
+                    )
+                    
+                }
+            }
         }
-        
     }
+    
 #endif
 #endif
     

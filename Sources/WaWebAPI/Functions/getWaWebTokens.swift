@@ -18,23 +18,24 @@ import Bridges
 /// [ WaWebTokens.token : WaWebTokens ]
 fileprivate var waWaWebTokens: [String: WaWebTokens] = [:]
 
-func getWaWebTokens(app: Application, token: String) -> EventLoopFuture<WaWebTokens?> {
+func getWaWebTokens(app: Application, waWebAccount: UUID, instanceId: String) -> EventLoopFuture<WaWebTokens?> {
  
-    if let payload = waWaWebTokens[token] {
+    if let payload = waWaWebTokens[instanceId] {
         return app.eventLoopGroup.future(payload)
     }
     
     return app.postgres.transaction(to: .psqlEnvironment) { conn in
         
         return SwifQL.select(WaWebTokens.table.*).from(WaWebTokens.table).where(
-            \WaWebTokens.$token == token
+            \WaWebTokens.$waWebAccount == waWebAccount &&
+             \WaWebTokens.$instanceId ||> PgArray([instanceId]) => .textArray
         ).execute(on: conn).first(decoding: WaWebTokens.self).map { payload in
             
             guard let payload else {
                 return nil
             }
      
-            waWaWebTokens[token] = payload
+            waWaWebTokens[instanceId] = payload
             
             return payload
             
