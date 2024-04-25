@@ -53,9 +53,12 @@ extension API {
                     
                     header.add(name: "x-wawebapi-hmac", value: authenticationCode.hex)
 
-                    print("secretPassword \(secretPassword)")
+                    print("token.secret \(token.secret)")
                     print("x-wawebapi-hmac \(authenticationCode.hex)")
-                    
+                    if let message = String(data: trustfulMessage, encoding: .utf8) {
+                        print("message")
+                        print(message)
+                    }
                 }
                 catch { }
                 
