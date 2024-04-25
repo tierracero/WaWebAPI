@@ -39,17 +39,21 @@ extension MessageEndpoint {
         /// EG: 5218341231234@c.us
         public let chatId: WhatsAppChatId
         
-        public let media: MessageMedia
+        public let media: MessageMedia?
+        
+        public let url: String?
         
         public let options: MessageSendOptions?
         
         public init(
             chatId: WhatsAppChatId,
-            media: MessageMedia,
+            media: MessageMedia?,
+            url: String?,
             options: MessageSendOptions?
         ) {
             self.chatId = chatId
             self.media = media
+            self.url = url
             self.options = options
         }
         
@@ -138,6 +142,29 @@ extension MessageEndpoint {
             return try api.post( APIResponsePayload<Message>.self, endpoint: .message("send/media"), payload: SendMessageMediaRequst(
                 chatId: chatId,
                 media: media,
+                url: nil,
+                options: options
+            ))
+        }
+        catch {
+            throw error
+        }
+    }
+    /// Send a message to this chat
+    /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/send/media
+    /// - Parameter chatId: WhatsAppChatId
+    /// - Parameter media: MessageMedia
+    /// - Returns: Promise containing Message that was just sent.
+    public func sendMessage(
+        chatId: WhatsAppChatId,
+        mediaUrl: String,
+        options: MessageSendOptions?
+    ) throws -> EventLoopFuture<APIResponsePayload<Message>>{
+        do {
+            return try api.post( APIResponsePayload<Message>.self, endpoint: .message("send/media"), payload: SendMessageMediaRequst(
+                chatId: chatId,
+                media: nil,
+                url: mediaUrl,
                 options: options
             ))
         }

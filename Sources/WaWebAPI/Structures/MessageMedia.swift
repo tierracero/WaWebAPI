@@ -24,4 +24,18 @@ public struct MessageMedia: Codable {
     public let fileSize: Int64?
     
     public let mimeType: FileMimeType
+    
+    
+    public init(
+        data: String,
+        fileName: String?,
+        fileSize: Int64?,
+        mimeType: FileMimeType
+    ) {
+        self.data = data
+        self.fileName = fileName
+        self.fileSize = fileSize
+        self.mimeType = mimeType
+    }
+    
 }
