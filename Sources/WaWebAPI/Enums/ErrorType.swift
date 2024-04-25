@@ -41,4 +41,6 @@ public enum ErrorType: String, Codable {
     
     case invalidNumber
     
+    case authenticationFailure
+    
 }

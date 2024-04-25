@@ -53,6 +53,8 @@ extension API {
                     
                     header.add(name: "x-wawebapi-hmac", value: authenticationCode.hex)
 
+                    print("secretPassword \(secretPassword)")
+                    print("x-wawebapi-hmac \(authenticationCode.hex)")
                     
                 }
                 catch { }
