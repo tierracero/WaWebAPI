@@ -11,7 +11,7 @@ import Foundation
 public struct WebhookAcknowledged: Codable {
     
     enum CodingKeys: String, CodingKey {
-        case acknowledged = "ask"
+        case acknowledged = "ack"
         case message
     }
     
