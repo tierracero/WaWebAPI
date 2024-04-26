@@ -10,7 +10,12 @@ import Foundation
 
 public struct WebhookAcknowledged: Codable {
     
-    public var acknowledged: AcknowledgedType?
+    enum CodingKeys: String, CodingKey {
+        case acknowledged = "ask"
+        case message
+    }
+    
+    public var acknowledged: AcknowledgedType
     
     public var message: Message
     
