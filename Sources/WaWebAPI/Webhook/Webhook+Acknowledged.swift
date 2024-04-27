@@ -15,7 +15,7 @@ public struct WebhookAcknowledged: Codable {
         case message
     }
     
-    public var acknowledged: AcknowledgedType
+    public var acknowledged: AcknowledgedType?
     
     public var message: Message
     
