@@ -45,7 +45,7 @@ deps.appendFromMaster("git@github.com:tierracero/TCFoundation.git",
                              targets: .product(name: "TCFoundation", package: "TCFoundation"))
 
 #if !os(iOS)
-let isWebber = (ProcessInfo.processInfo.environment["WEBBER"] == "TRUE")
+let isWebber = (ProcessInfo.processInfo.environment["S_MODE"] == "WEB")
 if !isWebber {
     
     deps.append("https://github.com/vapor/vapor.git", from: "4.0.0",
