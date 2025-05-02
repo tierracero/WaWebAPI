@@ -13,7 +13,7 @@ import Bridges
 
 public struct CreateWaWebAccounts: TableMigration {
     
-    public typealias Table = WaWebAccountsTable
+    public typealias Table = WaWebAccounts
     
     public static func prepare(on conn: BridgeConnection) -> EventLoopFuture<Void> {
         
@@ -48,7 +48,7 @@ public struct CreateWaWebAccounts: TableMigration {
     }
 }
 
-public final class WaWebAccountsTable: WaWebAccountsProtocable, Table, Schemable {
+public final class WaWebAccounts: WaWebAccountsProtocable, Table, Schemable {
     
     public static var schemaName = "wawebapi"
     

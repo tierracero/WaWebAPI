@@ -10,6 +10,9 @@ import VaporBridges
 import Bridges
 import SwifQL
 import Vapor
+
+// .waapi.profile(profile)
+
 public struct WaWebAPI {
     
     let application: Application

@@ -13,7 +13,7 @@ import Bridges
 
 public struct CreateWaWebWebhookEventControleraWebTokens: TableMigration {
     
-    public typealias Table = WaWebWebhookEventControlerTable
+    public typealias Table = WaWebWebhookEventControler
 
     public static func prepare(on conn: BridgeConnection) -> EventLoopFuture<Void> {
         createBuilder
@@ -36,7 +36,7 @@ public struct CreateWaWebWebhookEventControleraWebTokens: TableMigration {
     }
 }
 
-public final class WaWebWebhookEventControlerTable: Table, Schemable {
+public final class WaWebWebhookEventControler: Table, Schemable {
     
     public static var schemaName = "wawebapi"
     
