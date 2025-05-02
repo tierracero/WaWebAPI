@@ -7,26 +7,14 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
+
+extension MessageEndpoint.GetQuotedMessageRequest: @retroactive Content {}
 
 extension MessageEndpoint {
     
-    public struct GetQuotedMessageRequest: CrossPlatformContent {
-        
-        public let messageId: String
-        
-        public init(
-            messageId: String
-        ) {
-            self.messageId = messageId
-        }
-        
-    }
-    
-#if canImport(Vapor)
-    ///
     /// `POST` https://intratc.co/node/whatsapp/api/v1/message/getQuotedMessage
     /// - Parameter messageId: String
     /// - Returns:
@@ -42,6 +30,5 @@ extension MessageEndpoint {
             throw error
         }
     }
-#endif
 
 }

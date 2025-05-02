@@ -7,13 +7,12 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
 
 extension ClientEndpoint {
-    
-#if canImport(Vapor)
+
     /// Marks the client as unavailable
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/sendPresenceUnavailable
     /// - Returns: Promise containing void
@@ -25,6 +24,5 @@ extension ClientEndpoint {
             throw error
         }
     }
-#endif
     
 }

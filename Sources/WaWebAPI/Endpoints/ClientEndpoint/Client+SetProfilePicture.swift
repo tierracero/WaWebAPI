@@ -7,25 +7,15 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
+
+extension ClientEndpoint.SetProfilePictureRequest: @retroactive Content {}
+
 
 extension ClientEndpoint {
     
-    public struct SetProfilePictureRequest: CrossPlatformContent {
-        
-        public let media: MessageMedia
-        
-        public init(
-            media: MessageMedia
-        ) {
-            self.media = media
-        }
-        
-    }
-    
-#if canImport(Vapor)
     /// Sets the current user's profile picture.
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/setProfilePicture
     /// - Returns: Promise containing boolean, Returns true if the picture was properly updated.
@@ -41,6 +31,5 @@ extension ClientEndpoint {
             throw error
         }
     }
-#endif
     
 }

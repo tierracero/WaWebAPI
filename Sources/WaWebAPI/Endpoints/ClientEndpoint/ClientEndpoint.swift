@@ -7,13 +7,13 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
 
-public struct ClientEndpoint {
-#if canImport(Vapor)
-    let api: API
+public final class ClientEndpoint: ClientComponents {
+    
+    var api: API
     
     public init (
         app: Application,
@@ -21,6 +21,6 @@ public struct ClientEndpoint {
         profile: WaWebInstances
     ) {
         self.api = .init(app: app, token: token, profile: profile)
+        super.init()
     }
-#endif
 }

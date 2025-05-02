@@ -7,24 +7,15 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
+
+extension ClientEndpoint.GetInviteInfoRequests: @retroactive Content {}
+
 
 extension ClientEndpoint {
     
-    public struct GetInviteInfoRequests: CrossPlatformContent {
-        
-        public let inviteCode: String
-        
-        public init(
-            inviteCode: String
-        ) {
-            self.inviteCode = inviteCode
-        }
-    }
-    
-#if canImport(Vapor)
     /// Returns an object with information about the invite code's group
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getInviteInfo
     /// - Returns: Invite information
@@ -40,6 +31,5 @@ extension ClientEndpoint {
             throw error
         }
     }
-#endif
     
 }

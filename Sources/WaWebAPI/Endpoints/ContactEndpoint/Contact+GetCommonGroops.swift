@@ -7,25 +7,14 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
+
+extension ContactEndpoint.GetCommonGroopsRequest: @retroactive Content {}
 
 extension ContactEndpoint {
     
-    public struct GetCommonGroopsRequest: CrossPlatformContent {
-        
-        /// EG: 1234567890
-        public let contactId: String
-        
-        public init(
-            contactId: String
-        ) {
-            self.contactId = contactId
-        }
-    }
-    
-#if canImport(Vapor)
     /// Gets the Contact's common groups with you. Returns empty array if you don't have any common group.
     /// `POST` https://intratc.co/node/whatsapp/api/v1/contact/getCommonGroups
     /// - Parameter contactId: String
@@ -42,6 +31,5 @@ extension ContactEndpoint {
             throw error
         }
     }
-#endif
     
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import WaWebAPICore
 
 public struct WebhookReaction: Codable {
     

@@ -7,35 +7,14 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
+
+extension ClientEndpoint.CreateGroupRequest: @retroactive Content {}
 
 extension ClientEndpoint {
     
-    public struct CreateGroupRequest: CrossPlatformContent {
-        
-        /// Group title
-        public let title: String
-        
-        /// A single Contact object or an ID as a string or an array of Contact objects or contact IDs to add to the group
-        public let participants: [WhatsAppChatId]
-        
-        /// An object that handles options for group creation
-        public let options: CreateGroupOptions
-        
-        public init(
-            title: String,
-            participants: [WhatsAppChatId],
-            options: CreateGroupOptions
-        ) {
-            self.title = title
-            self.participants = participants
-            self.options = options
-        }
-    }
-    
-#if canImport(Vapor)
     /// Creates a new group
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/createGroup
     /// - Parameter inviteCode: String
@@ -56,6 +35,5 @@ extension ClientEndpoint {
             throw error
         }
     }
-#endif
-    
+
 }

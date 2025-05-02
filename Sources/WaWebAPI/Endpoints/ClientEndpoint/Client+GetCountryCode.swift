@@ -7,27 +7,14 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
+
+extension ClientEndpoint.GetCountryCodeRequest: @retroactive Content {}
 
 extension ClientEndpoint {
     
-    public struct GetCountryCodeRequest: CrossPlatformContent {
-        public let mobile: String
-        
-        public init(
-            mobile: String
-        ) {
-            self.mobile = mobile
-        }
-    }
-    
-    public struct GetCountryCodeResponse: Codable {
-        public let countryCode: String
-    }
-    
-#if canImport(Vapor)
     /// Get the country code of a WhatsApp ID.
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getCountryCode
     /// - Returns: Promise containing a string
@@ -43,6 +30,5 @@ extension ClientEndpoint {
             throw error
         }
     }
-#endif
     
 }

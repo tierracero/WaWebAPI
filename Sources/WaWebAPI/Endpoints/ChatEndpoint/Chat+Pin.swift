@@ -7,26 +7,14 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
+
+extension ChatEndpoint.PinRequst : @retroactive Content {}
 
 extension ChatEndpoint {
     
-    public struct PinRequst: CrossPlatformContent {
-        
-        /// EG: 5218341231234@c.us
-        public let chatId: WhatsAppChatId
-        
-        public init(
-            chatId: WhatsAppChatId
-        ) {
-            self.chatId = chatId
-        }
-        
-    }
-    
-#if canImport(Vapor)
     /// Pin Requst
     /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/pin
     /// - Parameter chatId: WhatsAppChatId
@@ -43,6 +31,5 @@ extension ChatEndpoint {
             throw error
         }
     }
-#endif
     
 }

@@ -7,12 +7,11 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
 
 extension ClientEndpoint {
-    
     // TODO: Methed to be implemented
     
 }

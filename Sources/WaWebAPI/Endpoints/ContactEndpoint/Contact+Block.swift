@@ -7,25 +7,14 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
+
+extension ContactEndpoint.BlockRequest: @retroactive Content {}
 
 extension ContactEndpoint {
     
-    public struct BlockRequest: CrossPlatformContent {
-        
-        /// EG: 1234567890
-        public let contactId: String
-        
-        public init(
-            contactId: String
-        ) {
-            self.contactId = contactId
-        }
-    }
-    
-#if canImport(Vapor)
     /// Blocks this contact from WhatsApp
     /// `POST` https://intratc.co/node/whatsapp/api/v1/contact/block
     /// - Parameter contactId: String
@@ -42,6 +31,5 @@ extension ContactEndpoint {
             throw error
         }
     }
-#endif
     
 }

@@ -7,25 +7,14 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
+
+extension ClientEndpoint.GetChatByIdRequest: @retroactive Content {}
+
 
 extension ClientEndpoint {
-    
-    public struct GetChatByIdRequest: CrossPlatformContent {
-        
-        public let chatId: WhatsAppChatId
-        
-        public init(
-            chatId: WhatsAppChatId
-        ) {
-            self.chatId = chatId
-        }
-        
-    }
-    
-#if canImport(Vapor)
     /// Get chat instance by ID
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getChatById
     /// - Returns: Promise containing Chat
@@ -41,6 +30,5 @@ extension ClientEndpoint {
             throw error
         }
     }
-#endif
-    
+   
 }

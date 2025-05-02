@@ -7,25 +7,14 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
+
+extension ContactEndpoint.GetAboutRequest: @retroactive Content {}
 
 extension ContactEndpoint {
     
-    public struct GetAboutRequest: CrossPlatformContent {
-        
-        /// EG: 1234567890
-        public let contactId: String
-        
-        public init(
-            contactId: String
-        ) {
-            self.contactId = contactId
-        }
-    }
-    
-#if canImport(Vapor)
     /// Gets the Contact's current "about" info. Returns null if you don't have permission to read their status.
     /// `POST` https://intratc.co/node/whatsapp/api/v1/contact/getAbout
     /// - Parameter contactId: String
@@ -42,6 +31,5 @@ extension ContactEndpoint {
             throw error
         }
     }
-#endif
     
 }

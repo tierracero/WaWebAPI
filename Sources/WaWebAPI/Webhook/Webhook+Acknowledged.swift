@@ -6,7 +6,8 @@
 //
 
 import Foundation
-
+import TCFundamentals
+import WaWebAPICore
 
 public struct WebhookAcknowledged: Codable {
     
@@ -17,7 +18,7 @@ public struct WebhookAcknowledged: Codable {
     
     public var acknowledged: AcknowledgedType?
     
-    public var message: Message
+    public var message: WaWebAPICore.Message
     
     
 }

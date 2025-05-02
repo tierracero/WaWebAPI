@@ -7,26 +7,13 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
 
+extension ChatEndpoint.SendStateRecordingRequst : @retroactive Content {}
 extension ChatEndpoint {
     
-    public struct SendStateRecordingRequst: CrossPlatformContent {
-        
-        /// EG: 5218341231234@c.us
-        public let chatId: WhatsAppChatId
-        
-        public init(
-            chatId: WhatsAppChatId
-        ) {
-            self.chatId = chatId
-        }
-        
-    }
-    
-#if canImport(Vapor)
     /// Simulate recording audio in chat. This will last for 25 seconds.
     /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/sendStateRecording
     /// - Parameter chatId: WhatsAppChatId
@@ -43,6 +30,5 @@ extension ChatEndpoint {
             throw error
         }
     }
-#endif
     
 }

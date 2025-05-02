@@ -7,13 +7,12 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
 
 extension ClientEndpoint {
     
-#if canImport(Vapor)
     /// Returns the version of WhatsApp Web currently being run
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getWWebVersion
     /// - Returns: Promise containing string
@@ -25,6 +24,5 @@ extension ClientEndpoint {
             throw error
         }
     }
-#endif
     
 }

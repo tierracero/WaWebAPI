@@ -20,10 +20,19 @@ extension Array where Element == Dep {
         append(.init(package: .package(url: url, from: from), targets: targets))
     }
     
-    mutating func appendFromMaster(_ url: String, targets: Target.Dependency...) {
+    mutating func appendFromMain(_ url: String, targets: Target.Dependency...) {
         append(
             .init(
                 package: .package(url: url, branch: "main"),
+                targets: targets
+            )
+        )
+    }
+    
+    mutating func appendFromMaster(_ url: String, targets: Target.Dependency...) {
+        append(
+            .init(
+                package: .package(url: url, branch: "master"),
                 targets: targets
             )
         )
@@ -41,27 +50,27 @@ extension Array where Element == Dep {
 
 var deps: [Dep] = []
 
-deps.appendFromMaster("git@github.com:tierracero/TCFoundation.git",
+deps.appendFromMain("git@github.com:tierracero/WaWebAPICore.git",
+                             targets: .product(name: "WaWebAPICore", package: "WaWebAPICore"))
+
+deps.appendFromMain("git@github.com:tierracero/TCFoundation.git",
                              targets: .product(name: "TCFoundation", package: "TCFoundation"))
 
-#if !os(iOS)
-let isWebber = (ProcessInfo.processInfo.environment["SWIFT_MODE"] == "WASI")
-if !isWebber {
-    
-    deps.append("https://github.com/vapor/vapor.git", from: "4.0.0",
-                targets: .product(name: "Vapor", package: "vapor", condition: .when(platforms: [.macOS,.linux])))
+deps.appendFromMain("git@github.com:tierracero/TCFundamentals.git",
+                             targets: .product(name: "TCFundamentals", package: "TCFundamentals"))
 
-    deps.append("https://github.com/SwifQL/VaporBridges.git", from: "1.0.0-rc",
-                    targets: .product(name: "VaporBridges", package: "VaporBridges", condition: .when(platforms: [.macOS,.linux])))
+deps.append("https://github.com/vapor/vapor.git", from: "4.0.0",
+            targets: .product(name: "Vapor", package: "vapor"))
 
-    deps.append("https://github.com/tierracero/PostgresBridge.git", from: "1.0.0-rc",
-                    targets: .product(name: "PostgresBridge", package: "PostgresBridge", condition: .when(platforms: [.macOS,.linux])))
+deps.append("https://github.com/SwifQL/VaporBridges.git", from: "1.0.0-rc",
+                targets: .product(name: "VaporBridges", package: "VaporBridges"))
 
-    deps.append("https://github.com/SwifQL/SwifQL.git", from: "2.0.0-beta.3.21.0",
-                    targets: .product(name: "SwifQL", package: "SwifQL", condition: .when(platforms: [.macOS,.linux])))
-    
-}
-#endif
+deps.append("https://github.com/tierracero/PostgresBridge.git", from: "1.0.0-rc",
+                targets: .product(name: "PostgresBridge", package: "PostgresBridge"))
+
+deps.append("https://github.com/SwifQL/SwifQL.git", from: "2.0.0-beta.3.21.0",
+                targets: .product(name: "SwifQL", package: "SwifQL"))
+
 
 let package = Package(
     name: "WaWebAPI",

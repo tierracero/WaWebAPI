@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import WaWebAPICore
+import Vapor
 
-public struct APIResponse: Codable {
+public struct APIResponse: Content {
     
     public let success: Bool
     
@@ -17,7 +19,7 @@ public struct APIResponse: Codable {
     
 }
 
-public struct APIResponsePayload<T>: Codable where T : Codable {
+public struct APIResponsePayload<T: Sendable>: Content where T : Codable {
     
     public let success: Bool
     

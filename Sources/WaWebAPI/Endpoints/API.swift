@@ -7,12 +7,12 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
+
 public struct API {
 
-#if canImport(Vapor)
     let application: Application
     
     let WAWEBAPI_TOKEN: String
@@ -43,6 +43,8 @@ public struct API {
     public var label: LabelEndpoint { .init(app: application, token: WAWEBAPI_TOKEN, profile: profile) }
     
     public var message: MessageEndpoint { .init(app: application, token: WAWEBAPI_TOKEN, profile: profile) }
-#endif
     
+    
+    
+
 }

@@ -7,26 +7,14 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
+
+extension ClientEndpoint.SetStatusRequest: @retroactive Content {}
 
 extension ClientEndpoint {
     
-    public struct SetStatusRequest: CrossPlatformContent {
-        
-        /// New status message
-        public let status: String
-        
-        public init(
-            status: String
-        ) {
-            self.status = status
-        }
-        
-    }
-    
-#if canImport(Vapor)
     /// Sets the current user's status message.
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/setStatus
     /// - Returns: Promise containing boolean
@@ -42,6 +30,5 @@ extension ClientEndpoint {
             throw error
         }
     }
-#endif
     
 }

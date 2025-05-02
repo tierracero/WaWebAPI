@@ -7,13 +7,12 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
 
 extension ClientEndpoint {
-    
-#if canImport(Vapor)
+
     /// Sets up events and requirements, kicks off authentication request
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getWWebVersion
     /// - Returns: Promise containing void
@@ -25,6 +24,5 @@ extension ClientEndpoint {
             throw error
         }
     }
-#endif
     
 }

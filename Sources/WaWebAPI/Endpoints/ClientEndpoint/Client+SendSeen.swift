@@ -7,9 +7,9 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
 
 //MARK: markChatUnread handeld in ChatEndpoint/sendSeen
 

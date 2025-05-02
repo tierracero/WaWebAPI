@@ -7,24 +7,15 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
+
+extension ClientEndpoint.GetLabelByIdRequests: @retroactive Content {}
+
 
 extension ClientEndpoint {
     
-    public struct GetLabelByIdRequests: CrossPlatformContent {
-        
-        public let labelId: String
-        
-        public init(
-            labelId: String
-        ) {
-            self.labelId = labelId
-        }
-    }
-    
-#if canImport(Vapor)
     /// Returns an object with information about the invite code's group
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getLabelById
     /// - Returns: Promise containing Label
@@ -40,6 +31,5 @@ extension ClientEndpoint {
             throw error
         }
     }
-#endif
     
 }

@@ -7,102 +7,20 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
+
+extension MessageEndpoint.SendMessageTextRequest: @retroactive Content {}
+
+extension MessageEndpoint.SendMessageMediaRequest: @retroactive Content {}
+
+extension MessageEndpoint.SendMessageLocationRequest: @retroactive Content {}
+
+extension MessageEndpoint.SendMessagePollRequest: @retroactive Content {}
 
 extension MessageEndpoint {
     
-    public struct SendMessageTextRequst: CrossPlatformContent {
-        
-        /// EG: 5218341231234@c.us
-        public let chatId: WhatsAppChatId
-        
-        public let message: String
-        
-        public let options: MessageSendOptions?
-        
-        public init(
-            chatId: WhatsAppChatId,
-            message: String,
-            options: MessageSendOptions?
-        ) {
-            self.chatId = chatId
-            self.message = message
-            self.options = options
-        }
-        
-    }
-    
-    public struct SendMessageMediaRequst: CrossPlatformContent {
-        
-        /// EG: 5218341231234@c.us
-        public let chatId: WhatsAppChatId
-        
-        public let media: MessageMedia?
-        
-        public let url: String?
-        
-        public let options: MessageSendOptions?
-        
-        public init(
-            chatId: WhatsAppChatId,
-            media: MessageMedia?,
-            url: String?,
-            options: MessageSendOptions?
-        ) {
-            self.chatId = chatId
-            self.media = media
-            self.url = url
-            self.options = options
-        }
-        
-    }
-
-    public struct SendMessageLocationRequst: CrossPlatformContent {
-        
-        /// EG: 5218341231234@c.us
-        public let chatId: WhatsAppChatId
-        
-        public let location: Location
-        
-        public let options: MessageSendOptions?
-        
-        public init(
-            chatId: WhatsAppChatId,
-            location: Location,
-            options: MessageSendOptions?
-        ) {
-            self.chatId = chatId
-            self.location = location
-            self.options = options
-        }
-        
-    }
-    
-    public struct SendMessagePollRequst: CrossPlatformContent {
-        
-        /// EG: 5218341231234@c.us
-        public let chatId: WhatsAppChatId
-        
-        public let poll: Poll
-        
-        public let options: MessageSendOptions?
-        
-        public init(
-            chatId: WhatsAppChatId,
-            poll: Poll,
-            options: MessageSendOptions?
-        ) {
-            self.chatId = chatId
-            self.poll = poll
-            self.options = options
-        }
-        
-    }
-    
-    
-#if canImport(Vapor)
     /// Send a message to this chat
     /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/send/message
     /// - Parameter chatId: WhatsAppChatId
@@ -112,12 +30,12 @@ extension MessageEndpoint {
         chatId: WhatsAppChatId,
         message: String,
         options: MessageSendOptions?
-    ) throws -> EventLoopFuture<APIResponsePayload<Message>>{
+    ) throws -> EventLoopFuture<APIResponsePayload<WaWebAPICore.Message>>{
         
         print("🟢  002")
         
         do {
-            return try api.post( APIResponsePayload<Message>.self, endpoint: .message("send/message"), payload: SendMessageTextRequst(
+            return try api.post( APIResponsePayload<WaWebAPICore.Message>.self, endpoint: .message("send/message"), payload: SendMessageTextRequest(
                 chatId: chatId,
                 message: message,
                 options: options
@@ -137,9 +55,9 @@ extension MessageEndpoint {
         chatId: WhatsAppChatId,
         media: MessageMedia,
         options: MessageSendOptions?
-    ) throws -> EventLoopFuture<APIResponsePayload<Message>>{
+    ) throws -> EventLoopFuture<APIResponsePayload<WaWebAPICore.Message>>{
         do {
-            return try api.post( APIResponsePayload<Message>.self, endpoint: .message("send/media"), payload: SendMessageMediaRequst(
+            return try api.post( APIResponsePayload<WaWebAPICore.Message>.self, endpoint: .message("send/media"), payload: SendMessageMediaRequest(
                 chatId: chatId,
                 media: media,
                 url: nil,
@@ -159,9 +77,9 @@ extension MessageEndpoint {
         chatId: WhatsAppChatId,
         mediaUrl: String,
         options: MessageSendOptions?
-    ) throws -> EventLoopFuture<APIResponsePayload<Message>>{
+    ) throws -> EventLoopFuture<APIResponsePayload<WaWebAPICore.Message>>{
         do {
-            return try api.post( APIResponsePayload<Message>.self, endpoint: .message("send/media"), payload: SendMessageMediaRequst(
+            return try api.post( APIResponsePayload<WaWebAPICore.Message>.self, endpoint: .message("send/media"), payload: SendMessageMediaRequest(
                 chatId: chatId,
                 media: nil,
                 url: mediaUrl,
@@ -182,9 +100,9 @@ extension MessageEndpoint {
         chatId: WhatsAppChatId,
         location: Location,
         options: MessageSendOptions?
-    ) throws -> EventLoopFuture<APIResponsePayload<Message>>{
+    ) throws -> EventLoopFuture<APIResponsePayload<WaWebAPICore.Message>>{
         do {
-            return try api.post( APIResponsePayload<Message>.self, endpoint: .message("send/location"), payload: SendMessageLocationRequst(
+            return try api.post( APIResponsePayload<WaWebAPICore.Message>.self, endpoint: .message("send/location"), payload: SendMessageLocationRequest(
                 chatId: chatId,
                 location: location,
                 options: options
@@ -204,9 +122,9 @@ extension MessageEndpoint {
         chatId: WhatsAppChatId,
         poll: Poll,
         options: MessageSendOptions?
-    ) throws -> EventLoopFuture<APIResponsePayload<Message>>{
+    ) throws -> EventLoopFuture<APIResponsePayload<WaWebAPICore.Message>>{
         do {
-            return try api.post( APIResponsePayload<Message>.self, endpoint: .message("send/poll"), payload: SendMessagePollRequst(
+            return try api.post( APIResponsePayload<WaWebAPICore.Message>.self, endpoint: .message("send/poll"), payload: SendMessagePollRequest(
                 chatId: chatId,
                 poll: poll,
                 options: options
@@ -216,5 +134,5 @@ extension MessageEndpoint {
             throw error
         }
     }
-#endif
+    
 }

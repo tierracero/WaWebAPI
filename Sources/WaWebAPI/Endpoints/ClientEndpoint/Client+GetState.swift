@@ -7,13 +7,12 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
 
 extension ClientEndpoint {
     
-#if canImport(Vapor)
     /// Gets the current connection state for the client
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getState
     /// - Returns: Promise containing WAState
@@ -25,6 +24,5 @@ extension ClientEndpoint {
             throw error
         }
     }
-#endif
     
 }

@@ -5,26 +5,13 @@
 //  Created by Victor Cantu on 3/31/24.
 //
 
-#if canImport(Vapor)
 import Vapor
-#endif
+import WaWebAPICore
+
+extension LabelEndpoint.GetChatsRequst: @retroactive Content {}
 
 extension LabelEndpoint {
     
-    public struct GetChatsRequst: CrossPlatformContent {
-        
-        /// EG: a123456789
-        public let lableId: String
-        
-        public init(
-            lableId: String
-        ) {
-            self.lableId = lableId
-        }
-        
-    }
-    
-#if canImport(Vapor)
     /// Returns array of all Labels assigned to this Chat
     /// `POST` https://intratc.co/node/whatsapp/api/v1/label/getChats
     /// - Parameter lableId: a123456789
@@ -41,6 +28,5 @@ extension LabelEndpoint {
             throw error
         }
     }
-#endif
     
 }

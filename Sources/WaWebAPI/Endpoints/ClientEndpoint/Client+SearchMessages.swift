@@ -7,37 +7,24 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
+
+extension ClientEndpoint.SearchMessagesRequest: @retroactive Content {}
+
 
 extension ClientEndpoint {
     
-    public struct SearchMessagesRequest: CrossPlatformContent {
-        
-        public let query: String
-        
-        public let option: SearchOptions?
-        
-        public init(
-            query: String,
-            option: SearchOptions?
-        ) {
-            self.query = query
-            self.option = option
-        }
-    }
-    
-#if canImport(Vapor)
     /// Searches for messages
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/searchMessages
     /// - Returns: Promise containing Array of Message
     public func searchMessages(
         query: String,
         option: SearchOptions?
-    ) throws -> EventLoopFuture<APIResponsePayload<[Message]>>{
+    ) throws -> EventLoopFuture<APIResponsePayload<[WaWebAPICore.Message]>>{
         do {
-            return try api.post(APIResponsePayload<[Message]>.self, endpoint: .client("searchMessages"), payload: SearchMessagesRequest(
+            return try api.post(APIResponsePayload<[WaWebAPICore.Message]>.self, endpoint: .client("searchMessages"), payload: SearchMessagesRequest(
                 query: query,
                 option: option
             ))
@@ -46,6 +33,5 @@ extension ClientEndpoint {
             throw error
         }
     }
-#endif
     
 }

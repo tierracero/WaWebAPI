@@ -7,25 +7,14 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
+
+extension ContactEndpoint.GetProfilePicUrlRequest: @retroactive Content {}
 
 extension ContactEndpoint {
     
-    public struct GetProfilePicUrlRequest: CrossPlatformContent {
-        
-        /// EG: 1234567890
-        public let contactId: String
-        
-        public init(
-            contactId: String
-        ) {
-            self.contactId = contactId
-        }
-    }
-    
-#if canImport(Vapor)
     /// Returns the contact's profile picture URL, if privacy settings allow it
     /// `POST` https://intratc.co/node/whatsapp/api/v1/contact/getProfilePicUrl
     /// - Parameter contactId: String
@@ -42,6 +31,5 @@ extension ContactEndpoint {
             throw error
         }
     }
-#endif
     
 }

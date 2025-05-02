@@ -6,14 +6,11 @@
 //
 
 import Foundation
-#if canImport(Vapor)
-#if canImport(SwifQL)
-#if canImport(PostgresBridge)
-#if canImport(Bridges)
 import Vapor
 import SwifQL
 import PostgresBridge
 import Bridges
+import WaWebAPICore
 
 /// [ WaWebAccounts.id : WaWebAccounts ]
 fileprivate var waWebAccountsCatch: [UUID: WaWebAccounts] = [:]
@@ -26,8 +23,8 @@ func getWaWebAccounts(app: Application, id: UUID) -> EventLoopFuture<WaWebAccoun
     
     return app.postgres.transaction(to: .psqlEnvironment) { conn in
         
-        return SwifQL.select(WaWebAccounts.table.*).from(WaWebAccounts.table).where(
-            \WaWebAccounts.$id == id
+        return SwifQL.select(WaWebAccountsTable.table.*).from(WaWebAccountsTable.table).where(
+            \WaWebAccountsTable.$id == id
         ).execute(on: conn).first(decoding: WaWebAccounts.self).map { account in
             
             guard let account else {
@@ -41,7 +38,3 @@ func getWaWebAccounts(app: Application, id: UUID) -> EventLoopFuture<WaWebAccoun
         }
     }
 }
-#endif
-#endif
-#endif
-#endif

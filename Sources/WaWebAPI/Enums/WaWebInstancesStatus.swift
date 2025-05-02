@@ -6,9 +6,8 @@
 //
 
 import Foundation
-
-#if canImport(Bridges)
 import Bridges
+import WaWebAPICore
 
 public struct CreateWaWebInstancesStatus: EnumMigration {
     
@@ -24,30 +23,5 @@ public struct CreateWaWebInstancesStatus: EnumMigration {
         dropBuilder.execute(on: conn)
     }
 }
-#endif
 
-/// offline, active, canceled, suspended
-public enum WaWebInstancesStatus: String, CrossPlatformEnum, CaseIterable {
-    
-    case offline
-    
-    case active
-    
-    case canceled
-    
-    case suspended
-    
-    public var description: String {
-        switch self {
-        case .offline:
-            return "Apagado"
-        case .active:
-            return "Activo"
-        case .canceled:
-            return "Cancelada"
-        case .suspended:
-            return "Suspendida"
-        }
-    }
-    
-}
+extension WaWebInstancesStatus: @retroactive BridgesEnum {}

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import WaWebAPICore
 
 public struct WebhookMessage: Codable {
     
@@ -15,6 +16,6 @@ public struct WebhookMessage: Codable {
     /// This  will be proccessd by `MessageObject.type`
     /// MessageType
     /// chat, image, document, audio, ptt, video, location, callLog, vcard, sticker
-    public var message: Message
+    public var message: WaWebAPICore.Message
     
 }

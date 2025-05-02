@@ -7,28 +7,15 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
+
+extension ClientEndpoint.ApproveGroupMembershipRequests: @retroactive Content {}
+
 
 extension ClientEndpoint {
     
-    public struct ApproveGroupMembershipRequests: CrossPlatformContent {
-        
-        public let groupId: String
-        
-        public let options: MembershipRequestActionOptions
-        
-        public init(
-            groupId: String,
-            options: MembershipRequestActionOptions
-        ) {
-            self.groupId = groupId
-            self.options = options
-        }
-    }
-    
-#if canImport(Vapor)
     /// Approves membership requests if any.
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/approveGroupMembershipRequests
     /// - Parameter inviteCode: String
@@ -47,6 +34,5 @@ extension ClientEndpoint {
             throw error
         }
     }
-#endif
     
 }

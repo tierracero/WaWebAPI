@@ -7,9 +7,11 @@
 
 
 import Foundation
+import WaWebAPICore
 
 public struct WebhookChangeState: Codable {
     
     public var state: ConnectionStatus
     
 }
+

@@ -7,26 +7,15 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
+
+extension ClientEndpoint.GetFormattedNumberRequest: @retroactive Content {}
+
 
 extension ClientEndpoint {
     
-    public struct GetFormattedNumberRequest: CrossPlatformContent {
-        public let mobile: String
-        
-        public init(
-            mobile: String
-        ) {
-            self.mobile = mobile
-        }
-    }
-    public struct GetFormattedNumberResponse: Codable {
-        public let formattedNumber: String
-    }
-    
-#if canImport(Vapor)
     /// Get the formatted number of a WhatsApp ID.
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getFormattedNumber
     /// - Returns: Promise containing a string
@@ -42,6 +31,5 @@ extension ClientEndpoint {
             throw error
         }
     }
-#endif
     
 }

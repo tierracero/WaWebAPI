@@ -7,25 +7,15 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
+
+extension ClientEndpoint.GetGroupMembershipRequests: @retroactive Content {}
+
 
 extension ClientEndpoint {
     
-    public struct GetGroupMembershipRequests: CrossPlatformContent {
-        
-        /// The ID of a group to get membership requests for
-        public let groupId: String
-        
-        public init(
-            groupId: String
-        ) {
-            self.groupId = groupId
-        }
-    }
-    
-#if canImport(Vapor)
     /// Gets an array of membership requests
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getGroupMembershipRequests
     /// - Returns: Promise containing Array of GroupMembershipRequest
@@ -41,6 +31,5 @@ extension ClientEndpoint {
             throw error
         }
     }
-#endif
     
 }

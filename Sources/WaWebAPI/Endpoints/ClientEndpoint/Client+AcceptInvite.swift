@@ -7,33 +7,14 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
+
+extension ClientEndpoint.AcceptInviteRequest : @retroactive Content {}
 
 extension ClientEndpoint {
     
-    public struct AcceptInviteRequest: CrossPlatformContent {
-        
-        /// EG: 1234567890
-        public let inviteCode: String
-        
-        public init(
-            inviteCode: String
-        ) {
-            self.inviteCode = inviteCode
-        }
-    }
-    
-    
-    public struct AcceptInviteResponse: Codable {
-        
-        /// EG: 1234567890
-        public let chatId: WhatsAppChatId
-        
-    }
-    
-#if canImport(Vapor)
     /// Archives this chat
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/acceptInvite
     /// - Parameter inviteCode: String
@@ -50,6 +31,5 @@ extension ClientEndpoint {
             throw error
         }
     }
-#endif
-    
+
 }

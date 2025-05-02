@@ -3,25 +3,14 @@
 
 import Foundation
 import TCFoundation
-#if canImport(PostgresBridge)
+import TCFundamentals
+import WaWebAPICore
 import PostgresBridge
-#endif
-#if canImport(VaporBridges)
 import VaporBridges
-#endif
-#if canImport(Bridges)
 import Bridges
-#endif
-#if canImport(SwifQL)
 import SwifQL
-#endif
-#if canImport(Vapor)
 import Vapor
-#endif
-
 public struct WaWebAPI {
-    
-#if canImport(Vapor)
     
     let application: Application
     
@@ -68,10 +57,7 @@ public struct WaWebAPI {
         return .init(app: application, token: token, profile: profile)
     }
     
-#endif
 }
-
-#if canImport(Vapor)
 
 extension Application {
     public var wawebapi: WaWebAPI { .init(self) }
@@ -99,16 +85,3 @@ extension WaWebAPI {
         }
     }
 }
-
-protocol CrossPlatformContent: Content {}
-
-#else
-protocol CrossPlatformContent: Codable {}
-#endif
-
-#if canImport(Bridges)
-import Bridges
-protocol CrossPlatformEnum: BridgesEnum {}
-#else
-protocol CrossPlatformEnum: Codable {}
-#endif

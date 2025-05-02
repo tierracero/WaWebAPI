@@ -7,26 +7,14 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
+
+extension MessageEndpoint.ReloadRequest: @retroactive Content {}
 
 extension MessageEndpoint {
     
-    public struct ReloadRequest: CrossPlatformContent {
-        
-        public let messageId: String
-        
-        public init(
-            messageId: String
-        ) {
-            self.messageId = messageId
-        }
-        
-    }
-    
-#if canImport(Vapor)
-    ///
     /// `POST` https://intratc.co/node/whatsapp/api/v1/message/reload
     /// - Parameter messageId: String
     /// - Returns:
@@ -42,6 +30,5 @@ extension MessageEndpoint {
             throw error
         }
     }
-#endif
     
 }

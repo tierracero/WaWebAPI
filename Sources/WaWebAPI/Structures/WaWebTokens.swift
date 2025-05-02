@@ -6,16 +6,17 @@
 //
 
 import TCFoundation
-
+import TCFundamentals
+import WaWebAPICore
+import TCFundamentals
+import WaWebAPICore
 import Foundation
 #if canImport(Bridges)
 import Bridges
-#endif
-
-#if canImport(Bridges)
 
 public struct CreateWaWebTokens: TableMigration {
-    public typealias Table = WaWebTokens
+    
+    public typealias Table = WaWebTokensTable
     
     public static func prepare(on conn: BridgeConnection) -> EventLoopFuture<Void> {
         createBuilder
@@ -38,7 +39,7 @@ public struct CreateWaWebTokens: TableMigration {
     }
 }
 
-public final class WaWebTokens: Table, Schemable {
+public final class WaWebTokensTable: WaWebTokensProtocable, Table, Schemable {
     
     public static var schemaName = "wawebapi"
     
@@ -82,67 +83,9 @@ public final class WaWebTokens: Table, Schemable {
     public init () {}
     
     public init(
-        id: UUID = .init(),
-        createdAt: Int64 = getNow(),
-        modifiedAt: Int64 = getNow(),
-        expiredAt: Int64?,
-        waWebAccount: UUID,
-        instanceId: [String]?,
-        relationType: WaWebAccountRelation,
-        relationId: UUID,
-        secret: String?,
-        token: String = callKey(Int.random(in: 64...128)),
-        ip: [String]?
-    ) {
-        self.id = id
-        self.createdAt = createdAt
-        self.modifiedAt = modifiedAt
-        self.expiredAt = expiredAt
-        self.waWebAccount = waWebAccount
-        self.instanceId = instanceId
-        self.relationType = relationType
-        self.relationId = relationId
-        self.secret = secret
-        self.token = token
-        self.ip = ip
-    }
-    
-    
-}
-
-#else
-
-public struct WaWebTokens: Codable {
-    
-    public var id: UUID
-    
-    public var createdAt: Int64
-    
-    public var modifiedAt: Int64
-    
-    public var expiredAt: Int64?
-    
-    public var waWebAccount: UUID
-    
-    public var instanceId: [String]?
-    
-    /// account, subaccount
-    public var relationType: WaWebAccountRelation
-    
-    public var relationId: UUID
-    
-    /// Webhook Secret
-    /// Webhook Secret to use with HMAC Verfification of webhook data.
-    public var secret: String?
-    
-    public var token: String
-    
-    public var ip: [String]?
-    
-    public init(
-        id: UUID = .init(),
-        createdAt: Int64 = getNow(),
-        modifiedAt: Int64 = getNow(),
+        id: UUID,
+        createdAt: Int64,
+        modifiedAt: Int64,
         expiredAt: Int64?,
         waWebAccount: UUID,
         instanceId: [String]?,
@@ -165,17 +108,54 @@ public struct WaWebTokens: Codable {
         self.ip = ip
     }
     
+    
+}
+
+extension WaWebTokens {
+    
+    public typealias TableRow = WaWebTokensTable
+    
+    var table: TableRow {
+        
+        return .init(
+            id: self.id,
+            createdAt: self.createdAt,
+            modifiedAt: self.modifiedAt,
+            expiredAt: self.expiredAt,
+            waWebAccount: self.waWebAccount,
+            instanceId: self.instanceId,
+            relationType: self.relationType,
+            relationId: self.relationId,
+            secret: self.secret,
+            token: self.token,
+            ip: self.ip
+        )
+        
+    }
+    
+    public static func inSchema(_ sitio: String) -> Schema<TableRow> {
+        return TableRow.inSchema(sitio)
+    }
+    
+    public func insert(inSchema schema: String, on conn: BridgeConnection) -> EventLoopFuture<Self>{
+        
+        let row = self
+        
+        return self.table.insertNonReturning(inSchema: schema, on: conn).map {
+            return row
+        }
+    }
+    
+    public func insertNonReturning(inSchema schema: String, on conn: BridgeConnection) -> EventLoopFuture<Void>{
+        return self.table.insertNonReturning(inSchema: schema, on: conn)
+    }
+    
+}
+
+extension Array<WaWebTokens> {
+    public func batchInsert(schema: String, on conn: BridgeConnection) -> EventLoopFuture<Void> {
+        return self.map{ $0.table }.batchInsert(schema: schema, on: conn)
+    }
 }
 
 #endif
-
-extension WaWebTokens: Hashable, Equatable {
-    
-    public static func == (lhs: WaWebTokens, rhs: WaWebTokens) -> Bool {
-        lhs.id == rhs.id
-    }
-    
-    public func hash (into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-}

@@ -6,18 +6,14 @@
 //
 
 import TCFoundation
+import TCFundamentals
+import WaWebAPICore
 import Foundation
-#if canImport(Bridges)
 import Bridges
-#endif
-#if canImport(UIKitPlus)
-import UIKitPlus
-#endif
-
-#if canImport(Bridges)
 
 public struct CreateWaWebInstances: TableMigration {
-    public typealias Table = WaWebInstances
+    
+    public typealias Table = WaWebInstancesTable
     
     public static func prepare(on conn: BridgeConnection) -> EventLoopFuture<Void> {
     
@@ -42,7 +38,7 @@ public struct CreateWaWebInstances: TableMigration {
     }
 }
 
-public final class WaWebInstances: Table, Schemable {
+public final class WaWebInstancesTable: WaWebInstancesProtocable, Table, Schemable {
     
     public static var schemaName = "wawebapi"
     
@@ -89,94 +85,6 @@ public final class WaWebInstances: Table, Schemable {
     public init () {}
     
     public init(
-        id: UUID = .init(),
-        createdAt: Int64 = getNow(),
-        modifiedAt: Int64 = getNow(),
-        waWebAccount: UUID,
-        instanceId: String,
-        relationType: WaWebAccountRelation,
-        relationId: UUID,
-        secret: String = callKey(32),
-        webhook: String,
-        cc: Countries,
-        mobile: String?,
-        status: WaWebInstancesStatus
-    ) {
-        self.id = id
-        self.createdAt = createdAt
-        self.modifiedAt = modifiedAt
-        self.waWebAccount = waWebAccount
-        self.instanceId = instanceId
-        self.relationType = relationType
-        self.relationId = relationId
-        self.secret = secret
-        self.webhook = webhook
-        self.cc = cc
-        self.mobile = mobile
-        self.status = status
-    }
- 
-    public init( profile: WhatsAppProfiles) {
-        
-        guard let waWebAccount = profile.vendorId else {
-            fatalError("WhatsAppProfiles Fail to init WhatsAppProfiles.vendorId is null")
-        }
-        
-        guard let instanceToken = profile.instanceToken else {
-            fatalError("WhatsAppProfiles Fail to init WhatsAppProfiles.instanceToken is null")
-        }
-        
-        var relationType: WaWebAccountRelation? = .account
-        
-        self.id = profile.id
-        self.createdAt = profile.createdAt
-        self.modifiedAt = profile.modifiedAt
-        self.waWebAccount = waWebAccount
-        self.instanceId = profile.instanceId
-        self.relationType = .account
-        self.relationId = profile.accountId
-        self.secret = instanceToken
-        self.webhook = "https://intratc.co/api/webhook/v1/whatsapp/wawebapi/\(profile.instanceId)/\(profile.secureToken)"
-        self.cc = .mexico
-        self.mobile = profile.mobile
-        self.status = .active
-    }
-    
-}
-
-#else
-
-public struct WaWebInstances: Codable {
-    
-    public var id: UUID
-    
-    public var createdAt: Int64
-    
-    public var modifiedAt: Int64
-    
-    public var waWebAccount: UUID
-    
-    public var instanceId: String
-    
-    /// account, subaccount
-    public var relationType: WaWebAccountRelation
-    
-    public var relationId: UUID
-    
-    /// Webhook Secret
-    /// Webhook Secret to use with HMAC Verfification of webhook data.
-    public var secret: String
-    
-    public var webhook: String
-    
-    public var cc: Countries
-    
-    public var mobile: String?
-    
-    /// offline, active, canceled, suspended
-    public var status: WaWebInstancesStatus
-    
-    public init(
         id: UUID,
         createdAt: Int64,
         modifiedAt: Int64,
@@ -203,24 +111,52 @@ public struct WaWebInstances: Codable {
         self.mobile = mobile
         self.status = status
     }
-
+    
 }
 
-#endif
-
-extension WaWebInstances: Hashable, Equatable {
+extension WaWebInstances {
     
-    public static func == (lhs: WaWebInstances, rhs: WaWebInstances) -> Bool {
-        lhs.id == rhs.id
+    public typealias TableRow = WaWebInstancesTable
+    
+    var table: TableRow {
+        return .init(
+            id: self.id,
+            createdAt: self.createdAt,
+            modifiedAt: self.modifiedAt,
+            waWebAccount: self.waWebAccount,
+            instanceId: self.instanceId,
+            relationType: self.relationType,
+            relationId: self.relationId,
+            secret: self.secret,
+            webhook: self.webhook,
+            cc: self.cc,
+            mobile: self.mobile,
+            status: self.status
+        )
+        
     }
     
-    public func hash (into hasher: inout Hasher) {
-        hasher.combine(id)
+    public static func inSchema(_ sitio: String) -> Schema<TableRow> {
+        return TableRow.inSchema(sitio)
     }
+    
+    public func insert(inSchema schema: String, on conn: BridgeConnection) -> EventLoopFuture<Self>{
+        
+        let row = self
+        
+        return self.table.insertNonReturning(inSchema: schema, on: conn).map {
+            return row
+        }
+    }
+    
+    public func insertNonReturning(inSchema schema: String, on conn: BridgeConnection) -> EventLoopFuture<Void>{
+        return self.table.insertNonReturning(inSchema: schema, on: conn)
+    }
+    
 }
 
-#if canImport(UIKitPlus)
-extension WaWebInstances: Identable {
-    public static var idKey: KeyPath<Self, UUID> { \.id }
+extension Array<WaWebInstances> {
+    public func batchInsert(schema: String, on conn: BridgeConnection) -> EventLoopFuture<Void> {
+        return self.map{ $0.table }.batchInsert(schema: schema, on: conn)
+    }
 }
-#endif

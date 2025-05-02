@@ -6,12 +6,14 @@
 //
 
 import Foundation
+import WaWebAPICore
+
 
 public struct WebhookMessageRevokeEveryone: Codable {
     
-    public var before: Message
+    public var before: WaWebAPICore.Message
     
-    public var after: Message
+    public var after: WaWebAPICore.Message
     
 }
 

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-#if canImport(Bridges)
+import WaWebAPICore
 import Bridges
 
 public struct CreateWaWebAccountRelation: EnumMigration {
@@ -23,25 +23,6 @@ public struct CreateWaWebAccountRelation: EnumMigration {
         dropBuilder.execute(on: conn)
     }
 }
-#endif
 
-/// waweb, account, subaccount
-public enum WaWebAccountRelation: String, CrossPlatformEnum, CaseIterable {
-    
-    case waweb
-    
-    case account
-    
-    case subaccount
-    
-    public var description: String {
-        switch self {
-        case .waweb:
-            return "WaWeb"
-        case .account:
-            return "Cuenta"
-        case .subaccount:
-            return "Sub Cuenta"
-        }
-    }
-}
+extension WaWebAccountRelation: @retroactive BridgesEnum {}
+

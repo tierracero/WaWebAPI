@@ -5,17 +5,15 @@
 //  Created by Victor Cantu on 3/29/24.
 //
 
-import TCFoundation
-
 import Foundation
-#if canImport(Bridges)
+import TCFoundation
+import TCFundamentals
+import WaWebAPICore
 import Bridges
-#endif
 
-#if canImport(Bridges)
 public struct CreateWaWebWebhookEventControleraWebTokens: TableMigration {
     
-    public typealias Table = WaWebWebhookEventControler
+    public typealias Table = WaWebWebhookEventControlerTable
 
     public static func prepare(on conn: BridgeConnection) -> EventLoopFuture<Void> {
         createBuilder
@@ -37,7 +35,8 @@ public struct CreateWaWebWebhookEventControleraWebTokens: TableMigration {
         dropBuilder.execute(on: conn)
     }
 }
-public final class WaWebWebhookEventControler: Table, Schemable {
+
+public final class WaWebWebhookEventControlerTable: Table, Schemable {
     
     public static var schemaName = "wawebapi"
     
@@ -82,63 +81,6 @@ public final class WaWebWebhookEventControler: Table, Schemable {
     public init () {}
     
     public init(
-        id: UUID = .init(),
-        createdAt: Int64 = getNow(),
-        modifiedAt: Int64 = getNow(),
-        waWebAccount: UUID,
-        instanceId: String,
-        eventType: WebhookEvents,
-        eventId: String, 
-        eventSubId: String,
-        payload: String,
-        status: String,
-        deliverd: Bool
-    ) {
-        self.id = id
-        self.createdAt = createdAt
-        self.modifiedAt = modifiedAt
-        self.waWebAccount = waWebAccount
-        self.instanceId = instanceId
-        self.eventType = eventType
-        self.eventId = eventId
-        self.eventSubId = eventSubId
-        self.payload = payload
-        self.status = status
-        self.deliverd = deliverd
-    }
-    
-}
-
-#else
-
-public struct WaWebWebhookEventControler: Codable {
-    
-    public var id: UUID
-    
-    public var createdAt: Int64
-    
-    public var modifiedAt: Int64
-    
-    public var waWebAccount: UUID
-    
-    public var instanceId: String
-    
-    /// message, loadingScreen, qr, authenticated, authFailure, ready, disconnected, messageCreate, messageRevokeEveryone, messageRevokeMe, messageAck, messageReaction, mediaUploaded, groupJoin, groupLeave, groupUpdate, changeState, call
-    public var eventType: WebhookEvents
-    
-    /// in case of a message its the serilized id
-    public var eventId: String
-    
-    ///  in case of AKC can be 1  2  or 3
-    public var eventSubId: String
-    
-    public var payload: String
-    
-    public var status: String
-    
-    public var deliverd: Bool
-    
-    public init(
         id: UUID,
         createdAt: Int64,
         modifiedAt: Int64,
@@ -164,17 +106,4 @@ public struct WaWebWebhookEventControler: Codable {
         self.deliverd = deliverd
     }
     
-}
-
-#endif
-
-extension WaWebWebhookEventControler: Hashable, Equatable {
-    
-    public static func == (lhs: WaWebWebhookEventControler, rhs: WaWebWebhookEventControler) -> Bool {
-        lhs.id == rhs.id
-    }
-    
-    public func hash (into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
 }

@@ -7,30 +7,14 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
+
+extension ChatEndpoint.ChangeLabelsRequest : @retroactive Content {}
 
 extension ChatEndpoint {
     
-    public struct ChangeLabelsRequest: CrossPlatformContent {
-        
-        /// EG: 5218341231234@c.us
-        public let chatId: WhatsAppChatId
-        
-        /// Array of (number or string)
-        public let labelIds: String
-        
-        public init(
-            chatId: WhatsAppChatId,
-            labelIds: String
-        ) {
-            self.chatId = chatId
-            self.labelIds = labelIds
-        }
-        
-    }
-#if canImport(Vapor)
     /// Archives this chat
     /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/archive
     /// - Parameter chatId: WhatsAppChatId
@@ -41,7 +25,7 @@ extension ChatEndpoint {
     ) throws -> EventLoopFuture<APIResponse>{
      
         do {
-            return try api.post( APIResponse.self, endpoint: .chat("changeLabels"), payload: ChangeLabelsRequest(                                 
+            return try api.post( APIResponse.self, endpoint: .chat("changeLabels"), payload: ChangeLabelsRequest(
                 chatId: chatId,
                 labelIds: labelIds
             ))
@@ -50,6 +34,6 @@ extension ChatEndpoint {
             throw error
         }
     }
-#endif
+    
 }
 

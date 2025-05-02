@@ -7,29 +7,14 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
+
+extension ClientEndpoint.AddOrRemoveLabelsRequest : @retroactive Content {}
 
 extension ClientEndpoint {
     
-    public struct AddOrRemoveLabelsRequest: CrossPlatformContent {
-        
-        public let labelIds: [String]
-        
-        /// EG: 1234567890
-        public let chatIds: [WhatsAppChatId]
-        
-        public init(
-            labelIds: [String],
-            chatIds: [WhatsAppChatId]
-        ) {
-            self.labelIds = labelIds
-            self.chatIds = chatIds
-        }
-    }
-    
-#if canImport(Vapor)
     /// Archives this chat
     /// `POST` https://intratc.co/node/whatsapp/api/v1/client/addOrRemoveLabels
     /// - Parameter inviteCode: String
@@ -48,6 +33,4 @@ extension ClientEndpoint {
             throw error
         }
     }
-#endif
-    
 }

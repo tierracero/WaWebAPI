@@ -7,26 +7,14 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
+
+extension ChatEndpoint.GetLabelsRequst : @retroactive Content {}
 
 extension ChatEndpoint {
     
-    public struct GetLabelsRequst: CrossPlatformContent {
-        
-        /// EG: 5218341231234@c.us
-        public let chatId: WhatsAppChatId
-        
-        public init(
-            chatId: WhatsAppChatId
-        ) {
-            self.chatId = chatId
-        }
-        
-    }
-    
-#if canImport(Vapor)
     /// Returns array of all Labels assigned to this Chat
     /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/getLabels
     /// - Parameter chatId: WhatsAppChatId
@@ -43,6 +31,5 @@ extension ChatEndpoint {
             throw error
         }
     }
-#endif
     
 }

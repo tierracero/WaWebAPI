@@ -6,10 +6,7 @@
 //
 
 import Foundation
-#if canImport(Vapor)
-#if canImport(SwifQL)
-#if canImport(PostgresBridge)
-#if canImport(Bridges)
+import WaWebAPICore
 import Vapor
 import SwifQL
 import PostgresBridge
@@ -26,9 +23,9 @@ func getWaWebTokens(app: Application, waWebAccount: UUID, instanceId: String) ->
     
     return app.postgres.transaction(to: .psqlEnvironment) { conn in
         
-        return SwifQL.select(WaWebTokens.table.*).from(WaWebTokens.table).where(
-            \WaWebTokens.$waWebAccount == waWebAccount &&
-             \WaWebTokens.$instanceId ||> PgArray([instanceId]) => .textArray
+        return SwifQL.select(WaWebTokensTable.table.*).from(WaWebTokensTable.table).where(
+            \WaWebTokensTable.$waWebAccount == waWebAccount &&
+             \WaWebTokensTable.$instanceId ||> PgArray([instanceId]) => .textArray
         ).execute(on: conn).first(decoding: WaWebTokens.self).map { payload in
             
             guard let payload else {
@@ -42,7 +39,4 @@ func getWaWebTokens(app: Application, waWebAccount: UUID, instanceId: String) ->
         }
     }
 }
-#endif
-#endif
-#endif
-#endif
+

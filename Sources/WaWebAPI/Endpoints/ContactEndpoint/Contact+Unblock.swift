@@ -7,37 +7,14 @@
 
 import Foundation
 import TCFoundation
-#if canImport(Vapor)
+import TCFundamentals
+import WaWebAPICore
 import Vapor
-#endif
+
+extension ContactEndpoint.UnblockRequest: @retroactive Content {}
 
 extension ContactEndpoint {
     
-    public struct UnblockRequest: CrossPlatformContent {
-        
-        /// EG: 1234567890
-        public let contactId: String
-        
-        public init(
-            contactId: String
-        ) {
-            self.contactId = contactId
-        }
-    }
-    
-    public struct UnblockResponse: Codable {
-        
-        public let unblocked: Bool
-        
-        public init(
-            unblocked: Bool
-        ) {
-            self.unblocked = unblocked
-        }
-        
-    }
-    
-#if canImport(Vapor)
     /// Blocks this contact from WhatsApp
     /// `POST` https://intratc.co/node/whatsapp/api/v1/contact/unblock
     /// - Parameter contactId: String
@@ -54,7 +31,6 @@ extension ContactEndpoint {
             throw error
         }
     }
-#endif
     
 }
 
