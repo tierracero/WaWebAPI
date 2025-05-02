@@ -9,6 +9,7 @@ import Foundation
 import TCFoundation
 import TCFundamentals
 import WaWebAPICore
+
 public struct WebhookLoadingScreen: Codable {
     
     public var percent: Double

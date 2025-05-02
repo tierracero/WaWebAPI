@@ -7,7 +7,7 @@
 
 import Foundation
 import WaWebAPICore
-
+import TCFundamentals
 
 public struct WebhookMessageRevokeEveryone: Codable {
     

@@ -20,5 +20,4 @@ public struct WebhookAcknowledged: Codable {
     
     public var message: MessageItem
     
-    
 }
