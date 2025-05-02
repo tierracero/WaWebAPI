@@ -13,7 +13,7 @@ public struct WebhookMessageEdit: Codable {
     /// This  will be proccessd by `MessageObject.type`
     /// MessageType
     /// chat, image, document, audio, ptt, video, location, callLog, vcard, sticker
-    public var message: WaWebAPICore.Message
+    public var message: MessageItem
     
     public var newBody: String
     

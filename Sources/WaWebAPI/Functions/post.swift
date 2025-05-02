@@ -47,8 +47,8 @@ extension API {
                     let authenticationCode = HMAC<SHA256>.authenticationCode(for: trustfulMessage, using: key) // Mark 2
                     
                     header.add(name: "x-wawebapi-hmac", value: authenticationCode.hex)
-
-                    print("token.secret \(token.secret)")
+  
+                    print("token.secret \(token.secret ?? "NO_TOKEN_AVALABLE")")
                     print("x-wawebapi-hmac \(authenticationCode.hex)")
                     if let message = String(data: trustfulMessage, encoding: .utf8) {
                         print("message")

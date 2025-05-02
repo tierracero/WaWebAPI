@@ -23,9 +23,9 @@ extension ChatEndpoint {
     public func fetchMessages(
         chatId: WhatsAppChatId,
         searchOptions: SearchOptions
-    ) throws -> EventLoopFuture<APIResponsePayload<[WaWebAPICore.Message]>>{
+    ) throws -> EventLoopFuture<APIResponsePayload<[MessageItem]>>{
         do {
-            return try api.post( APIResponsePayload<[WaWebAPICore.Message]>.self, endpoint: .chat("fetchMessages"), payload: FetchMessagesRequst(
+            return try api.post( APIResponsePayload<[MessageItem]>.self, endpoint: .chat("fetchMessages"), payload: FetchMessagesRequst(
                 chatId: chatId,
                 searchOptions: searchOptions
             ))

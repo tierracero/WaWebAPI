@@ -18,7 +18,7 @@ public struct WebhookAcknowledged: Codable {
     
     public var acknowledged: AcknowledgedType?
     
-    public var message: WaWebAPICore.Message
+    public var message: MessageItem
     
     
 }
