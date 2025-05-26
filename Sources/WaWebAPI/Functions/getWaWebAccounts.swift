@@ -23,8 +23,8 @@ func getWaWebAccounts(app: Application, id: UUID) -> EventLoopFuture<WaWebAccoun
     
     return app.postgres.transaction(to: .psqlEnvironment) { conn in
         
-        return SwifQL.select(WaWebAccountsTable.table.*).from(WaWebAccountsTable.table).where(
-            \WaWebAccountsTable.$id == id
+        return SwifQL.select(WaWebAccounts.table.*).from(WaWebAccounts.table).where(
+            \WaWebAccounts.$id == id
         ).execute(on: conn).first(decoding: WaWebAccounts.self).map { account in
             
             guard let account else {
