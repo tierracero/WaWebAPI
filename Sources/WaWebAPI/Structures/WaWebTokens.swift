@@ -83,9 +83,9 @@ public final class WaWebTokens: WaWebTokensProtocable, Table, Schemable {
     public init () {}
     
     public init(
-        id: UUID,
-        createdAt: Int64,
-        modifiedAt: Int64,
+        id: UUID = .init(),
+        createdAt: Int64 = getNow(),
+        modifiedAt: Int64 = getNow(),
         expiredAt: Int64?,
         waWebAccount: UUID,
         instanceId: [String]?,

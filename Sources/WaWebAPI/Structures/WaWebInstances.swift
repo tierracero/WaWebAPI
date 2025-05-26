@@ -85,14 +85,14 @@ public final class WaWebInstances: WaWebInstancesProtocable, Table, Schemable {
     public init () {}
     
     public init(
-        id: UUID,
-        createdAt: Int64,
-        modifiedAt: Int64,
+        id: UUID = .init(),
+        createdAt: Int64 = getNow(),
+        modifiedAt: Int64 = getNow(),
         waWebAccount: UUID,
         instanceId: String,
         relationType: WaWebAccountRelation,
         relationId: UUID,
-        secret: String,
+        secret: String = callKey(32),
         webhook: String,
         cc: Countries,
         mobile: String?,

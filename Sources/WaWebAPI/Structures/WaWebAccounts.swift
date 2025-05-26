@@ -121,10 +121,10 @@ public final class WaWebAccounts: WaWebAccountsProtocable, Table, Schemable {
     public init () {}
     
     public init(
-        id: UUID,
-        createdAt: Int64,
-        modifiedAt: Int64,
-        folio: String,
+        id: UUID = .init(),
+        createdAt: Int64 = getNow(),
+        modifiedAt: Int64 = getNow(),
+        folio: String = "\(getNow().toString)\(callKey(7))",
         relationType: WaWebAccountRelation,
         relationId: UUID,
         firstName: String,
