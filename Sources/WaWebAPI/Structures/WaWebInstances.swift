@@ -112,4 +112,47 @@ public final class WaWebInstances: WaWebInstancesProtocable, Table, Schemable {
         self.status = status
     }
     
+    
+    public init( profile: WhatsAppProfiles) {
+        
+        guard let waWebAccount = profile.vendorId else {
+            fatalError("WhatsAppProfiles Fail to init WhatsAppProfiles.vendorId is null")
+        }
+        
+        guard let instanceToken = profile.instanceToken else {
+            fatalError("WhatsAppProfiles Fail to init WhatsAppProfiles.instanceToken is null")
+        }
+        
+        /* TODO: Analize if
+        /// waweb, account, subaccount
+        var relationType: WaWebAccountRelation = .account
+        
+        switch profile.type {
+        case .default:
+            
+        case .tierracero:
+            relationType = .waweb
+        case .asombrame:
+            relationType = .waweb
+        case .account:
+            relationType = .account
+        case .subAccount:
+            relationType = .subaccount
+        }
+        */
+        self.id = profile.id
+        self.createdAt = profile.createdAt
+        self.modifiedAt = profile.modifiedAt
+        self.waWebAccount = waWebAccount
+        self.instanceId = profile.instanceId
+        self.relationType = .account
+        self.relationId = profile.accountId
+        self.secret = instanceToken
+        self.webhook = "https://intratc.co/api/webhook/v1/whatsapp/wawebapi/\(profile.instanceId)/\(profile.secureToken)"
+        self.cc = .mexico
+        self.mobile = profile.mobile
+        self.status = .active
+    }
+    
+    
 }
