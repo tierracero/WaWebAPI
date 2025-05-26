@@ -23,9 +23,9 @@ func getWaWebTokens(app: Application, waWebAccount: UUID, instanceId: String) ->
     
     return app.postgres.transaction(to: .psqlEnvironment) { conn in
         
-        return SwifQL.select(WaWebTokensTable.table.*).from(WaWebTokensTable.table).where(
-            \WaWebTokensTable.$waWebAccount == waWebAccount &&
-             \WaWebTokensTable.$instanceId ||> PgArray([instanceId]) => .textArray
+        return SwifQL.select(WaWebTokens.table.*).from(WaWebTokens.table).where(
+            \WaWebTokens.$waWebAccount == waWebAccount &&
+             \WaWebTokens.$instanceId ||> PgArray([instanceId]) => .textArray
         ).execute(on: conn).first(decoding: WaWebTokens.self).map { payload in
             
             guard let payload else {
