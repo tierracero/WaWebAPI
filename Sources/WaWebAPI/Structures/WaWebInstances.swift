@@ -155,4 +155,21 @@ public final class WaWebInstances: WaWebInstancesProtocable, Table, Schemable {
     }
     
     
+    public var item: WaWebInstancesItem {
+        return .init(
+            id: self.id,
+            createdAt: self.createdAt,
+            modifiedAt: self.modifiedAt,
+            waWebAccount: self.waWebAccount,
+            instanceId: self.instanceId,
+            relationType: self.relationType,
+            relationId: self.relationId,
+            secret: self.secret,
+            webhook: self.webhook,
+            cc: self.cc,
+            mobile: self.mobile,
+            status: self.status
+        )
+    }
+    
 }
