@@ -11,7 +11,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension MessageEndpoint.GetChatRequest: @retroactive Content {}
+extension MessageEndpoint.GetChatRequest: Content {}
 
 extension MessageEndpoint {
     

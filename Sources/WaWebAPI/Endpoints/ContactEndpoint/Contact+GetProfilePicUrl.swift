@@ -11,7 +11,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension ContactEndpoint.GetProfilePicUrlRequest: @retroactive Content {}
+extension ContactEndpoint.GetProfilePicUrlRequest: Content {}
 
 extension ContactEndpoint {
     

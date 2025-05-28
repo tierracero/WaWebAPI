@@ -11,7 +11,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension ClientEndpoint.IsRegisteredUserRequest: @retroactive Content {}
+extension ClientEndpoint.IsRegisteredUserRequest: Content {}
 
 extension ClientEndpoint {
     

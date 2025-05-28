@@ -9,7 +9,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension ChatEndpoint.UnmuteRequst: @retroactive Content {}
+extension ChatEndpoint.UnmuteRequst: Content {}
 
 extension ChatEndpoint {
     

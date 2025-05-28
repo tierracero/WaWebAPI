@@ -11,7 +11,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension MessageEndpoint.GetMentionsRequest: @retroactive Content {}
+extension MessageEndpoint.GetMentionsRequest: Content {}
 
 extension MessageEndpoint {
     

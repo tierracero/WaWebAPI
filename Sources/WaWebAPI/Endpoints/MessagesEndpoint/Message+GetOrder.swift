@@ -11,7 +11,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension MessageEndpoint.GetOrderRequest: @retroactive Content {}
+extension MessageEndpoint.GetOrderRequest: Content {}
 
 extension MessageEndpoint {
     

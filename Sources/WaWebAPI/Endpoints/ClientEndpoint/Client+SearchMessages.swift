@@ -11,7 +11,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension ClientEndpoint.SearchMessagesRequest: @retroactive Content {}
+extension ClientEndpoint.SearchMessagesRequest: Content {}
 
 
 extension ClientEndpoint {

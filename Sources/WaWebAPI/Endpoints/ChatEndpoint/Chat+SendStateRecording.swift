@@ -11,7 +11,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension ChatEndpoint.SendStateRecordingRequst : @retroactive Content {}
+extension ChatEndpoint.SendStateRecordingRequst : Content {}
 extension ChatEndpoint {
     
     /// Simulate recording audio in chat. This will last for 25 seconds.

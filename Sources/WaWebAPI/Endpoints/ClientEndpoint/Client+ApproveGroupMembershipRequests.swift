@@ -11,7 +11,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension ClientEndpoint.ApproveGroupMembershipRequests: @retroactive Content {}
+extension ClientEndpoint.ApproveGroupMembershipRequests: Content {}
 
 
 extension ClientEndpoint {

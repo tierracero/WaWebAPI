@@ -11,7 +11,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension ClientEndpoint.GetFormattedNumberRequest: @retroactive Content {}
+extension ClientEndpoint.GetFormattedNumberRequest: Content {}
 
 
 extension ClientEndpoint {

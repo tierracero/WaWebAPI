@@ -11,7 +11,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension ClientEndpoint.AddOrRemoveLabelsRequest : @retroactive Content {}
+extension ClientEndpoint.AddOrRemoveLabelsRequest : Content {}
 
 extension ClientEndpoint {
     

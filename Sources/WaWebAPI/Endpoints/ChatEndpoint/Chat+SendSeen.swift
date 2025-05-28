@@ -11,7 +11,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension ChatEndpoint.SendSeenRequst : @retroactive Content {}
+extension ChatEndpoint.SendSeenRequst : Content {}
 
 extension ChatEndpoint {
     

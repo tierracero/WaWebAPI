@@ -11,7 +11,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension ClientEndpoint.SetDisplayNameRequest: @retroactive Content {}
+extension ClientEndpoint.SetDisplayNameRequest: Content {}
 
 
 extension ClientEndpoint {

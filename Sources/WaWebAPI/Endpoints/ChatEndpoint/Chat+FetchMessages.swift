@@ -11,7 +11,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension ChatEndpoint.FetchMessagesRequst : @retroactive Content {}
+extension ChatEndpoint.FetchMessagesRequst : Content {}
 
 extension ChatEndpoint {
     

@@ -11,7 +11,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension MessageEndpoint.UnstarRequest: @retroactive Content {}
+extension MessageEndpoint.UnstarRequest: Content {}
     
 extension MessageEndpoint {
     

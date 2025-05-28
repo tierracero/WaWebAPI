@@ -8,7 +8,7 @@
 import Vapor
 import WaWebAPICore
 
-extension LabelEndpoint.GetChatsRequst: @retroactive Content {}
+extension LabelEndpoint.GetChatsRequst: Content {}
 
 extension LabelEndpoint {
     

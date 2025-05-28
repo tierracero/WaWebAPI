@@ -11,7 +11,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension MessageEndpoint.DownloadMediaRequest: @retroactive Content {}
+extension MessageEndpoint.DownloadMediaRequest: Content {}
 
 extension MessageEndpoint {
     

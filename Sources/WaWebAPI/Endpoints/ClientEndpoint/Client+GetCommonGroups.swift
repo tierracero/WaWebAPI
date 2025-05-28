@@ -11,7 +11,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension ClientEndpoint.GetCommonGroupsRequest: @retroactive Content {}
+extension ClientEndpoint.GetCommonGroupsRequest: Content {}
 
 
 extension ClientEndpoint {

@@ -11,7 +11,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension ClientEndpoint.GetLabelByIdRequests: @retroactive Content {}
+extension ClientEndpoint.GetLabelByIdRequests: Content {}
 
 
 extension ClientEndpoint {

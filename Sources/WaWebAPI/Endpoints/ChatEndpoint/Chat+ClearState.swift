@@ -11,7 +11,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension ChatEndpoint.ClearStateRequest : @retroactive Content {}
+extension ChatEndpoint.ClearStateRequest : Content {}
 
 extension ChatEndpoint {
     

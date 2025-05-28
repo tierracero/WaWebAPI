@@ -11,7 +11,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension MessageEndpoint.GetQuotedMessageRequest: @retroactive Content {}
+extension MessageEndpoint.GetQuotedMessageRequest: Content {}
 
 extension MessageEndpoint {
     

@@ -11,7 +11,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension ClientEndpoint.SetStatusRequest: @retroactive Content {}
+extension ClientEndpoint.SetStatusRequest: Content {}
 
 extension ClientEndpoint {
     

@@ -11,7 +11,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension ChatEndpoint.MarkUnreadRequst : @retroactive Content {}
+extension ChatEndpoint.MarkUnreadRequst : Content {}
 
 extension ChatEndpoint {
     

@@ -11,7 +11,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension ChatEndpoint.ChangeLabelsRequest : @retroactive Content {}
+extension ChatEndpoint.ChangeLabelsRequest : Content {}
 
 extension ChatEndpoint {
     

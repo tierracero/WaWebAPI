@@ -11,7 +11,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension ContactEndpoint.BlockRequest: @retroactive Content {}
+extension ContactEndpoint.BlockRequest: Content {}
 
 extension ContactEndpoint {
     

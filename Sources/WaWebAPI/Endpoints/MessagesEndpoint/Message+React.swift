@@ -11,7 +11,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension MessageEndpoint.ReactRequest: @retroactive Content {}
+extension MessageEndpoint.ReactRequest: Content {}
 
 extension MessageEndpoint {
     

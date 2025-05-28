@@ -11,7 +11,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension ClientEndpoint.GetInviteInfoRequests: @retroactive Content {}
+extension ClientEndpoint.GetInviteInfoRequests: Content {}
 
 
 extension ClientEndpoint {

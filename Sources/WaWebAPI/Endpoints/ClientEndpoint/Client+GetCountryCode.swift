@@ -11,7 +11,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension ClientEndpoint.GetCountryCodeRequest: @retroactive Content {}
+extension ClientEndpoint.GetCountryCodeRequest: Content {}
 
 extension ClientEndpoint {
     

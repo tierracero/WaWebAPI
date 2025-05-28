@@ -11,7 +11,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension ContactEndpoint.GetCommonGroopsRequest: @retroactive Content {}
+extension ContactEndpoint.GetCommonGroopsRequest: Content {}
 
 extension ContactEndpoint {
     

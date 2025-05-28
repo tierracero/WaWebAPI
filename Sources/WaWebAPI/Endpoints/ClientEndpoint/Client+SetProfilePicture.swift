@@ -11,7 +11,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension ClientEndpoint.SetProfilePictureRequest: @retroactive Content {}
+extension ClientEndpoint.SetProfilePictureRequest: Content {}
 
 
 extension ClientEndpoint {

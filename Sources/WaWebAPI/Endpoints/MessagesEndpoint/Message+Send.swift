@@ -11,13 +11,13 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension MessageEndpoint.SendMessageTextRequest: @retroactive Content {}
+extension MessageEndpoint.SendMessageTextRequest: Content {}
 
-extension MessageEndpoint.SendMessageMediaRequest: @retroactive Content {}
+extension MessageEndpoint.SendMessageMediaRequest: Content {}
 
-extension MessageEndpoint.SendMessageLocationRequest: @retroactive Content {}
+extension MessageEndpoint.SendMessageLocationRequest: Content {}
 
-extension MessageEndpoint.SendMessagePollRequest: @retroactive Content {}
+extension MessageEndpoint.SendMessagePollRequest: Content {}
 
 extension MessageEndpoint {
     

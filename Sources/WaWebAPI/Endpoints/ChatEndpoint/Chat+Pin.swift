@@ -11,7 +11,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension ChatEndpoint.PinRequst : @retroactive Content {}
+extension ChatEndpoint.PinRequst : Content {}
 
 extension ChatEndpoint {
     

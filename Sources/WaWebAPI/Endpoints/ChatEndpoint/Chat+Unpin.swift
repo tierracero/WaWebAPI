@@ -9,7 +9,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension ChatEndpoint.UnpinRequst: @retroactive Content {}
+extension ChatEndpoint.UnpinRequst: Content {}
 
 extension ChatEndpoint {
 

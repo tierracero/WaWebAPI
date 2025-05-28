@@ -11,7 +11,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension ClientEndpoint.GetGroupMembershipRequests: @retroactive Content {}
+extension ClientEndpoint.GetGroupMembershipRequests: Content {}
 
 
 extension ClientEndpoint {
