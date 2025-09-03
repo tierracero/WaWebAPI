@@ -15,7 +15,7 @@ extension MessageEndpoint.GetQuotedMessageRequest: Content {}
 
 extension MessageEndpoint {
     
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/message/getQuotedMessage
+    /// `POST` https://waweb.tierracero.co/api/v1/message/getQuotedMessage
     /// - Parameter messageId: String
     /// - Returns:
     public func getQuotedMessage(

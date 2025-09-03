@@ -16,7 +16,7 @@ extension ChatEndpoint.PinRequst : Content {}
 extension ChatEndpoint {
     
     /// Pin Requst
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/pin
+    /// `POST` https://waweb.tierracero.co/api/v1/chat/pin
     /// - Parameter chatId: WhatsAppChatId
     /// - Returns: New pin state. Could be false if the max number of pinned chats was reached.
     public func pin(

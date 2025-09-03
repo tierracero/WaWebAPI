@@ -15,7 +15,7 @@ extension MessageEndpoint.GetInfoRequest: Content {}
 
 extension MessageEndpoint {
     
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/message/getInfo
+    /// `POST` https://waweb.tierracero.co/api/v1/message/getInfo
     /// - Parameter messageId: String
     /// - Returns:
     public func getInfo(

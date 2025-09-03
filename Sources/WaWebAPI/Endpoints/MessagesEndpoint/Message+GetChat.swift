@@ -15,7 +15,7 @@ extension MessageEndpoint.GetChatRequest: Content {}
 
 extension MessageEndpoint {
     
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/message/getChat
+    /// `POST` https://waweb.tierracero.co/api/v1/message/getChat
     /// - Parameter messageId: String
     /// - Returns:
     public func getChat(

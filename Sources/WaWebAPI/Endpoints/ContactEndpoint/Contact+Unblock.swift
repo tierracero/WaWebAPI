@@ -16,7 +16,7 @@ extension ContactEndpoint.UnblockRequest: Content {}
 extension ContactEndpoint {
     
     /// Blocks this contact from WhatsApp
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/contact/unblock
+    /// `POST` https://waweb.tierracero.co/api/v1/contact/unblock
     /// - Parameter contactId: String
     /// - Returns: Promise containing Boolean
     public func unblock(

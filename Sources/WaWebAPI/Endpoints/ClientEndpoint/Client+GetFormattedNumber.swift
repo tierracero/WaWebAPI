@@ -17,7 +17,7 @@ extension ClientEndpoint.GetFormattedNumberRequest: Content {}
 extension ClientEndpoint {
     
     /// Get the formatted number of a WhatsApp ID.
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getFormattedNumber
+    /// `POST` https://waweb.tierracero.co/api/v1/client/getFormattedNumber
     /// - Returns: Promise containing a string
     public func getFormattedNumber(
         mobile: String

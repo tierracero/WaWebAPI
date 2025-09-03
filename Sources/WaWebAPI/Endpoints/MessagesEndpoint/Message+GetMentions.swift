@@ -15,7 +15,7 @@ extension MessageEndpoint.GetMentionsRequest: Content {}
 
 extension MessageEndpoint {
     
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/message/getMentions
+    /// `POST` https://waweb.tierracero.co/api/v1/message/getMentions
     /// - Parameter messageId: String
     /// - Returns:
     public func getMentions(

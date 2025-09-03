@@ -6,6 +6,7 @@
 //
 
 import WaWebAPICore
+import TCFoundation
 import Vapor
 
 public final class CallEndpoint: CallComponents {

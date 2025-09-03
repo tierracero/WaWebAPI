@@ -16,7 +16,7 @@ extension ChatEndpoint.MarkUnreadRequst : Content {}
 extension ChatEndpoint {
     
     /// Mark this chat as unread
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/markUnread
+    /// `POST` https://waweb.tierracero.co/api/v1/chat/markUnread
     /// - Parameter chatId: WhatsAppChatId
     /// - Returns: Promise containing Boolean
     public func markUnread(

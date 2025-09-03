@@ -16,7 +16,7 @@ extension ClientEndpoint.GetProfilePicUrlRequests: Content {}
 extension ClientEndpoint {
     
     /// Returns the contact ID's profile picture URL, if privacy settings allow it
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getProfilePicUrl
+    /// `POST` https://waweb.tierracero.co/api/v1/client/getProfilePicUrl
     /// - Returns: Promise containing string
     public func getProfilePicUrl(
         contactId: WhatsAppChatId

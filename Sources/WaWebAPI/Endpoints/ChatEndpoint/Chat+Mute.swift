@@ -16,7 +16,7 @@ extension ChatEndpoint.MuteRequst : Content {}
 extension ChatEndpoint {
     
     /// Mutes this chat forever, unless a date is specified
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/mute
+    /// `POST` https://waweb.tierracero.co/api/v1/chat/mute
     /// - Parameter chatId: WhatsAppChatId
     /// - Parameter unmuteDate: Int64?
     /// - Returns: Promise containing Boolean

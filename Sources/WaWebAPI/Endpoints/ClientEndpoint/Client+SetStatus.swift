@@ -16,7 +16,7 @@ extension ClientEndpoint.SetStatusRequest: Content {}
 extension ClientEndpoint {
     
     /// Sets the current user's status message.
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/client/setStatus
+    /// `POST` https://waweb.tierracero.co/api/v1/client/setStatus
     /// - Returns: Promise containing boolean
     public func setStatus(
         status: String

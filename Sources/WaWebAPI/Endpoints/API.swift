@@ -27,7 +27,6 @@ public struct API {
         self.application = app
         self.WAWEBAPI_TOKEN = token
         self.profile = profile
-        
     }
     
     public var auth: AuthEndpoint { .init(app: application, token: WAWEBAPI_TOKEN, profile: profile) }

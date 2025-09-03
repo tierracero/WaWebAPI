@@ -15,7 +15,7 @@ extension MessageEndpoint.GetOrderRequest: Content {}
 
 extension MessageEndpoint {
     
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/message/getOrder
+    /// `POST` https://waweb.tierracero.co/api/v1/message/getOrder
     /// - Parameter messageId: String
     /// - Returns:
     public func getOrder(

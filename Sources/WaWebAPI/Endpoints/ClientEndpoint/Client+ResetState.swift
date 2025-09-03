@@ -14,7 +14,7 @@ import Vapor
 extension ClientEndpoint {
 
     /// Logs out the client, closing the current session
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/client/resetState
+    /// `POST` https://waweb.tierracero.co/api/v1/client/resetState
     /// - Returns: Promise containing void
     public func resetState() throws -> EventLoopFuture<APIResponse>{
         do {

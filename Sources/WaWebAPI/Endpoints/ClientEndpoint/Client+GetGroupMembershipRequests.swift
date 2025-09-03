@@ -17,7 +17,7 @@ extension ClientEndpoint.GetGroupMembershipRequests: Content {}
 extension ClientEndpoint {
     
     /// Gets an array of membership requests
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getGroupMembershipRequests
+    /// `POST` https://waweb.tierracero.co/api/v1/client/getGroupMembershipRequests
     /// - Returns: Promise containing Array of GroupMembershipRequest
     public func getGroupMembershipRequests(
         groupId: String

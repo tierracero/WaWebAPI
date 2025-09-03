@@ -17,7 +17,7 @@ extension ClientEndpoint.GetLabelByIdRequests: Content {}
 extension ClientEndpoint {
     
     /// Returns an object with information about the invite code's group
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getLabelById
+    /// `POST` https://waweb.tierracero.co/api/v1/client/getLabelById
     /// - Returns: Promise containing Label
     public func getLabelById(
         labelId: String

@@ -15,7 +15,7 @@ extension MessageEndpoint.EditRequest: Content {}
 
 extension MessageEndpoint {
     
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/message/edit
+    /// `POST` https://waweb.tierracero.co/api/v1/message/edit
     /// - Parameter messageId: String
     /// - Returns:
     public func edit(

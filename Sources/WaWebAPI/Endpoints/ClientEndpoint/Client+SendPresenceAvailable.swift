@@ -14,7 +14,7 @@ import Vapor
 extension ClientEndpoint {
 
     /// Marks the client as online
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/client/sendPresenceAvailable
+    /// `POST` https://waweb.tierracero.co/api/v1/client/sendPresenceAvailable
     /// - Returns: Promise containing void
     public func sendPresenceAvailable() throws -> EventLoopFuture<APIResponse>{
         do {

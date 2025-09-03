@@ -15,7 +15,7 @@ extension MessageEndpoint.UnstarRequest: Content {}
     
 extension MessageEndpoint {
     
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/message/unstar
+    /// `POST` https://waweb.tierracero.co/api/v1/message/unstar
     /// - Parameter messageId: String
     /// - Returns:
     public func unstar(

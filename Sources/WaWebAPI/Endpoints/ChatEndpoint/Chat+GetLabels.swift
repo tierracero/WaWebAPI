@@ -16,7 +16,7 @@ extension ChatEndpoint.GetLabelsRequst : Content {}
 extension ChatEndpoint {
     
     /// Returns array of all Labels assigned to this Chat
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/getLabels
+    /// `POST` https://waweb.tierracero.co/api/v1/chat/getLabels
     /// - Parameter chatId: WhatsAppChatId
     /// - Returns: Promise containing Array of Label
     public func getLabels(

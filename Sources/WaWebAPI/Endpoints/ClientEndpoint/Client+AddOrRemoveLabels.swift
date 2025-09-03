@@ -16,7 +16,7 @@ extension ClientEndpoint.AddOrRemoveLabelsRequest : Content {}
 extension ClientEndpoint {
     
     /// Archives this chat
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/client/addOrRemoveLabels
+    /// `POST` https://waweb.tierracero.co/api/v1/client/addOrRemoveLabels
     /// - Parameter inviteCode: String
     /// - Returns: Promise containing Boolean
     public func addOrRemoveLabels(

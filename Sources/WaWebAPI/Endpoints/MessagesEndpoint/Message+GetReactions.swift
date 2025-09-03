@@ -15,7 +15,7 @@ extension MessageEndpoint.GetReactionsRequest: Content {}
 
 extension MessageEndpoint {
     
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/message/getReactions
+    /// `POST` https://waweb.tierracero.co/api/v1/message/getReactions
     /// - Parameter messageId: String
     /// - Returns:
     public func getReactions(

@@ -16,7 +16,7 @@ extension ClientEndpoint.AcceptInviteRequest : Content {}
 extension ClientEndpoint {
     
     /// Archives this chat
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/client/acceptInvite
+    /// `POST` https://waweb.tierracero.co/api/v1/client/acceptInvite
     /// - Parameter inviteCode: String
     /// - Returns: Promise containing Boolean
     public func acceptInvite(

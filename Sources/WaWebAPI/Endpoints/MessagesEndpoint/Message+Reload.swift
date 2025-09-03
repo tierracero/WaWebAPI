@@ -15,7 +15,7 @@ extension MessageEndpoint.ReloadRequest: Content {}
 
 extension MessageEndpoint {
     
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/message/reload
+    /// `POST` https://waweb.tierracero.co/api/v1/message/reload
     /// - Parameter messageId: String
     /// - Returns:
     public func reload(

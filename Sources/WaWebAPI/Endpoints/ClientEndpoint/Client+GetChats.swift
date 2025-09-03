@@ -14,7 +14,7 @@ import Vapor
 extension ClientEndpoint {
 
     /// Get all current chat instances
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getChats
+    /// `POST` https://waweb.tierracero.co/api/v1/client/getChats
     /// - Returns: romise containing Array of Chat
     public func getChats() throws -> EventLoopFuture<APIResponsePayload<[Chat]>>{
         do {

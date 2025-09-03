@@ -16,7 +16,7 @@ extension ClientEndpoint.CreateGroupRequest: Content {}
 extension ClientEndpoint {
     
     /// Creates a new group
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/client/createGroup
+    /// `POST` https://waweb.tierracero.co/api/v1/client/createGroup
     /// - Parameter inviteCode: String
     /// - Returns: Promise containing Boolean
     public func createGroup(

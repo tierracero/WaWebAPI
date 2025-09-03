@@ -17,7 +17,7 @@ extension ClientEndpoint.GetContactByIdRequest: Content {}
 extension ClientEndpoint {
     
     /// Gets the Contact's common groups with you. Returns empty array if you don't have any common group.
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getCommonGroups
+    /// `POST` https://waweb.tierracero.co/api/v1/client/getCommonGroups
     /// - Returns: Promise containing Array of WAWebJS.WhatsAppChatId
     public func getContactById(
         contactId: String

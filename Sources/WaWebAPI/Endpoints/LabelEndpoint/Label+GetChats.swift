@@ -13,7 +13,7 @@ extension LabelEndpoint.GetChatsRequst: Content {}
 extension LabelEndpoint {
     
     /// Returns array of all Labels assigned to this Chat
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/label/getChats
+    /// `POST` https://waweb.tierracero.co/api/v1/label/getChats
     /// - Parameter lableId: a123456789
     /// - Returns: Returns array of all Labels assigned to this Chat
     public func getChats(

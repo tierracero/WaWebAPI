@@ -71,6 +71,9 @@ public final class WaWebInstances: WaWebInstancesProtocable, Table, Schemable {
     @Column("webhook")
     public var webhook: String
     
+    @Column("port")
+    public var port: Int
+    
     @Column("cc")
     public var cc: Countries
     
@@ -94,6 +97,7 @@ public final class WaWebInstances: WaWebInstancesProtocable, Table, Schemable {
         relationId: UUID,
         secret: String = callKey(32),
         webhook: String,
+        port: Int,
         cc: Countries,
         mobile: String?,
         status: WaWebInstancesStatus
@@ -107,6 +111,7 @@ public final class WaWebInstances: WaWebInstancesProtocable, Table, Schemable {
         self.relationId = relationId
         self.secret = secret
         self.webhook = webhook
+        self.port = port
         self.cc = cc
         self.mobile = mobile
         self.status = status
@@ -140,6 +145,7 @@ public final class WaWebInstances: WaWebInstancesProtocable, Table, Schemable {
             relationType = .subaccount
         }
         */
+        
         self.id = profile.id
         self.createdAt = profile.createdAt
         self.modifiedAt = profile.modifiedAt
@@ -148,7 +154,8 @@ public final class WaWebInstances: WaWebInstancesProtocable, Table, Schemable {
         self.relationType = .account
         self.relationId = profile.accountId
         self.secret = instanceToken
-        self.webhook = "https://intratc.co/api/webhook/v1/whatsapp/wawebapi/\(profile.instanceId)/\(profile.secureToken)"
+        self.webhook = "https://waweb.tierracero.co/api/webhook/v1/whatsapp/wawebapi/\(profile.instanceId)/\(profile.secureToken)"
+        self.port = Int(profile.instanceId) ?? 0
         self.cc = .mexico
         self.mobile = profile.mobile
         self.status = .active
@@ -166,6 +173,7 @@ public final class WaWebInstances: WaWebInstancesProtocable, Table, Schemable {
             relationId: self.relationId,
             secret: self.secret,
             webhook: self.webhook,
+            port: self.port,
             cc: self.cc,
             mobile: self.mobile,
             status: self.status

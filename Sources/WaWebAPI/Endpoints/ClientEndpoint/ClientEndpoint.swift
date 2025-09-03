@@ -9,6 +9,7 @@ import Foundation
 import TCFoundation
 import TCFundamentals
 import WaWebAPICore
+import TCFoundation
 import Vapor
 
 public final class ClientEndpoint: ClientComponents {

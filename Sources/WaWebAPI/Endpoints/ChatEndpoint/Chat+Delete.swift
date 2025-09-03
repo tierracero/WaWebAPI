@@ -16,7 +16,7 @@ extension ChatEndpoint.DeleteRequest : Content {}
 extension ChatEndpoint {
     
     /// Deletes the chat.
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/delete
+    /// `POST` https://waweb.tierracero.co/api/v1/chat/delete
     /// - Parameter chatId: WhatsAppChatId
     /// - Returns: Promise containing Boolean
     public func delete(

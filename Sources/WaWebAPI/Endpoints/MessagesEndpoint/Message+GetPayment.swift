@@ -15,7 +15,7 @@ extension MessageEndpoint.GetPaymentRequest: Content {}
 
 extension MessageEndpoint {
     
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/message/getPayment
+    /// `POST` https://waweb.tierracero.co/api/v1/message/getPayment
     /// - Parameter messageId: String
     /// - Returns:
     public func getPayment(

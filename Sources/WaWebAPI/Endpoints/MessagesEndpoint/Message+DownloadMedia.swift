@@ -15,7 +15,7 @@ extension MessageEndpoint.DownloadMediaRequest: Content {}
 
 extension MessageEndpoint {
     
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/message/downloadMedia
+    /// `POST` https://waweb.tierracero.co/api/v1/message/downloadMedia
     /// - Parameter messageId: String
     /// - Returns:
     public func downloadMedia(

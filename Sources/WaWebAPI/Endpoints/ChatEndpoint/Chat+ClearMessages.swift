@@ -16,7 +16,7 @@ extension ChatEndpoint.ClearMessagesRequest : Content {}
 extension ChatEndpoint {
     
     /// Clears all messages from the chat
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/clearMessages
+    /// `POST` https://waweb.tierracero.co/api/v1/chat/clearMessages
     /// - Parameter chatId: WhatsAppChatId
     /// - Returns: Promise containing Boolean
     public func clearMessages(

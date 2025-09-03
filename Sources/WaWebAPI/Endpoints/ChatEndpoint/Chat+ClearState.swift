@@ -16,7 +16,7 @@ extension ChatEndpoint.ClearStateRequest : Content {}
 extension ChatEndpoint {
     
     /// Stops typing or recording in chat immediately.
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/clearState
+    /// `POST` https://waweb.tierracero.co/api/v1/chat/clearState
     /// - Parameter chatId: WhatsAppChatId
     /// - Returns: Promise containing Boolean
     public func clearState(

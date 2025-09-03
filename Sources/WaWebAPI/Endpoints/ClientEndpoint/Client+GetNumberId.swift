@@ -17,7 +17,7 @@ extension ClientEndpoint.GetNumberIdRequests: Content {}
 extension ClientEndpoint {
     
     /// Get the registered WhatsApp ID for a number. Will return null if the number is not registered on WhatsApp.
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getNumberId
+    /// `POST` https://waweb.tierracero.co/api/v1/client/getNumberId
     /// - Returns: Promise containing (Object or null)
     public func getNumberId(
         number: String

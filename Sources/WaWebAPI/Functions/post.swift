@@ -106,8 +106,8 @@ extension API {
             
             let url = URI(
                 scheme: "https",
-                host: "intratc.co",
-                path: "node/whatsapp/api/v1/\(path)"
+                host: "waweb.tierracero.co",
+                path: "api/v1/\(path)"
             )
             
             print(url.description)
@@ -236,8 +236,8 @@ extension API {
             
             let url = URI(
                 scheme: "https",
-                host: "intratc.co",
-                path: "node/whatsapp/api/v1/\(path)"
+                host: "waweb.tierracero.co",
+                path: "api/v1/\(path)"
             )
             
             print(url.description)
@@ -337,8 +337,8 @@ extension API {
             
             let url = URI(
                 scheme: "https",
-                host: "intratc.co",
-                path: "node/whatsapp/api/v1/\(path)"
+                host: "waweb.tierracero.co",
+                path: "api/v1/\(path)"
             )
             
             print(url.description)

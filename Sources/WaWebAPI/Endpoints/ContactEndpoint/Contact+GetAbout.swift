@@ -16,7 +16,7 @@ extension ContactEndpoint.GetAboutRequest: Content {}
 extension ContactEndpoint {
     
     /// Gets the Contact's current "about" info. Returns null if you don't have permission to read their status.
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/contact/getAbout
+    /// `POST` https://waweb.tierracero.co/api/v1/contact/getAbout
     /// - Parameter contactId: String
     /// - Returns: Promise containing Boolean
     public func getAbout(

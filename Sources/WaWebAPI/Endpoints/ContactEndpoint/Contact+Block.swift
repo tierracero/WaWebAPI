@@ -16,7 +16,7 @@ extension ContactEndpoint.BlockRequest: Content {}
 extension ContactEndpoint {
     
     /// Blocks this contact from WhatsApp
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/contact/block
+    /// `POST` https://waweb.tierracero.co/api/v1/contact/block
     /// - Parameter contactId: String
     /// - Returns: Promise containing Boolean
     public func acceptInvite(

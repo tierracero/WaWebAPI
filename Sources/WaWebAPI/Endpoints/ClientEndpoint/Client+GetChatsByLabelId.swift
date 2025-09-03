@@ -17,7 +17,7 @@ extension ClientEndpoint.GetChatsByLabelIdRequest: Content {}
 extension ClientEndpoint {
     
     /// Get all Chats for a specific Label
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getChatsByLabelId
+    /// `POST` https://waweb.tierracero.co/api/v1/client/getChatsByLabelId
     /// - Returns: Promise containing Array of Chat
     public func getChatsByLabelId(
         labelId: String

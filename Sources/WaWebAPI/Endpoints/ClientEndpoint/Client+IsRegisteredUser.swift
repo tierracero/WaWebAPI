@@ -16,7 +16,7 @@ extension ClientEndpoint.IsRegisteredUserRequest: Content {}
 extension ClientEndpoint {
     
     /// Check if a given ID is registered in whatsapp
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/client/isRegisteredUser
+    /// `POST` https://waweb.tierracero.co/api/v1/client/isRegisteredUser
     /// - Returns: Promise containing Boolean
     public func isRegisteredUser(
         id: String

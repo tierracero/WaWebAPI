@@ -16,7 +16,7 @@ extension ChatEndpoint.SendStateTypingRequst: Content{}
 extension ChatEndpoint {
     
     /// Simulate typing in chat. This will last for 25 seconds.
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/sendStateTyping
+    /// `POST` https://waweb.tierracero.co/api/v1/chat/sendStateTyping
     /// - Parameter chatId: WhatsAppChatId
     /// - Returns: Promise containing Boolean
     public func sendStateTyping(

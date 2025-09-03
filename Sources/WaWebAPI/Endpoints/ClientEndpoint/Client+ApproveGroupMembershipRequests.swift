@@ -17,7 +17,7 @@ extension ClientEndpoint.ApproveGroupMembershipRequests: Content {}
 extension ClientEndpoint {
     
     /// Approves membership requests if any.
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/client/approveGroupMembershipRequests
+    /// `POST` https://waweb.tierracero.co/api/v1/client/approveGroupMembershipRequests
     /// - Parameter inviteCode: String
     /// - Returns: [MembershipRequestActionResult] Returns an array of requester IDs whose membership requests were approved and an error for each requester, if any occurred during the operation. If there are no requests, an empty array will be returned.
     public func approveGroupMembershipRequests(

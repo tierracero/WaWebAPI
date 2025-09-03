@@ -16,7 +16,7 @@ extension ContactEndpoint.GetCommonGroopsRequest: Content {}
 extension ContactEndpoint {
     
     /// Gets the Contact's common groups with you. Returns empty array if you don't have any common group.
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/contact/getCommonGroups
+    /// `POST` https://waweb.tierracero.co/api/v1/contact/getCommonGroups
     /// - Parameter contactId: String
     /// - Returns: Promise containing Boolean
     public func getCommonGroups(

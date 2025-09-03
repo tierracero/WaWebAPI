@@ -15,7 +15,7 @@ extension MessageEndpoint.ReplyRequest: Content {}
 
 extension MessageEndpoint {
     
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/message/reply/message
+    /// `POST` https://waweb.tierracero.co/api/v1/message/reply/message
     /// - Parameter messageId: String
     /// - Returns:
     public func reply(

@@ -16,7 +16,7 @@ extension ChatEndpoint.FetchMessagesRequst : Content {}
 extension ChatEndpoint {
     
     /// Loads chat messages, sorted from earliest to latest.
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/fetchMessages
+    /// `POST` https://waweb.tierracero.co/api/v1/chat/fetchMessages
     /// - Parameter chatId: WhatsAppChatId
     /// - Parameter searchOptions: SearchOptions
     /// - Returns: Promise containing Array of Message

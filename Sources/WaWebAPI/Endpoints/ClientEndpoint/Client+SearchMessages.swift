@@ -17,7 +17,7 @@ extension ClientEndpoint.SearchMessagesRequest: Content {}
 extension ClientEndpoint {
     
     /// Searches for messages
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/client/searchMessages
+    /// `POST` https://waweb.tierracero.co/api/v1/client/searchMessages
     /// - Returns: Promise containing Array of Message
     public func searchMessages(
         query: String,

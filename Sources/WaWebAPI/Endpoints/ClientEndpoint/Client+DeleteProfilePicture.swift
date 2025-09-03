@@ -14,7 +14,7 @@ import Vapor
 extension ClientEndpoint {
 
     /// Deletes the current user's profile picture.
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/client/deleteProfilePicture
+    /// `POST` https://waweb.tierracero.co/api/v1/client/deleteProfilePicture
     /// - Returns: Promise containing Boolean
     public func deleteProfilePicture() throws -> EventLoopFuture<APIResponse>{
         do {

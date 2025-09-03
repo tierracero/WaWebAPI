@@ -14,7 +14,7 @@ import Vapor
 extension ClientEndpoint {
     
     /// Gets the current connection state for the client
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getState
+    /// `POST` https://waweb.tierracero.co/api/v1/client/getState
     /// - Returns: Promise containing WAState
     public func getState() throws -> EventLoopFuture<APIResponsePayload<WAState>>{
         do {

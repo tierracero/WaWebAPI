@@ -16,7 +16,7 @@ extension ChatEndpoint.ArchiveRequest: Content {}
 extension ChatEndpoint {
     
     /// Archives this chat
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/archive
+    /// `POST` https://waweb.tierracero.co/api/v1/chat/archive
     /// - Parameter chatId: WhatsAppChatId
     /// - Returns: Promise containing Boolean
     public func archive(

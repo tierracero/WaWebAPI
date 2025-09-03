@@ -14,7 +14,7 @@ extension ChatEndpoint.UnarchiveRequst: Content {}
 extension ChatEndpoint {
     
     /// Un-archives this chat
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/unarchive
+    /// `POST` https://waweb.tierracero.co/api/v1/chat/unarchive
     /// - Parameter chatId: WhatsAppChatId
     /// - Returns: Promise containing Boolean
     public func unarchive(

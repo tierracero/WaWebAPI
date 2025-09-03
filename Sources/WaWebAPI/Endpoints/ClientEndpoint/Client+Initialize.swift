@@ -14,7 +14,7 @@ import Vapor
 extension ClientEndpoint {
 
     /// Sets up events and requirements, kicks off authentication request
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getWWebVersion
+    /// `POST` https://waweb.tierracero.co/api/v1/client/getWWebVersion
     /// - Returns: Promise containing void
     public func initialize() throws -> EventLoopFuture<APIResponse>{
         do {

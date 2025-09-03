@@ -16,7 +16,7 @@ extension ChatEndpoint.GetContactRequst : Content {}
 extension ChatEndpoint {
     
     /// Returns the Contact that corresponds to this Chat.
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/getContact
+    /// `POST` https://waweb.tierracero.co/api/v1/chat/getContact
     /// - Parameter chatId: WhatsAppChatId
     /// - Returns: Promise containing Contact
     public func getContact(

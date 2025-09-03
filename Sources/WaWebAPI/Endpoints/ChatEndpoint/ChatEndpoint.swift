@@ -8,6 +8,7 @@
 import Foundation
 import TCFundamentals
 import WaWebAPICore
+import TCFoundation
 import Vapor
 
 public final class ChatEndpoint: ChatComponents {

@@ -15,7 +15,7 @@ extension MessageEndpoint.ReactRequest: Content {}
 
 extension MessageEndpoint {
     
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/message/react
+    /// `POST` https://waweb.tierracero.co/api/v1/message/react
     /// - Parameter messageId: String
     /// - Returns:
     public func react(

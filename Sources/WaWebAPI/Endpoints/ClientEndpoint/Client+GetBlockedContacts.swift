@@ -14,7 +14,7 @@ import Vapor
 extension ClientEndpoint {
 
     /// Gets all blocked contacts by host account
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getBlockedContacts
+    /// `POST` https://waweb.tierracero.co/api/v1/client/getBlockedContacts
     /// - Returns: Gets all blocked contacts by host account
     public func getBlockedContacts() throws -> EventLoopFuture<APIResponsePayload<[Contact]>>{
         do {

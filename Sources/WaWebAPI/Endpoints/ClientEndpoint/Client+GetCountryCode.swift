@@ -16,7 +16,7 @@ extension ClientEndpoint.GetCountryCodeRequest: Content {}
 extension ClientEndpoint {
     
     /// Get the country code of a WhatsApp ID.
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getCountryCode
+    /// `POST` https://waweb.tierracero.co/api/v1/client/getCountryCode
     /// - Returns: Promise containing a string
     public func getCountryCode(
         mobile: String

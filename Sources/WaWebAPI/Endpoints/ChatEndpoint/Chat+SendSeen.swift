@@ -16,7 +16,7 @@ extension ChatEndpoint.SendSeenRequst : Content {}
 extension ChatEndpoint {
     
     /// Set the message as seen
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/sendSeen
+    /// `POST` https://waweb.tierracero.co/api/v1/chat/sendSeen
     /// - Parameter chatId: WhatsAppChatId
     /// - Returns: Promise containing Boolean 
     public func sendSeen(

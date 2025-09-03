@@ -22,7 +22,7 @@ extension MessageEndpoint.SendMessagePollRequest: Content {}
 extension MessageEndpoint {
     
     /// Send a message to this chat
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/send/message
+    /// `POST` https://waweb.tierracero.co/api/v1/chat/send/message
     /// - Parameter chatId: WhatsAppChatId
     /// - Parameter message: String
     /// - Returns: Promise containing Message that was just sent.
@@ -47,7 +47,7 @@ extension MessageEndpoint {
     }
     
     /// Send a message to this chat
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/send/media
+    /// `POST` https://waweb.tierracero.co/api/v1/chat/send/media
     /// - Parameter chatId: WhatsAppChatId
     /// - Parameter media: MessageMedia
     /// - Returns: Promise containing Message that was just sent.
@@ -69,7 +69,7 @@ extension MessageEndpoint {
         }
     }
     /// Send a message to this chat
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/send/media
+    /// `POST` https://waweb.tierracero.co/api/v1/chat/send/media
     /// - Parameter chatId: WhatsAppChatId
     /// - Parameter media: MessageMedia
     /// - Returns: Promise containing Message that was just sent.
@@ -92,7 +92,7 @@ extension MessageEndpoint {
     }
     
     /// Send a message to this chat
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/send/location
+    /// `POST` https://waweb.tierracero.co/api/v1/chat/send/location
     /// - Parameter chatId: WhatsAppChatId
     /// - Parameter location: Location
     /// - Returns: Promise containing Message that was just sent.
@@ -114,7 +114,7 @@ extension MessageEndpoint {
     }
     
     /// Send a message to this chat
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/message/send/poll
+    /// `POST` https://waweb.tierracero.co/api/v1/message/send/poll
     /// - Parameter chatId: WhatsAppChatId
     /// - Parameter poll: Poll
     /// - Returns: Promise containing Message that was just sent.

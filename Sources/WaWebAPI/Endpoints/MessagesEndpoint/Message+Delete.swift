@@ -15,7 +15,7 @@ extension MessageEndpoint.DeleteRequest: Content {}
 
 extension MessageEndpoint {
     
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/message/delete
+    /// `POST` https://waweb.tierracero.co/api/v1/message/delete
     /// - Parameter messageId: String
     /// - Returns:
     public func delete(

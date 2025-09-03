@@ -14,7 +14,7 @@ extension ChatEndpoint.UnmuteRequst: Content {}
 extension ChatEndpoint {
     
     /// Unmutes this chat
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/unmute
+    /// `POST` https://waweb.tierracero.co/api/v1/chat/unmute
     /// - Parameter chatId: WhatsAppChatId
     /// - Returns: Promise containing Boolean
     public func unmute(

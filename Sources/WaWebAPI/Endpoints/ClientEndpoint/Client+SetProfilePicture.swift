@@ -17,7 +17,7 @@ extension ClientEndpoint.SetProfilePictureRequest: Content {}
 extension ClientEndpoint {
     
     /// Sets the current user's profile picture.
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/client/setProfilePicture
+    /// `POST` https://waweb.tierracero.co/api/v1/client/setProfilePicture
     /// - Returns: Promise containing boolean, Returns true if the picture was properly updated.
     public func setProfilePicture(
         media: MessageMedia

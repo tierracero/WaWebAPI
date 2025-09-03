@@ -14,7 +14,7 @@ import Vapor
 extension ClientEndpoint {
 
     /// Get all current contact instances
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getContacts
+    /// `POST` https://waweb.tierracero.co/api/v1/client/getContacts
     /// - Returns: Promise containing Array of Contact
     public func getContacts() throws -> EventLoopFuture<APIResponsePayload<[Contact]>>{
         do {

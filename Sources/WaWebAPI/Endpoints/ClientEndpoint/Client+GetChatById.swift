@@ -16,7 +16,7 @@ extension ClientEndpoint.GetChatByIdRequest: Content {}
 
 extension ClientEndpoint {
     /// Get chat instance by ID
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/client/getChatById
+    /// `POST` https://waweb.tierracero.co/api/v1/client/getChatById
     /// - Returns: Promise containing Chat
     public func getChatById(
         chatId: WhatsAppChatId

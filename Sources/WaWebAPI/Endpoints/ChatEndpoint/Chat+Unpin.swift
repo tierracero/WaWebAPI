@@ -14,7 +14,7 @@ extension ChatEndpoint.UnpinRequst: Content {}
 extension ChatEndpoint {
 
     /// Unpins this chat
-    /// `POST` https://intratc.co/node/whatsapp/api/v1/chat/unpin
+    /// `POST` https://waweb.tierracero.co/api/v1/chat/unpin
     /// - Parameter chatId: WhatsAppChatId
     /// - Returns: Promise containing Boolean
     public func unpin(
