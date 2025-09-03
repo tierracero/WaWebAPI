@@ -21,9 +21,9 @@ extension ClientEndpoint {
     /// - Returns: Promise containing boolean, Returns true if the picture was properly updated.
     public func setProfilePicture(
         media: MessageMedia
-    ) throws -> EventLoopFuture<APIResponse>{
+    ) throws -> EventLoopFuture<WAResponse>{
         do {
-            return try api.post(APIResponse.self, endpoint: .client("setProfilePicture"), payload: SetProfilePictureRequest(
+            return try api.post(WAResponse.self, endpoint: .client("setProfilePicture"), payload: SetProfilePictureRequest(
                 media: media
             ))
         }

@@ -23,9 +23,9 @@ extension ClientEndpoint {
         title: String,
         participants: [WhatsAppChatId],
         options: CreateGroupOptions
-    ) throws -> EventLoopFuture<APIResponsePayload<CreateGroupResult>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<CreateGroupResult>>{
         do {
-            return try api.post(APIResponsePayload<CreateGroupResult>.self, endpoint: .client("createGroup"), payload: CreateGroupRequest(
+            return try api.post(WAResponsePayload<CreateGroupResult>.self, endpoint: .client("createGroup"), payload: CreateGroupRequest(
                 title: title,
                 participants: participants,
                 options: options

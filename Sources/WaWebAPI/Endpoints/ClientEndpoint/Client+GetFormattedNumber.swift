@@ -21,9 +21,9 @@ extension ClientEndpoint {
     /// - Returns: Promise containing a string
     public func getFormattedNumber(
         mobile: String
-    ) throws -> EventLoopFuture<APIResponsePayload<GetFormattedNumberResponse>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<GetFormattedNumberResponse>>{
         do {
-            return try api.post(APIResponsePayload<GetFormattedNumberResponse>.self, endpoint: .client("getFormattedNumber"), payload: GetFormattedNumberRequest(
+            return try api.post(WAResponsePayload<GetFormattedNumberResponse>.self, endpoint: .client("getFormattedNumber"), payload: GetFormattedNumberRequest(
                 mobile: mobile
             ))
         }

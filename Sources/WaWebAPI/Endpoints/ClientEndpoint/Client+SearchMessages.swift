@@ -22,9 +22,9 @@ extension ClientEndpoint {
     public func searchMessages(
         query: String,
         option: SearchOptions?
-    ) throws -> EventLoopFuture<APIResponsePayload<[MessageItem]>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<[MessageItem]>>{
         do {
-            return try api.post(APIResponsePayload<[MessageItem]>.self, endpoint: .client("searchMessages"), payload: SearchMessagesRequest(
+            return try api.post(WAResponsePayload<[MessageItem]>.self, endpoint: .client("searchMessages"), payload: SearchMessagesRequest(
                 query: query,
                 option: option
             ))

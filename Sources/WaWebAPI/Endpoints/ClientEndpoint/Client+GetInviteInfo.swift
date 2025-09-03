@@ -21,9 +21,9 @@ extension ClientEndpoint {
     /// - Returns: Invite information
     public func getInviteInfo(
         inviteCode: String
-    ) throws -> EventLoopFuture<APIResponsePayload<String>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<String>>{
         do {
-            return try api.post(APIResponsePayload<String>.self, endpoint: .client("getInviteInfo"), payload: GetInviteInfoRequests(
+            return try api.post(WAResponsePayload<String>.self, endpoint: .client("getInviteInfo"), payload: GetInviteInfoRequests(
                 inviteCode: inviteCode
             ))
         }

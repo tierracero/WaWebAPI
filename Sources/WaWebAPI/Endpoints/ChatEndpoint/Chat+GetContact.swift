@@ -21,9 +21,9 @@ extension ChatEndpoint {
     /// - Returns: Promise containing Contact
     public func getContact(
         chatId: WhatsAppChatId
-    ) throws -> EventLoopFuture<APIResponsePayload<[Contact]>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<[Contact]>>{
         do {
-            return try api.post( APIResponsePayload<[Contact]>.self, endpoint: .chat("getContact"), payload: GetContactRequst(
+            return try api.post( WAResponsePayload<[Contact]>.self, endpoint: .chat("getContact"), payload: GetContactRequst(
                 chatId: chatId
             ))
         }

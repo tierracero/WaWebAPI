@@ -20,9 +20,9 @@ extension ClientEndpoint {
     /// - Returns: Promise containing boolean
     public func setStatus(
         status: String
-    ) throws -> EventLoopFuture<APIResponse>{
+    ) throws -> EventLoopFuture<WAResponse>{
         do {
-            return try api.post(APIResponse.self, endpoint: .client("setStatus"), payload: SetStatusRequest(
+            return try api.post(WAResponse.self, endpoint: .client("setStatus"), payload: SetStatusRequest(
                 status: status
             ))
         }

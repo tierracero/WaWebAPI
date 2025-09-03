@@ -22,9 +22,9 @@ extension ClientEndpoint {
     public func rejectGroupMembershipRequests(
         groupId: WhatsAppChatId,
         options: MembershipRequestActionOptions
-    ) throws -> EventLoopFuture<APIResponsePayload<MembershipRequestActionOptions>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<MembershipRequestActionOptions>>{
         do {
-            return try api.post(APIResponsePayload<MembershipRequestActionOptions>.self, endpoint: .client("rejectGroupMembershipRequests"), payload: RejectGroupMembershipRequestsRequest(
+            return try api.post(WAResponsePayload<MembershipRequestActionOptions>.self, endpoint: .client("rejectGroupMembershipRequests"), payload: RejectGroupMembershipRequestsRequest(
                 groupId: groupId,
                 options: options
             ))

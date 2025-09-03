@@ -16,9 +16,9 @@ extension ClientEndpoint {
     /// Gets the current connection state for the client
     /// `POST` https://waweb.tierracero.co/api/v1/client/getState
     /// - Returns: Promise containing WAState
-    public func getState() throws -> EventLoopFuture<APIResponsePayload<WAState>>{
+    public func getState() throws -> EventLoopFuture<WAResponsePayload<WAState>>{
         do {
-            return try api.post(APIResponsePayload<WAState>.self, endpoint: .client("getState"))
+            return try api.post(WAResponsePayload<WAState>.self, endpoint: .client("getState"))
         }
         catch {
             throw error

@@ -21,9 +21,9 @@ extension ClientEndpoint {
     /// - Returns: Promise containing Array of Chat
     public func getChatsByLabelId(
         labelId: String
-    ) throws -> EventLoopFuture<APIResponsePayload<[Chat]>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<[Chat]>>{
         do {
-            return try api.post(APIResponsePayload<[Chat]>.self, endpoint: .client("getChatsByLabelId"), payload: GetChatsByLabelIdRequest(
+            return try api.post(WAResponsePayload<[Chat]>.self, endpoint: .client("getChatsByLabelId"), payload: GetChatsByLabelIdRequest(
                 labelId: labelId
             ))
         }

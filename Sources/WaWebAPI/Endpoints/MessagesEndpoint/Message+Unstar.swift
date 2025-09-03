@@ -20,9 +20,9 @@ extension MessageEndpoint {
     /// - Returns:
     public func unstar(
         messageId: String
-    ) throws -> EventLoopFuture<APIResponse>{
+    ) throws -> EventLoopFuture<WAResponse>{
         do {
-            return try api.post( APIResponse.self, endpoint: .chat("unstar"), payload: UnstarRequest(
+            return try api.post( WAResponse.self, endpoint: .chat("unstar"), payload: UnstarRequest(
                 messageId: messageId
             ))
         }

@@ -21,9 +21,9 @@ extension ChatEndpoint {
     /// - Returns: Promise containing Array of Label
     public func getLabels(
         chatId: WhatsAppChatId
-    ) throws -> EventLoopFuture<APIResponsePayload<[Label]>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<[Label]>>{
         do {
-            return try api.post( APIResponsePayload<[Label]>.self, endpoint: .chat("getLabels"), payload: GetLabelsRequst(
+            return try api.post( WAResponsePayload<[Label]>.self, endpoint: .chat("getLabels"), payload: GetLabelsRequst(
                 chatId: chatId
             ))
         }

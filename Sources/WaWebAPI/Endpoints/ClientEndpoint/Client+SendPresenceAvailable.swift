@@ -16,9 +16,9 @@ extension ClientEndpoint {
     /// Marks the client as online
     /// `POST` https://waweb.tierracero.co/api/v1/client/sendPresenceAvailable
     /// - Returns: Promise containing void
-    public func sendPresenceAvailable() throws -> EventLoopFuture<APIResponse>{
+    public func sendPresenceAvailable() throws -> EventLoopFuture<WAResponse>{
         do {
-            return try api.post(APIResponse.self, endpoint: .client("sendPresenceAvailable"))
+            return try api.post(WAResponse.self, endpoint: .client("sendPresenceAvailable"))
         }
         catch {
             throw error

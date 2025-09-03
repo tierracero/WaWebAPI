@@ -23,9 +23,9 @@ extension ChatEndpoint {
     public func mute(
         chatId: WhatsAppChatId,
         unmuteDate: Int64?
-    ) throws -> EventLoopFuture<APIResponse>{
+    ) throws -> EventLoopFuture<WAResponse>{
         do {
-            return try api.post( APIResponse.self, endpoint: .chat("mute"), payload: MuteRequst(
+            return try api.post( WAResponse.self, endpoint: .chat("mute"), payload: MuteRequst(
                 chatId: chatId,
                 unmuteDate: unmuteDate
             ))

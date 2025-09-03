@@ -15,9 +15,9 @@ extension ClientEndpoint {
     /// Archives this chat
     /// `POST` https://waweb.tierracero.co/api/v1/client/destroy
     /// - Returns: Promise containing Boolean
-    public func destroy() throws -> EventLoopFuture<APIResponse>{
+    public func destroy() throws -> EventLoopFuture<WAResponse>{
         do {
-            return try api.post(APIResponse.self, endpoint: .client("destroy"))
+            return try api.post(WAResponse.self, endpoint: .client("destroy"))
         }
         catch {
             throw error

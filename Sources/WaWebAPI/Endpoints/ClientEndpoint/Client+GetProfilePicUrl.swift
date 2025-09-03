@@ -20,9 +20,9 @@ extension ClientEndpoint {
     /// - Returns: Promise containing string
     public func getProfilePicUrl(
         contactId: WhatsAppChatId
-    ) throws -> EventLoopFuture<APIResponsePayload<String>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<String>>{
         do {
-            return try api.post(APIResponsePayload<String>.self, endpoint: .client("getProfilePicUrl"), payload: GetProfilePicUrlRequests(
+            return try api.post(WAResponsePayload<String>.self, endpoint: .client("getProfilePicUrl"), payload: GetProfilePicUrlRequests(
                 contactId: contactId
             ))
         }

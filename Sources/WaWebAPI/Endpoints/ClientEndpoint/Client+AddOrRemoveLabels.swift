@@ -22,9 +22,9 @@ extension ClientEndpoint {
     public func addOrRemoveLabels(
         labelIds: [String],
         chatIds: [WhatsAppChatId]
-    ) throws -> EventLoopFuture<APIResponse>{
+    ) throws -> EventLoopFuture<WAResponse>{
         do {
-            return try api.post(APIResponse.self, endpoint: .client("addOrRemoveLabels"), payload: AddOrRemoveLabelsRequest(
+            return try api.post(WAResponse.self, endpoint: .client("addOrRemoveLabels"), payload: AddOrRemoveLabelsRequest(
                 labelIds: labelIds,
                 chatIds: chatIds
             ))

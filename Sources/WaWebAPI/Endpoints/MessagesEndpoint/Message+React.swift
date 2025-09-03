@@ -20,9 +20,9 @@ extension MessageEndpoint {
     /// - Returns:
     public func react(
         messageId: String
-    ) throws -> EventLoopFuture<APIResponse>{
+    ) throws -> EventLoopFuture<WAResponse>{
         do {
-            return try api.post( APIResponse.self, endpoint: .chat("react"), payload: ReactRequest(
+            return try api.post( WAResponse.self, endpoint: .chat("react"), payload: ReactRequest(
                 messageId: messageId
             ))
         }

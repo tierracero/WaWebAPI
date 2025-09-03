@@ -16,9 +16,9 @@ extension ClientEndpoint {
     /// Logs out the client, closing the current session
     /// `POST` https://waweb.tierracero.co/api/v1/client/resetState
     /// - Returns: Promise containing void
-    public func resetState() throws -> EventLoopFuture<APIResponse>{
+    public func resetState() throws -> EventLoopFuture<WAResponse>{
         do {
-            return try api.post(APIResponse.self, endpoint: .client("resetState"))
+            return try api.post(WAResponse.self, endpoint: .client("resetState"))
         }
         catch {
             throw error

@@ -19,9 +19,9 @@ extension ChatEndpoint {
     /// - Returns: Promise containing Boolean
     public func unarchive(
         chatId: WhatsAppChatId
-    ) throws -> EventLoopFuture<APIResponse>{
+    ) throws -> EventLoopFuture<WAResponse>{
         do {
-            return try api.post( APIResponse.self, endpoint: .chat("unarchive"), payload: UnarchiveRequst(
+            return try api.post( WAResponse.self, endpoint: .chat("unarchive"), payload: UnarchiveRequst(
                 chatId: chatId
             ))
         }

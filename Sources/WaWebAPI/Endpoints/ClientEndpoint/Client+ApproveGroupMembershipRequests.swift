@@ -23,9 +23,9 @@ extension ClientEndpoint {
     public func approveGroupMembershipRequests(
         groupId: String,
         options: MembershipRequestActionOptions
-    ) throws -> EventLoopFuture<APIResponsePayload<[MembershipRequestActionResult]>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<[MembershipRequestActionResult]>>{
         do {
-            return try api.post(APIResponsePayload<[MembershipRequestActionResult]>.self, endpoint: .client("approveGroupMembershipRequests"), payload: ApproveGroupMembershipRequests(
+            return try api.post(WAResponsePayload<[MembershipRequestActionResult]>.self, endpoint: .client("approveGroupMembershipRequests"), payload: ApproveGroupMembershipRequests(
                 groupId: groupId,
                 options: options
             ))

@@ -21,9 +21,9 @@ extension ContactEndpoint {
     /// - Returns: Promise containing Boolean
     public func getCommonGroups(
         contactId: String
-    ) throws -> EventLoopFuture<APIResponsePayload<[String]>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<[String]>>{
         do {
-            return try api.post(APIResponsePayload<[String]>.self, endpoint: .client("getCommonGroups"), payload: GetCommonGroopsRequest(
+            return try api.post(WAResponsePayload<[String]>.self, endpoint: .client("getCommonGroups"), payload: GetCommonGroopsRequest(
                 contactId: contactId
             ))
         }

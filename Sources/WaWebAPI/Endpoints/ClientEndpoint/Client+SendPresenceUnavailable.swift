@@ -16,9 +16,9 @@ extension ClientEndpoint {
     /// Marks the client as unavailable
     /// `POST` https://waweb.tierracero.co/api/v1/client/sendPresenceUnavailable
     /// - Returns: Promise containing void
-    public func sendPresenceUnavailable() throws -> EventLoopFuture<APIResponse>{
+    public func sendPresenceUnavailable() throws -> EventLoopFuture<WAResponse>{
         do {
-            return try api.post(APIResponse.self, endpoint: .client("sendPresenceUnavailable"))
+            return try api.post(WAResponse.self, endpoint: .client("sendPresenceUnavailable"))
         }
         catch {
             throw error

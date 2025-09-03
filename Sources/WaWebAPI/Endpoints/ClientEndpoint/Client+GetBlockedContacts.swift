@@ -16,9 +16,9 @@ extension ClientEndpoint {
     /// Gets all blocked contacts by host account
     /// `POST` https://waweb.tierracero.co/api/v1/client/getBlockedContacts
     /// - Returns: Gets all blocked contacts by host account
-    public func getBlockedContacts() throws -> EventLoopFuture<APIResponsePayload<[Contact]>>{
+    public func getBlockedContacts() throws -> EventLoopFuture<WAResponsePayload<[Contact]>>{
         do {
-            return try api.post(APIResponsePayload<[Contact]>.self, endpoint: .client("getBlockedContacts"))
+            return try api.post(WAResponsePayload<[Contact]>.self, endpoint: .client("getBlockedContacts"))
         }
         catch {
             throw error

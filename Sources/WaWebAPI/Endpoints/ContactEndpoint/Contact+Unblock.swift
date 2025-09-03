@@ -21,9 +21,9 @@ extension ContactEndpoint {
     /// - Returns: Promise containing Boolean
     public func unblock(
         contactId: String
-    ) throws -> EventLoopFuture<APIResponsePayload<UnblockResponse>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<UnblockResponse>>{
         do {
-            return try api.post(APIResponsePayload<UnblockResponse>.self, endpoint: .client("unblock"), payload: UnblockRequest(
+            return try api.post(WAResponsePayload<UnblockResponse>.self, endpoint: .client("unblock"), payload: UnblockRequest(
                 contactId: contactId
             ))
         }

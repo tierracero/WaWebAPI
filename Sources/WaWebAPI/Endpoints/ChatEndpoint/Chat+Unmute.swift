@@ -19,9 +19,9 @@ extension ChatEndpoint {
     /// - Returns: Promise containing Boolean
     public func unmute(
         chatId: WhatsAppChatId
-    ) throws -> EventLoopFuture<APIResponse>{
+    ) throws -> EventLoopFuture<WAResponse>{
         do {
-            return try api.post( APIResponse.self, endpoint: .chat("unmute"), payload: UnmuteRequst(
+            return try api.post( WAResponse.self, endpoint: .chat("unmute"), payload: UnmuteRequst(
                 chatId: chatId
             ))
         }

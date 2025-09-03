@@ -21,9 +21,9 @@ extension ClientEndpoint {
     /// - Returns: Promise containing Array of WAWebJS.WhatsAppChatId
     public func getContactById(
         contactId: String
-    ) throws -> EventLoopFuture<APIResponsePayload<Contact>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<Contact>>{
         do {
-            return try api.post(APIResponsePayload<Contact>.self, endpoint: .client("getContactById"), payload: GetContactByIdRequest(
+            return try api.post(WAResponsePayload<Contact>.self, endpoint: .client("getContactById"), payload: GetContactByIdRequest(
                 contactId: contactId
             ))
         }

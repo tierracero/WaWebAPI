@@ -19,9 +19,9 @@ extension ChatEndpoint {
     /// - Returns: Promise containing Boolean
     public func unpin(
         chatId: WhatsAppChatId
-    ) throws -> EventLoopFuture<APIResponse>{
+    ) throws -> EventLoopFuture<WAResponse>{
         do {
-            return try api.post( APIResponse.self, endpoint: .chat("unpin"), payload: UnpinRequst(
+            return try api.post( WAResponse.self, endpoint: .chat("unpin"), payload: UnpinRequst(
                 chatId: chatId
             ))
         }

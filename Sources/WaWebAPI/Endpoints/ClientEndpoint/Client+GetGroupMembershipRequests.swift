@@ -21,9 +21,9 @@ extension ClientEndpoint {
     /// - Returns: Promise containing Array of GroupMembershipRequest
     public func getGroupMembershipRequests(
         groupId: String
-    ) throws -> EventLoopFuture<APIResponsePayload<[GroupMembershipRequest]>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<[GroupMembershipRequest]>>{
         do {
-            return try api.post(APIResponsePayload<[GroupMembershipRequest]>.self, endpoint: .client("getGroupMembershipRequests"), payload: GetGroupMembershipRequests(
+            return try api.post(WAResponsePayload<[GroupMembershipRequest]>.self, endpoint: .client("getGroupMembershipRequests"), payload: GetGroupMembershipRequests(
                 groupId: groupId
             ))
         }

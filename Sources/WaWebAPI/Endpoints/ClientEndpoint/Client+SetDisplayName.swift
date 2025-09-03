@@ -21,9 +21,9 @@ extension ClientEndpoint {
     /// - Returns: Promise containing boolean
     public func setDisplayName(
         displayName: String
-    ) throws -> EventLoopFuture<APIResponse>{
+    ) throws -> EventLoopFuture<WAResponse>{
         do {
-            return try api.post(APIResponse.self, endpoint: .client("setDisplayName"), payload: SetDisplayNameRequest(
+            return try api.post(WAResponse.self, endpoint: .client("setDisplayName"), payload: SetDisplayNameRequest(
                 displayName: displayName
             ))
         }

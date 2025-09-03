@@ -21,9 +21,9 @@ extension ChatEndpoint {
     /// - Returns: Promise containing Boolean
     public func archive(
         chatId: WhatsAppChatId
-    ) throws -> EventLoopFuture<APIResponse>{
+    ) throws -> EventLoopFuture<WAResponse>{
         do {
-            return try api.post(APIResponse.self, endpoint: .chat("archive"), payload: ArchiveRequest(
+            return try api.post(WAResponse.self, endpoint: .chat("archive"), payload: ArchiveRequest(
                 chatId: chatId
             ))
         }

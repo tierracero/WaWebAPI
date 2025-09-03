@@ -21,9 +21,9 @@ extension ChatEndpoint {
     /// - Returns: Promise containing Boolean
     public func sendStateTyping(
         chatId: WhatsAppChatId
-    ) throws -> EventLoopFuture<APIResponse>{
+    ) throws -> EventLoopFuture<WAResponse>{
         do {
-            return try api.post( APIResponse.self, endpoint: .chat("sendStateTyping"), payload: SendStateTypingRequst(
+            return try api.post( WAResponse.self, endpoint: .chat("sendStateTyping"), payload: SendStateTypingRequst(
                 chatId: chatId
             ))
         }

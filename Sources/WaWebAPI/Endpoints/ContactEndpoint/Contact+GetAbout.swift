@@ -21,9 +21,9 @@ extension ContactEndpoint {
     /// - Returns: Promise containing Boolean
     public func getAbout(
         contactId: String
-    ) throws -> EventLoopFuture<APIResponse>{
+    ) throws -> EventLoopFuture<WAResponse>{
         do {
-            return try api.post(APIResponse.self, endpoint: .client("getAbout"), payload: GetAboutRequest(
+            return try api.post(WAResponse.self, endpoint: .client("getAbout"), payload: GetAboutRequest(
                 contactId: contactId
             ))
         }

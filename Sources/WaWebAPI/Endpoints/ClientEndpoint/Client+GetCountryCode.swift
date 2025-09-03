@@ -20,9 +20,9 @@ extension ClientEndpoint {
     /// - Returns: Promise containing a string
     public func getCountryCode(
         mobile: String
-    ) throws -> EventLoopFuture<APIResponsePayload<GetCountryCodeResponse>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<GetCountryCodeResponse>>{
         do {
-            return try api.post(APIResponsePayload<GetCountryCodeResponse>.self, endpoint: .client("getCountryCode"), payload: GetCountryCodeRequest(
+            return try api.post(WAResponsePayload<GetCountryCodeResponse>.self, endpoint: .client("getCountryCode"), payload: GetCountryCodeRequest(
                 mobile: mobile
             ))
         }

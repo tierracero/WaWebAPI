@@ -20,9 +20,9 @@ extension MessageEndpoint {
     /// - Returns:
     public func delete(
         messageId: String
-    ) throws -> EventLoopFuture<APIResponse>{
+    ) throws -> EventLoopFuture<WAResponse>{
         do {
-            return try api.post( APIResponse.self, endpoint: .chat("delete"), payload: DeleteRequest(
+            return try api.post( WAResponse.self, endpoint: .chat("delete"), payload: DeleteRequest(
                 messageId: messageId
             ))
         }

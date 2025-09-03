@@ -16,9 +16,9 @@ extension ClientEndpoint {
     /// Get all current contact instances
     /// `POST` https://waweb.tierracero.co/api/v1/client/getContacts
     /// - Returns: Promise containing Array of Contact
-    public func getContacts() throws -> EventLoopFuture<APIResponsePayload<[Contact]>>{
+    public func getContacts() throws -> EventLoopFuture<WAResponsePayload<[Contact]>>{
         do {
-            return try api.post(APIResponsePayload<[Contact]>.self, endpoint: .client("getContacts"))
+            return try api.post(WAResponsePayload<[Contact]>.self, endpoint: .client("getContacts"))
         }
         catch {
             throw error

@@ -20,9 +20,9 @@ extension ChatEndpoint {
     /// - Returns: Promise containing Boolean
     public func sendStateRecording(
         chatId: WhatsAppChatId
-    ) throws -> EventLoopFuture<APIResponse>{
+    ) throws -> EventLoopFuture<WAResponse>{
         do {
-            return try api.post( APIResponse.self, endpoint: .chat("sendStateRecording"), payload: SendStateRecordingRequst(
+            return try api.post( WAResponse.self, endpoint: .chat("sendStateRecording"), payload: SendStateRecordingRequst(
                 chatId: chatId
             ))
         }

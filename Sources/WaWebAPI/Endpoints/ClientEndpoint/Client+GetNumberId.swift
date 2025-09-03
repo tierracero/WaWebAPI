@@ -21,9 +21,9 @@ extension ClientEndpoint {
     /// - Returns: Promise containing (Object or null)
     public func getNumberId(
         number: String
-    ) throws -> EventLoopFuture<APIResponsePayload<String>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<String>>{
         do {
-            return try api.post(APIResponsePayload<String>.self, endpoint: .client("getNumberId"), payload: GetNumberIdRequests(
+            return try api.post(WAResponsePayload<String>.self, endpoint: .client("getNumberId"), payload: GetNumberIdRequests(
                 number: number
             ))
         }

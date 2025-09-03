@@ -21,9 +21,9 @@ extension ClientEndpoint {
     /// - Returns: Promise containing Boolean
     public func acceptInvite(
         inviteCode: String
-    ) throws -> EventLoopFuture<APIResponsePayload<AcceptInviteResponse>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<AcceptInviteResponse>>{
         do {
-            return try api.post(APIResponsePayload<AcceptInviteResponse>.self, endpoint: .client("acceptInvite"), payload: AcceptInviteRequest(
+            return try api.post(WAResponsePayload<AcceptInviteResponse>.self, endpoint: .client("acceptInvite"), payload: AcceptInviteRequest(
                 inviteCode: inviteCode
             ))
         }

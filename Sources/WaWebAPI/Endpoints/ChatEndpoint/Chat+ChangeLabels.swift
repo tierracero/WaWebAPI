@@ -22,10 +22,10 @@ extension ChatEndpoint {
     public func changeLabels(
         chatId: WhatsAppChatId,
         labelIds: String
-    ) throws -> EventLoopFuture<APIResponse>{
+    ) throws -> EventLoopFuture<WAResponse>{
      
         do {
-            return try api.post( APIResponse.self, endpoint: .chat("changeLabels"), payload: ChangeLabelsRequest(
+            return try api.post( WAResponse.self, endpoint: .chat("changeLabels"), payload: ChangeLabelsRequest(
                 chatId: chatId,
                 labelIds: labelIds
             ))

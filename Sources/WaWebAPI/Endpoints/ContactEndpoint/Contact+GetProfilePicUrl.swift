@@ -21,9 +21,9 @@ extension ContactEndpoint {
     /// - Returns: Promise containing Boolean
     public func getProfilePicUrl(
         contactId: String
-    ) throws -> EventLoopFuture<APIResponsePayload<String>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<String>>{
         do {
-            return try api.post(APIResponsePayload<String>.self, endpoint: .client("getProfilePicUrl"), payload: GetProfilePicUrlRequest(
+            return try api.post(WAResponsePayload<String>.self, endpoint: .client("getProfilePicUrl"), payload: GetProfilePicUrlRequest(
                 contactId: contactId
             ))
         }

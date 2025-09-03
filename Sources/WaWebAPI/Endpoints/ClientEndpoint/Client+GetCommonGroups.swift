@@ -21,9 +21,9 @@ extension ClientEndpoint {
     /// - Returns: Promise containing Array of WAWebJS.WhatsAppChatId
     public func getChatsByLabelId(
         contactId: String
-    ) throws -> EventLoopFuture<APIResponsePayload<[WhatsAppChatId]>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<[WhatsAppChatId]>>{
         do {
-            return try api.post(APIResponsePayload<[WhatsAppChatId]>.self, endpoint: .client("getCommonGroups"), payload: GetCommonGroupsRequest(
+            return try api.post(WAResponsePayload<[WhatsAppChatId]>.self, endpoint: .client("getCommonGroups"), payload: GetCommonGroupsRequest(
                 contactId: contactId
             ))
         }

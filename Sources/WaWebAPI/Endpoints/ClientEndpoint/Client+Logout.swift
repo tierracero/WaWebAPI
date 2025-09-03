@@ -16,9 +16,9 @@ extension ClientEndpoint {
     /// Logs out the client, closing the current session
     /// `POST` https://waweb.tierracero.co/api/v1/client/logout
     /// - Returns: Promise containing void
-    public func logout() throws -> EventLoopFuture<APIResponse>{
+    public func logout() throws -> EventLoopFuture<WAResponse>{
         do {
-            return try api.post(APIResponse.self, endpoint: .client("logout"))
+            return try api.post(WAResponse.self, endpoint: .client("logout"))
         }
         catch {
             throw error

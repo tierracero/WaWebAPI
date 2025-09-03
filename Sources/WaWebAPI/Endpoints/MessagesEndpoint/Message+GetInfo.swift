@@ -20,9 +20,9 @@ extension MessageEndpoint {
     /// - Returns:
     public func getInfo(
         messageId: String
-    ) throws -> EventLoopFuture<APIResponse>{
+    ) throws -> EventLoopFuture<WAResponse>{
         do {
-            return try api.post( APIResponse.self, endpoint: .chat("getInfo"), payload: GetInfoRequest(
+            return try api.post( WAResponse.self, endpoint: .chat("getInfo"), payload: GetInfoRequest(
                 messageId: messageId
             ))
         }

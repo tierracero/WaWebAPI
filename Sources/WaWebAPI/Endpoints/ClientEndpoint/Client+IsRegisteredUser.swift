@@ -20,9 +20,9 @@ extension ClientEndpoint {
     /// - Returns: Promise containing Boolean
     public func isRegisteredUser(
         id: String
-    ) throws -> EventLoopFuture<APIResponsePayload<IsRegisteredUserResponse>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<IsRegisteredUserResponse>>{
         do {
-            return try api.post(APIResponsePayload<IsRegisteredUserResponse>.self, endpoint: .client("isRegisteredUser"), payload: IsRegisteredUserRequest(
+            return try api.post(WAResponsePayload<IsRegisteredUserResponse>.self, endpoint: .client("isRegisteredUser"), payload: IsRegisteredUserRequest(
                 id: id
             ))
         }

@@ -21,9 +21,9 @@ extension ChatEndpoint {
     /// - Returns: Promise containing Boolean
     public func clearState(
         chatId: WhatsAppChatId
-    ) throws -> EventLoopFuture<APIResponse>{
+    ) throws -> EventLoopFuture<WAResponse>{
         do {
-            return try api.post( APIResponse.self, endpoint: .chat("clearState"), payload: ClearStateRequest(
+            return try api.post( WAResponse.self, endpoint: .chat("clearState"), payload: ClearStateRequest(
                 chatId: chatId
             ))
         }

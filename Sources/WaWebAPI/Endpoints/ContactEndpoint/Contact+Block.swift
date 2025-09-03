@@ -21,9 +21,9 @@ extension ContactEndpoint {
     /// - Returns: Promise containing Boolean
     public func acceptInvite(
         contactId: String
-    ) throws -> EventLoopFuture<APIResponse>{
+    ) throws -> EventLoopFuture<WAResponse>{
         do {
-            return try api.post(APIResponse.self, endpoint: .client("block"), payload: BlockRequest(
+            return try api.post(WAResponse.self, endpoint: .client("block"), payload: BlockRequest(
                 contactId: contactId
             ))
         }

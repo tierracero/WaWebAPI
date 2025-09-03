@@ -16,9 +16,9 @@ extension ClientEndpoint {
     /// Get all current chat instances
     /// `POST` https://waweb.tierracero.co/api/v1/client/getChats
     /// - Returns: romise containing Array of Chat
-    public func getChats() throws -> EventLoopFuture<APIResponsePayload<[Chat]>>{
+    public func getChats() throws -> EventLoopFuture<WAResponsePayload<[Chat]>>{
         do {
-            return try api.post(APIResponsePayload<[Chat]>.self, endpoint: .client("getChats"))
+            return try api.post(WAResponsePayload<[Chat]>.self, endpoint: .client("getChats"))
         }
         catch {
             throw error

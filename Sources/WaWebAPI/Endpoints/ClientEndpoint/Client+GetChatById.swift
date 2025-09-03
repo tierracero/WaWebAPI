@@ -20,9 +20,9 @@ extension ClientEndpoint {
     /// - Returns: Promise containing Chat
     public func getChatById(
         chatId: WhatsAppChatId
-    ) throws -> EventLoopFuture<APIResponsePayload<Chat>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<Chat>>{
         do {
-            return try api.post(APIResponsePayload<Chat>.self, endpoint: .client("getChatById"), payload: GetChatByIdRequest(
+            return try api.post(WAResponsePayload<Chat>.self, endpoint: .client("getChatById"), payload: GetChatByIdRequest(
                 chatId: chatId
             ))
         }

@@ -21,9 +21,9 @@ extension ChatEndpoint {
     /// - Returns: New pin state. Could be false if the max number of pinned chats was reached.
     public func pin(
         chatId: WhatsAppChatId
-    ) throws -> EventLoopFuture<APIResponse>{
+    ) throws -> EventLoopFuture<WAResponse>{
         do {
-            return try api.post( APIResponse.self, endpoint: .chat("pin"), payload: PinRequst(
+            return try api.post( WAResponse.self, endpoint: .chat("pin"), payload: PinRequst(
                 chatId: chatId
             ))
         }

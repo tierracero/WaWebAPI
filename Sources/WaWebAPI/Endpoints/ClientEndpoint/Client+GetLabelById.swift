@@ -21,9 +21,9 @@ extension ClientEndpoint {
     /// - Returns: Promise containing Label
     public func getLabelById(
         labelId: String
-    ) throws -> EventLoopFuture<APIResponsePayload<Label>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<Label>>{
         do {
-            return try api.post(APIResponsePayload<Label>.self, endpoint: .client("getLabelById"), payload: GetLabelByIdRequests(
+            return try api.post(WAResponsePayload<Label>.self, endpoint: .client("getLabelById"), payload: GetLabelByIdRequests(
                 labelId: labelId
             ))
         }
