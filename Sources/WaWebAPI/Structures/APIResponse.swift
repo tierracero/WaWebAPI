@@ -11,11 +11,11 @@ import Vapor
 
 public struct WAResponse: Content {
     
-    public let success: Bool
+    public var success: Bool
     
-    public let code: ErrorType?
+    public var code: ErrorType?
     
-    public let messsage: String?
+    public var messsage: String?
     
     public init(
         success: Bool = false,
@@ -31,13 +31,13 @@ public struct WAResponse: Content {
 
 public struct WAResponsePayload<T: Sendable>: Content where T : Codable {
     
-    public let success: Bool
+    public var success: Bool
     
-    public let code: ErrorType?
+    public var code: ErrorType?
     
-    public let messsage: String?
+    public var messsage: String?
     
-    public let data: T?
+    public var data: T?
     
     public init(
         success: Bool = false,
