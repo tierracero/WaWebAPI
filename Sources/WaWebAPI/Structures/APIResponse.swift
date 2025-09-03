@@ -17,6 +17,16 @@ public struct APIResponse: Content {
     
     public let messsage: String?
     
+    public init(
+        success: Bool = false,
+        code: ErrorType? = nil,
+        messsage: String? = nil
+    ) {
+        self.success = success
+        self.code = code
+        self.messsage = messsage
+    }
+    
 }
 
 public struct APIResponsePayload<T: Sendable>: Content where T : Codable {
@@ -28,5 +38,17 @@ public struct APIResponsePayload<T: Sendable>: Content where T : Codable {
     public let messsage: String?
     
     public let data: T?
+    
+    public init(
+        success: Bool = false,
+        code: ErrorType? = nil,
+        messsage: String? = nil,
+        data: T? = nil
+    ) {
+        self.success = success
+        self.code = code
+        self.messsage = messsage
+        self.data = data
+    }
     
 }
