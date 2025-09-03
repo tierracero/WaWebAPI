@@ -27,6 +27,7 @@ public struct CreateWaWebInstances: TableMigration {
             .column("relationId", .uuid, .notNull)
             .column("secret", .text, .notNull)
             .column("webhook", .text, .notNull)
+            .column("port", .int, .notNull)
             .column("cc", .text, .notNull)
             .column("mobile", .text)
             .column("status", .auto(from: BasicStatus.self), .notNull)
