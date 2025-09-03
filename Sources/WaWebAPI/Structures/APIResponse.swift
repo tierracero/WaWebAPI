@@ -1,5 +1,5 @@
 //
-//  APIResponse.swift
+//  WAResponse.swift
 //
 //
 //  Created by Victor Cantu on 3/31/24.
@@ -9,7 +9,7 @@ import Foundation
 import WaWebAPICore
 import Vapor
 
-public struct APIResponse: Content {
+public struct WAResponse: Content {
     
     public let success: Bool
     
@@ -29,7 +29,7 @@ public struct APIResponse: Content {
     
 }
 
-public struct APIResponsePayload<T: Sendable>: Content where T : Codable {
+public struct WAResponsePayload<T: Sendable>: Content where T : Codable {
     
     public let success: Bool
     

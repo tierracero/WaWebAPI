@@ -272,7 +272,7 @@ extension API {
         
     }
     
-    func post( endpoint: EndpointControler) throws -> EventLoopFuture<APIResponse>{
+    func post( endpoint: EndpointControler) throws -> EventLoopFuture<WAResponse>{
     
         return getWaWebTokens(
             app: application,
@@ -346,7 +346,7 @@ extension API {
             return application.client.post(url, headers: header).flatMapThrowing { response in
                 
                 do{
-                    return try response.content.decode(APIResponse.self, using: JSONDecoder())
+                    return try response.content.decode(WAResponse.self, using: JSONDecoder())
                 }
                 catch {
                     
