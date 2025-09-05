@@ -156,7 +156,7 @@ public final class WaWebInstances: WaWebInstancesProtocable, Table, Schemable {
         self.relationId = profile.accountId
         self.secret = instanceToken
         self.webhook = "https://waweb.tierracero.co/api/webhook/v1/whatsapp/wawebapi/\(profile.instanceId)/\(profile.secureToken)"
-        self.port = Int(profile.instanceId) ?? 0
+        self.port = profile.instancePort
         self.cc = .mexico
         self.mobile = profile.mobile
         self.status = .active
