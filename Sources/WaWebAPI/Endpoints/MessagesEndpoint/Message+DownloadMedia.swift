@@ -20,9 +20,9 @@ extension MessageEndpoint {
     /// - Returns:
     public func downloadMedia(
         messageId: String
-    ) throws -> EventLoopFuture<WAResponse>{
+    ) throws -> EventLoopFuture<WAResponsePayload<MessageMedia>>{
         do {
-            return try api.post( WAResponse.self, endpoint: .chat("downloadMedia"), payload: DownloadMediaRequest(
+            return try api.post( WAResponsePayload<MessageMedia>.self, endpoint: .chat("downloadMedia"), payload: DownloadMediaRequest(
                 messageId: messageId
             ))
         }
