@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import TCFoundation
 import TCFundamentals
 import WaWebAPICore
 import Vapor
