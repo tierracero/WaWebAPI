@@ -25,7 +25,7 @@ public struct CreateWaWebInstances: TableMigration {
             .column("instanceId", .text, .notNull)
             .column("relationType", .auto(from: WaWebAccountRelation.self), .notNull)
             .column("relationId", .uuid, .notNull)
-            .column("secret", .text, .notNull)
+            .column("secret", .text)
             .column("webhook", .text, .notNull)
             .column("port", .int, .notNull)
             .column("cc", .text, .notNull)
@@ -67,7 +67,7 @@ public final class WaWebInstances: WaWebInstancesProtocable, Table, Schemable {
     
     /// Webhook Secret to use with HMAC Verfification of webhook data.
     @Column("secret")
-    public var secret: String
+    public var secret: String?
     
     @Column("webhook")
     public var webhook: String
@@ -96,7 +96,7 @@ public final class WaWebInstances: WaWebInstancesProtocable, Table, Schemable {
         instanceId: String,
         relationType: WaWebAccountRelation,
         relationId: UUID,
-        secret: String = callKey(32),
+        secret: String?,
         webhook: String,
         port: Int,
         cc: Countries,
