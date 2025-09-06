@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import TCFoundation
 import TCFundamentals
 import WaWebAPICore
 import Vapor
@@ -23,9 +22,9 @@ extension ChatEndpoint {
     public func fetchMessages(
         chatId: WhatsAppChatId,
         searchOptions: SearchOptions
-    ) throws -> EventLoopFuture<WAResponsePayload<[MessageItem]>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<[Message]>>{
         do {
-            return try api.post( WAResponsePayload<[MessageItem]>.self, endpoint: .chat("fetchMessages"), payload: FetchMessagesRequst(
+            return try api.post( WAResponsePayload<[Message]>.self, endpoint: .chat("fetchMessages"), payload: FetchMessagesRequst(
                 chatId: chatId,
                 searchOptions: searchOptions
             ))

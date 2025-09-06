@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import TCFoundation
 import TCFundamentals
 import WaWebAPICore
 import Vapor
@@ -22,9 +21,9 @@ extension ClientEndpoint {
     public func searchMessages(
         query: String,
         option: SearchOptions?
-    ) throws -> EventLoopFuture<WAResponsePayload<[MessageItem]>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<[Message]>>{
         do {
-            return try api.post(WAResponsePayload<[MessageItem]>.self, endpoint: .client("searchMessages"), payload: SearchMessagesRequest(
+            return try api.post(WAResponsePayload<[Message]>.self, endpoint: .client("searchMessages"), payload: SearchMessagesRequest(
                 query: query,
                 option: option
             ))

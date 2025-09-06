@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import TCFoundation
 import TCFundamentals
 import WaWebAPICore
 import Vapor
@@ -20,9 +19,9 @@ extension MessageEndpoint {
     /// - Returns:
     public func edit(
         messageId: String
-    ) throws -> EventLoopFuture<WAResponsePayload<MessageMedia>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<Message>>{
         do {
-            return try api.post( WAResponsePayload<MessageMedia>.self, endpoint: .chat("edit"), payload: EditRequest(
+            return try api.post( WAResponsePayload<Message>.self, endpoint: .chat("edit"), payload: EditRequest(
                 messageId: messageId
             ))
         }
