@@ -15,7 +15,7 @@ public struct CreateWaWebAccounts: TableMigration {
     
     public typealias Table = WaWebAccounts
     
-    public static func prepare(on conn: BridgeConnection) -> EventLoopFuture<Void> {
+    public static func prepare(on conn: any BridgeConnection) -> EventLoopFuture<Void> {
         
         createBuilder
             .column("id", .uuid, .primaryKey)
@@ -43,7 +43,7 @@ public struct CreateWaWebAccounts: TableMigration {
         
     }
     
-    public static func revert(on conn: BridgeConnection) -> EventLoopFuture<Void> {
+    public static func revert(on conn: any BridgeConnection) -> EventLoopFuture<Void> {
         dropBuilder.execute(on: conn)
     }
 }

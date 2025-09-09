@@ -13,7 +13,7 @@ public struct CreateWaWebWebhookEvents: EnumMigration {
     
     public typealias Enum = WebhookEvents
     
-    public static func prepare(on conn: BridgeConnection) -> EventLoopFuture<Void> {
+    public static func prepare(on conn: any BridgeConnection) -> EventLoopFuture<Void> {
         createBuilder
             .add(
                 .message,
@@ -46,7 +46,7 @@ public struct CreateWaWebWebhookEvents: EnumMigration {
             .execute(on: conn)
     }
     
-    public static func revert(on conn: BridgeConnection) -> EventLoopFuture<Void> {
+    public static func revert(on conn: any BridgeConnection) -> EventLoopFuture<Void> {
         dropBuilder.execute(on: conn)
     }
 }

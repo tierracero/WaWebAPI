@@ -13,13 +13,13 @@ public struct CreateWaWebAccountRelation: EnumMigration {
     
     public typealias Enum = WaWebAccountRelation
     
-    public static func prepare(on conn: BridgeConnection) -> EventLoopFuture<Void> {
+    public static func prepare(on conn: any BridgeConnection) -> EventLoopFuture<Void> {
         createBuilder
             .add(.waweb, .account, .subaccount)
             .execute(on: conn)
     }
     
-    public static func revert(on conn: BridgeConnection) -> EventLoopFuture<Void> {
+    public static func revert(on conn: any BridgeConnection) -> EventLoopFuture<Void> {
         dropBuilder.execute(on: conn)
     }
 }

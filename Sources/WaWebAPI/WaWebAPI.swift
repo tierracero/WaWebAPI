@@ -42,9 +42,7 @@ public struct WaWebAPI {
         }
     }
     
-    
-    
-    public func profile(profile: WaWebInstances) -> API {
+    public func profile(_ profile: WaWebInstances) -> API {
         
         guard let token = Environment.get("WAWEBAPI_TOKEN") else {
             print("🔴  🔴  🔴  🔴  🔴  🔴  🔴  🔴  🔴  🔴  🔴  🔴  🔴  🔴  🔴  🔴  ")

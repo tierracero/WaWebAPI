@@ -15,7 +15,7 @@ public struct CreateWaWebWebhookEventControleraWebTokens: TableMigration {
     
     public typealias Table = WaWebWebhookEventControler
 
-    public static func prepare(on conn: BridgeConnection) -> EventLoopFuture<Void> {
+    public static func prepare(on conn: any BridgeConnection) -> EventLoopFuture<Void> {
         createBuilder
             .column("id", .uuid, .primaryKey)
             .column("createdAt", .bigint, .notNull)
@@ -31,7 +31,7 @@ public struct CreateWaWebWebhookEventControleraWebTokens: TableMigration {
             .execute(on: conn)
     }
     
-    public static func revert(on conn: BridgeConnection) -> EventLoopFuture<Void> {
+    public static func revert(on conn: any BridgeConnection) -> EventLoopFuture<Void> {
         dropBuilder.execute(on: conn)
     }
 }

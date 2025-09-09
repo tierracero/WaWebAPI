@@ -18,7 +18,7 @@ public struct CreateWaWebTokens: TableMigration {
     
     public typealias Table = WaWebTokens
     
-    public static func prepare(on conn: BridgeConnection) -> EventLoopFuture<Void> {
+    public static func prepare(on conn: any BridgeConnection) -> EventLoopFuture<Void> {
         createBuilder
             .column("id", .uuid, .primaryKey)
             .column("createdAt", .bigint, .notNull)
@@ -34,7 +34,7 @@ public struct CreateWaWebTokens: TableMigration {
             .execute(on: conn)
     }
     
-    public static func revert(on conn: BridgeConnection) -> EventLoopFuture<Void> {
+    public static func revert(on conn: any BridgeConnection) -> EventLoopFuture<Void> {
         dropBuilder.execute(on: conn)
     }
 }
