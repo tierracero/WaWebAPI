@@ -11,7 +11,7 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-ClientEndpoint.GetStateResponse: Content {}
+extension ClientEndpoint.GetStateResponse: Content {}
 
 extension ClientEndpoint {
     
