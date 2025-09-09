@@ -13,7 +13,6 @@ import Vapor
 
 extension ClientEndpoint.GetNumberIdRequests: Content {}
 
-
 extension ClientEndpoint {
     
     /// Get the registered WhatsApp ID for a number. Will return null if the number is not registered on WhatsApp.

@@ -13,12 +13,30 @@ import Vapor
 
 extension ClientEndpoint {
     
+    public struct GetStateResponse: Content, Payloadable {
+        
+        /// conflict, connected, deprecatedVersion, opening, pairing, proxyblock, SMBTosBlock, timeout, TOSBlock, unlaunched, unpaired, unpairedIdle
+        public let state: WAState
+        
+        /// booting, loadingScreen, qr, authenticated, authFailure, ready, disconnected
+        public let status: InstanceStatus
+        
+        public init(
+            state: WAState,
+            status: InstanceStatus
+        ) {
+            self.state = state
+            self.status = status
+        }
+        
+    }
+    
     /// Gets the current connection state for the client
     /// `POST` https://waweb.tierracero.co/api/v1/client/getState
     /// - Returns: Promise containing WAState
-    public func getState() throws -> EventLoopFuture<WAResponsePayload<WAState>>{
+    public func getState() throws -> EventLoopFuture<WAResponsePayload<GetStateResponse>>{
         do {
-            return try api.post(WAResponsePayload<WAState>.self, endpoint: .client("getState"))
+            return try api.post(WAResponsePayload<GetStateResponse>.self, endpoint: .client("getState"))
         }
         catch {
             throw error

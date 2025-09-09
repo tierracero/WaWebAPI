@@ -55,6 +55,7 @@ public final class WaWebWebhookEventControler: Table, Schemable {
     @Column("instanceId")
     public var instanceId: String
     
+    /// booting loading_screen qr authenticated auth_failure ready disconnected
     /// message, loadingScreen, qr, authenticated, authFailure, ready, disconnected, messageCreate, messageRevokeEveryone, messageRevokeMe, messageAck, messageReaction, mediaUploaded, groupJoin, groupLeave, groupUpdate, changeState, call
     @Column("eventType")
     public var eventType: WebhookEvents
