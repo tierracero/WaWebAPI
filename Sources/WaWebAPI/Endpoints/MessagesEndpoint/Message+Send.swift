@@ -67,6 +67,7 @@ extension MessageEndpoint {
             throw error
         }
     }
+    
     /// Send a message to this chat
     /// `POST` https://waweb.tierracero.co/api/v1/chat/send/media
     /// - Parameter chatId: WhatsAppChatId
