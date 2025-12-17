@@ -13,7 +13,6 @@ import Vapor
 
 extension ClientEndpoint.GetContactByIdRequest: Content {}
 
-
 extension ClientEndpoint {
     
     /// Gets the Contact's common groups with you. Returns empty array if you don't have any common group.

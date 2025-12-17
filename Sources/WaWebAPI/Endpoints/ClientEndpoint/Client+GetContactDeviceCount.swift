@@ -1,6 +1,6 @@
 //
-//  Client+GetContactById.swift
-//  
+//  Client+GetContactDeviceCount.swift
+//
 //
 //  Created by Victor Cantu on 3/31/24.
 //
@@ -11,18 +11,18 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension ClientEndpoint.GetContactByIdRequest: Content {}
+extension ClientEndpoint.GetContactDeviceCountRequest: Content {}
 
 extension ClientEndpoint {
     
-    /// Gets the Contact's common groups with you. Returns empty array if you don't have any common group.
-    /// `POST` https://waweb.tierracero.co/api/v1/client/getCommonGroups
-    /// - Returns: Promise containing Array of WAWebJS.WhatsAppChatId
-    public func getContactById(
+    /// Get user device count by ID Each WaWeb Connection counts as one device, and the phone (if exists) counts as one So for a non-enterprise user with one WaWeb connection it should return "2"
+    /// `POST` https://waweb.tierracero.co/api/v1/client/getContactDeviceCount
+    /// - Returns: Promise containing number
+    public func getContactDeviceCount(
         contactId: String
-    ) throws -> EventLoopFuture<WAResponsePayload<Contact>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<String>>{
         do {
-            return try api.post(WAResponsePayload<Contact>.self, endpoint: .client("getContactById"), payload: GetContactByIdRequest(
+            return try api.post(WAResponsePayload<String>.self, endpoint: .client("getContactDeviceCount"), payload: GetContactDeviceCountRequest(
                 contactId: contactId
             ))
         }
