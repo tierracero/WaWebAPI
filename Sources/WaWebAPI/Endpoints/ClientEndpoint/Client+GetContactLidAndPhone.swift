@@ -19,11 +19,11 @@ extension ClientEndpoint {
     /// `POST` https://waweb.tierracero.co/api/v1/client/getContactLidAndPhone
     /// - Returns: Promise containing Array of {lid: string, pn: string}
     public func getContactLidAndPhone(
-        contactId: String
+        userIds: [String]
     ) throws -> EventLoopFuture<WAResponsePayload<[LidId]>>{
         do {
             return try api.post(WAResponsePayload<[LidId]>.self, endpoint: .client("getContactLidAndPhone"), payload: GetContactLidAndPhoneRequest(
-                contactId: contactId
+                userIds: userIds
             ))
         }
         catch {

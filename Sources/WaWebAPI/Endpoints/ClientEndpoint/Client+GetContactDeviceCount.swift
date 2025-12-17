@@ -19,11 +19,11 @@ extension ClientEndpoint {
     /// `POST` https://waweb.tierracero.co/api/v1/client/getContactDeviceCount
     /// - Returns: Promise containing number
     public func getContactDeviceCount(
-        contactId: String
+        userId: String
     ) throws -> EventLoopFuture<WAResponsePayload<String>>{
         do {
             return try api.post(WAResponsePayload<String>.self, endpoint: .client("getContactDeviceCount"), payload: GetContactDeviceCountRequest(
-                contactId: contactId
+                userId: userId
             ))
         }
         catch {
