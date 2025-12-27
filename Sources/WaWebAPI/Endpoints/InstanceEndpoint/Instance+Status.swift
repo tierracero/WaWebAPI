@@ -21,9 +21,9 @@ extension InstanceEndpoint {
     /// - Returns: Promise containing Boolean
     public func status(
         containerId: String
-    ) throws -> EventLoopFuture<WaWebResponsePayload<StatusResponse>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<StatusResponse>>{
         do {
-            return try api.post(WaWebResponsePayload<StatusResponse>.self, endpoint: .instance("status"), payload: StopRequest(
+            return try api.post(WAResponsePayload<StatusResponse>.self, endpoint: .instance("status"), payload: StopRequest(
                 containerId: containerId
             ))
         }

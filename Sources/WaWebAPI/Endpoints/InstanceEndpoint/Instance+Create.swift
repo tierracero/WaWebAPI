@@ -14,6 +14,8 @@ extension InstanceEndpoint.CreateRequest: Content {}
 
 extension InstanceEndpoint {
     
+    // TODO: Implement this fucntion for public usr, rightnoe create dirctrly
+    
     /// Stops inatce container
     /// `POST` https://waweb.tierracero.co/api/v1/instance/create
     /// - Parameter contactId: String
@@ -21,9 +23,9 @@ extension InstanceEndpoint {
     public func status(
         containerId: String,
         containerPort: Int
-    ) throws -> EventLoopFuture<WaWebResponse>{
+    ) throws -> EventLoopFuture<WAResponse>{
         do {
-            return try api.post(WaWebResponse.self, endpoint: .instance("create"), payload: CreateRequest(
+            return try api.post(WAResponse.self, endpoint: .instance("create"), payload: CreateRequest(
                 containerId: containerId,
                 containerPort: containerPort
             ))
