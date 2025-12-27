@@ -365,56 +365,48 @@ extension API {
     
     func post<T:Codable>( toWaWeb: WaWebEndpointControler) throws -> EventLoopFuture<T>{
     
-        return getWaWebTokens(
-            app: application,
-            waWebAccount: profile.waWebAccount,
-            instanceId: profile.instanceId
-        ).flatMap { token in
-            
-            guard let token else {
-                return application.eventLoop.future(error: TCErrors.generalError(error: "Token"))
-            }
-            
-            let header = HTTPHeaders([
-                ("Accept", "application/json")
-            ])
-            
-            var path = toWaWeb.path
-            
-            switch toWaWeb {
-            case .docker(let string):
-                if !string.isEmpty {
-                    path += "/\(string)"
-                }
-            }
-            
-            let url = URI(
-                scheme: "http",
-                host: "172.18.0.1",
-                port: 8000,
-                path: "\(path)"
-            )
-            
-            print(url.description)
-            
-            return application.client.post(url, headers: header).flatMapThrowing { response in
-                
-                do{
-                    return try response.content.decode(T.self, using: JSONDecoder())
-                }
-                catch {
-                    
-                    print(error)
-                    
-                    throw TCErrors.generalError(
-                        error: "ERROR:\n\(String(describing: error))\n\n" +
-                        "URL: \(url.description)\n\n" +
-                        "PAYLOAD: NO_PAYLOAD"
-                    )
-                    
-                }
+        
+        let header = HTTPHeaders([
+            ("Accept", "application/json")
+        ])
+        
+        var path = toWaWeb.path
+        
+        switch toWaWeb {
+        case .docker(let string):
+            if !string.isEmpty {
+                path += "/\(string)"
             }
         }
+        
+        let url = URI(
+            scheme: "http",
+            host: "172.18.0.1",
+            port: 8000,
+            path: "\(path)"
+        )
+        
+        print(url.description)
+        
+        return application.client.post(url, headers: header).flatMapThrowing { response in
+            
+            do{
+                return try response.content.decode(T.self, using: JSONDecoder())
+            }
+            catch {
+                
+                print(error)
+                
+                throw TCErrors.generalError(
+                    error: "ERROR:\n\(String(describing: error))\n\n" +
+                    "URL: \(url.description)\n\n" +
+                    "PAYLOAD: NO_PAYLOAD"
+                )
+                
+            }
+        }
+        
+        
     }
     
     
