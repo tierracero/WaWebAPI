@@ -39,6 +39,8 @@ public struct API {
     
     public var contact: ContactEndpoint { .init(app: application, token: WAWEBAPI_TOKEN, profile: profile) }
     
+    public var instace: InstanceEndpoint { .init(app: application, token: WAWEBAPI_TOKEN, profile: profile) }
+    
     public var label: LabelEndpoint { .init(app: application, token: WAWEBAPI_TOKEN, profile: profile) }
     
     public var message: MessageEndpoint { .init(app: application, token: WAWEBAPI_TOKEN, profile: profile) }
