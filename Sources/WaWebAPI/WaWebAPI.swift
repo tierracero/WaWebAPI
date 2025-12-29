@@ -60,6 +60,11 @@ public struct WaWebAPI {
         return .init(app: application, token: token, profile: profile)
     }
     
+//    public func instace(token: String) -> InstanceEndpoint {
+//        return .init(token: token)
+//    }
+    
+    
 }
 
 extension Application {

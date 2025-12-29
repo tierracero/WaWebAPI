@@ -25,6 +25,7 @@ extension InstanceEndpoint {
         containerPort: Int
     ) throws -> EventLoopFuture<WAResponse>{
         do {
+            
             return try api.post(WAResponse.self, endpoint: .instance("create"), payload: CreateRequest(
                 containerId: containerId,
                 containerPort: containerPort

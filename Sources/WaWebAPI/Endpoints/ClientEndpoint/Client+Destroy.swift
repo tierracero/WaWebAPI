@@ -12,6 +12,7 @@ import WaWebAPICore
 import Vapor
 
 extension ClientEndpoint {
+    
     /// Archives this chat
     /// `POST` https://waweb.tierracero.co/api/v1/client/destroy
     /// - Returns: Promise containing Boolean
