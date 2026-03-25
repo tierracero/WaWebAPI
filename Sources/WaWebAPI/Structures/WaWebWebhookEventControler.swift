@@ -36,7 +36,7 @@ public struct CreateWaWebWebhookEventControleraWebTokens: TableMigration {
     }
 }
 
-public final class WaWebWebhookEventControler: Table, Schemable {
+public final class WaWebWebhookEventControler: Table, Schemable, Payloadable {
     
     public static var schemaName = "wawebapi"
     
