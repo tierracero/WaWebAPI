@@ -23,7 +23,7 @@ extension API {
         ).flatMap { token in
             
             guard let token else {
-                return application.eventLoop.future(error: TCErrors.generalError(error: "Token"))
+                return application.eventLoop.future(error: TCErrors.generalError(error: "Faild to locate Token 001"))
             }
             
             var header = HTTPHeaders([
@@ -184,7 +184,7 @@ extension API {
         ).flatMap { token in
             
             guard let token else {
-                return application.eventLoop.future(error: TCErrors.generalError(error: "Token"))
+                return application.eventLoop.future(error: TCErrors.generalError(error: "Faild to locate Token 002"))
             }
             
             let header = HTTPHeaders([
@@ -289,7 +289,7 @@ extension API {
         ).flatMap { token in
             
             guard let token else {
-                return application.eventLoop.future(error: TCErrors.generalError(error: "Token"))
+                return application.eventLoop.future(error: TCErrors.generalError(error: "Faild to locate Token 003"))
             }
             
             let header = HTTPHeaders([
