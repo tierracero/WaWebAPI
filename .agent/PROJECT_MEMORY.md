@@ -17,10 +17,11 @@ Durable verified state for WaWebAPI.
 - Tokens are loaded from PostgreSQL and cached in-process.
 - Payload requests may use HMAC-SHA256 authentication.
 - Persistence models/migrations use the `wawebapi` schema.
+- Message-manager persistence adapts the WaWebAPICore protocol and enums into a queue table plus PostgreSQL enum migrations.
 
 ## Current Quality State
 
-- The test target is a placeholder with no behavioral assertions.
+- The test target has focused message-manager projection and enum raw-value assertions, but still lacks transport and database-integration coverage.
 - Sensitive debug logging and transport duplication are documented debt.
 - Several configuration, naming, schema, and cache questions remain open.
 

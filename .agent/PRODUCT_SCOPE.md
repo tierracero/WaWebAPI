@@ -20,7 +20,7 @@ Authoritative verified scope for WaWebAPI.
 - Resolve WaWeb tokens from PostgreSQL with an in-process cache.
 - Build authenticated POST requests, optionally signing payloads with HMAC-SHA256.
 - Decode common `WAResponse` and `WAResponsePayload<T>` envelopes.
-- Define Bridges/SwifQL persistence models and migrations for accounts, instances, tokens, webhook events, and related enums.
+- Define Bridges/SwifQL persistence models and migrations for accounts, instances, tokens, webhook events, the message-manager queue, and related enums.
 
 ## Dependency Boundary
 

@@ -41,16 +41,20 @@ Each family has a base class file plus operation extensions:
 | `Sources/WaWebAPI/Structures/WaWebInstances.swift` | Instance table, migration, profile adapter |
 | `Sources/WaWebAPI/Structures/WaWebTokens.swift` | Token table and migration |
 | `Sources/WaWebAPI/Structures/WaWebWebhookEventControler.swift` | Webhook event table and migration |
+| `Sources/WaWebAPI/Structures/WaWebMessageManager.swift` | Message-manager queue table, migration, and Core item adapter |
 | `Sources/WaWebAPI/Structures/APIResponse.swift` | Common response envelopes |
 | `Sources/WaWebAPI/Enums/WaWebAccountRelation.swift` | Relation enum migration |
 | `Sources/WaWebAPI/Enums/WaWebInstancesStatus.swift` | Instance-status enum migration |
 | `Sources/WaWebAPI/Enums/WebhookEvents.swift` | Webhook-event enum migration |
+| `Sources/WaWebAPI/Enums/WaWebMessageManagerPriority.swift` | Message-manager priority enum migration and persistence mapping |
+| `Sources/WaWebAPI/Enums/WaWebMessageManagerStatus.swift` | Message-manager status enum migration |
+| `Sources/WaWebAPI/Enums/WaWebMessageManagerType.swift` | Message-manager endpoint-type enum migration and persistence mapping |
 
 ## Tests
 
 | Path | Purpose |
 |---|---|
-| `Tests/WaWebAPITests/WaWebAPITests.swift` | XCTest target; currently generated placeholder |
+| `Tests/WaWebAPITests/WaWebAPITests.swift` | Focused persistence adapter and enum mapping assertions |
 
 ## Files Outside Agent Scope by Default
 

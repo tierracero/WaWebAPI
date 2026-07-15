@@ -24,4 +24,4 @@ public struct CreateWaWebInstancesStatus: EnumMigration {
     }
 }
 
-extension WaWebInstancesStatus: BridgesEnum {}
+extension WaWebInstancesStatus: @retroactive BridgesEnum {}

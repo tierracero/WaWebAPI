@@ -22,4 +22,4 @@ public struct CreateWaWebMessageManagerStatus: EnumMigration {
     }
 }
 
-extension WaWebMessageManagerStatus: BridgesEnum {}
+extension WaWebMessageManagerStatus: @retroactive BridgesEnum {}

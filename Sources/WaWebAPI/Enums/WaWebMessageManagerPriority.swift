@@ -22,35 +22,4 @@ public struct CreateWaWebMessageManagerPriority: EnumMigration {
     }
 }
 
-extension WaWebMessageManagerPriority: BridgesEnum {
-
-    public typealias RawValue = String
-
-    public static var allCases: [WaWebMessageManagerPriority] {
-        [.low, .med, .high]
-    }
-
-    public init?(rawValue: String) {
-        switch rawValue {
-        case "low":
-            self = .low
-        case "med":
-            self = .med
-        case "high":
-            self = .high
-        default:
-            return nil
-        }
-    }
-
-    public var rawValue: String {
-        switch self {
-        case .low:
-            return "low"
-        case .med:
-            return "med"
-        case .high:
-            return "high"
-        }
-    }
-}
+extension WaWebMessageManagerPriority: @retroactive BridgesEnum {}

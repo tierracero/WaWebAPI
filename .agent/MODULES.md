@@ -7,7 +7,7 @@ Repository module map.
 | Target | Path | Responsibility |
 |---|---|---|
 | `WaWebAPI` | `Sources/WaWebAPI/` | Public library, endpoint adapters, transport, persistence |
-| `WaWebAPITests` | `Tests/WaWebAPITests/` | XCTest target; currently placeholder only |
+| `WaWebAPITests` | `Tests/WaWebAPITests/` | XCTest target with focused persistence adapter coverage |
 
 ## WaWebAPI Source Areas
 
@@ -26,8 +26,8 @@ Repository module map.
 | `Functions/post.swift` | Shared HTTP POST transport and decoding |
 | `Functions/getWaWebTokens.swift` | Token cache and database token lookup |
 | `Functions/getWaWebAccounts.swift` | Account lookup helpers |
-| `Structures/` | Response envelopes, database tables, migrations |
-| `Enums/` | Persisted enum migrations and enum extensions |
+| `Structures/` | Response envelopes and database tables/migrations, including the message-manager queue |
+| `Enums/` | Persisted enum migrations and persistence conformances, including message-manager priority, status, and endpoint type |
 
 ## Direct Dependency Roles
 

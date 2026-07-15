@@ -24,5 +24,5 @@ public struct CreateWaWebAccountRelation: EnumMigration {
     }
 }
 
-extension WaWebAccountRelation: BridgesEnum {}
+extension WaWebAccountRelation: @retroactive BridgesEnum {}
 
