@@ -15,34 +15,7 @@ public struct CreateWaWebWebhookEvents: EnumMigration {
     
     public static func prepare(on conn: any BridgeConnection) -> EventLoopFuture<Void> {
         createBuilder
-            .add(
-                .message,
-                .loadingScreen,
-                .qr,
-                .authenticated,
-                .authFailure,
-                .ready,
-                .disconnected,
-                .groupAdminGhanged,
-                .messageCreate,
-                .messageRevokeEveryone,
-                .messageRevokeMe,
-                .messageAck,
-                .messageReaction,
-                .mediaUploaded,
-                .groupJoin,
-                .groupLeave,
-                .groupMembershipRequest,
-                .groupUpdate,
-                .changeState,
-                .call,
-                .incomingCall,
-                .messageEdit,
-                .voteUpdate,
-                .pollCreation,
-                .pollUpdate,
-                .contactChanged
-            )
+            .add(Enum.allCases)
             .execute(on: conn)
     }
     

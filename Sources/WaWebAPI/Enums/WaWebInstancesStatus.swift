@@ -15,7 +15,7 @@ public struct CreateWaWebInstancesStatus: EnumMigration {
     
     public static func prepare(on conn: any BridgeConnection) -> EventLoopFuture<Void> {
         createBuilder
-            .add(.offline, .active, .canceled, .suspended)
+            .add(Enum.allCases)
             .execute(on: conn)
     }
     

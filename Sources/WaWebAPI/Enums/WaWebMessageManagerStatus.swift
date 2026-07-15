@@ -1,28 +1,25 @@
 //
-//  WaWebAccountRelation.swift
-//
-//
-//  Created by Victor Cantu on 3/29/24.
+//  WaWebMessageManagerStatus.swift
+//  WaWebAPI
 //
 
 import Foundation
-import WaWebAPICore
 import Bridges
+import WaWebAPICore
 
-public struct CreateWaWebAccountRelation: EnumMigration {
-    
-    public typealias Enum = WaWebAccountRelation
-    
+public struct CreateWaWebMessageManagerStatus: EnumMigration {
+
+    public typealias Enum = WaWebMessageManagerStatus
+
     public static func prepare(on conn: any BridgeConnection) -> EventLoopFuture<Void> {
         createBuilder
             .add(Enum.allCases)
             .execute(on: conn)
     }
-    
+
     public static func revert(on conn: any BridgeConnection) -> EventLoopFuture<Void> {
         dropBuilder.execute(on: conn)
     }
 }
 
-extension WaWebAccountRelation: BridgesEnum {}
-
+extension WaWebMessageManagerStatus: BridgesEnum {}
