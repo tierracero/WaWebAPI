@@ -30,12 +30,12 @@ extension MessageEndpoint {
         chatId: WhatsAppChatId,
         message: String,
         options: MessageSendOptions?
-    ) throws -> EventLoopFuture<WAResponsePayload<Message>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<SendMessageResponse>>{
         
         print("🟢  002")
         
         do {
-            return try api.post( WAResponsePayload<Message>.self, endpoint: .message("send/message"), payload: SendMessageTextRequest(
+            return try api.post( WAResponsePayload<SendMessageResponse>.self, endpoint: .message("send/message"), payload: SendMessageTextRequest(
                 priority: priority,
                 chatId: chatId,
                 message: message,
@@ -57,9 +57,9 @@ extension MessageEndpoint {
         chatId: WhatsAppChatId,
         media: MessageMedia,
         options: MessageSendOptions?
-    ) throws -> EventLoopFuture<WAResponsePayload<Message>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<SendMessageResponse>>{
         do {
-            return try api.post( WAResponsePayload<Message>.self, endpoint: .message("send/media"), payload: SendMessageMediaRequest(
+            return try api.post( WAResponsePayload<SendMessageResponse>.self, endpoint: .message("send/media"), payload: SendMessageMediaRequest(
                 priority: priority,
                 chatId: chatId,
                 media: media,
@@ -82,9 +82,9 @@ extension MessageEndpoint {
         chatId: WhatsAppChatId,
         mediaUrl: String,
         options: MessageSendOptions?
-    ) throws -> EventLoopFuture<WAResponsePayload<Message>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<SendMessageResponse>>{
         do {
-            return try api.post( WAResponsePayload<Message>.self, endpoint: .message("send/media"), payload: SendMessageMediaRequest(
+            return try api.post( WAResponsePayload<SendMessageResponse>.self, endpoint: .message("send/media"), payload: SendMessageMediaRequest(
                 priority: priority,
                 chatId: chatId,
                 media: nil,
@@ -107,9 +107,9 @@ extension MessageEndpoint {
         chatId: WhatsAppChatId,
         location: Location,
         options: MessageSendOptions?
-    ) throws -> EventLoopFuture<WAResponsePayload<Message>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<SendMessageResponse>>{
         do {
-            return try api.post( WAResponsePayload<Message>.self, endpoint: .message("send/location"), payload: SendMessageLocationRequest(
+            return try api.post( WAResponsePayload<SendMessageResponse>.self, endpoint: .message("send/location"), payload: SendMessageLocationRequest(
                 priority: priority,
                 chatId: chatId,
                 location: location,
@@ -131,9 +131,9 @@ extension MessageEndpoint {
         chatId: WhatsAppChatId,
         poll: Poll,
         options: MessageSendOptions?
-    ) throws -> EventLoopFuture<WAResponsePayload<Message>>{
+    ) throws -> EventLoopFuture<WAResponsePayload<SendMessageResponse>>{
         do {
-            return try api.post( WAResponsePayload<Message>.self, endpoint: .message("send/poll"), payload: SendMessagePollRequest(
+            return try api.post( WAResponsePayload<SendMessageResponse>.self, endpoint: .message("send/poll"), payload: SendMessagePollRequest(
                 priority: priority,
                 chatId: chatId,
                 poll: poll,
