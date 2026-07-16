@@ -10,13 +10,13 @@ import TCFundamentals
 import WaWebAPICore
 import Vapor
 
-extension MessageEndpoint.SendMessageTextRequest: Content {}
+extension MessageEndpoint.SendMessageTextRequest: @retroactive Content {}
 
-extension MessageEndpoint.SendMessageMediaRequest: Content {}
+extension MessageEndpoint.SendMessageMediaRequest: @retroactive Content {}
 
-extension MessageEndpoint.SendMessageLocationRequest: Content {}
+extension MessageEndpoint.SendMessageLocationRequest: @retroactive Content {}
 
-extension MessageEndpoint.SendMessagePollRequest: Content {}
+extension MessageEndpoint.SendMessagePollRequest: @retroactive Content {}
 
 extension MessageEndpoint {
     
@@ -26,6 +26,7 @@ extension MessageEndpoint {
     /// - Parameter message: String
     /// - Returns: Promise containing Message that was just sent.
     public func sendMessage(
+        priority: WaWebMessageManagerPriority,
         chatId: WhatsAppChatId,
         message: String,
         options: MessageSendOptions?
@@ -35,6 +36,7 @@ extension MessageEndpoint {
         
         do {
             return try api.post( WAResponsePayload<Message>.self, endpoint: .message("send/message"), payload: SendMessageTextRequest(
+                priority: priority,
                 chatId: chatId,
                 message: message,
                 options: options
@@ -51,12 +53,14 @@ extension MessageEndpoint {
     /// - Parameter media: MessageMedia
     /// - Returns: Promise containing Message that was just sent.
     public func sendMessage(
+        priority: WaWebMessageManagerPriority,
         chatId: WhatsAppChatId,
         media: MessageMedia,
         options: MessageSendOptions?
     ) throws -> EventLoopFuture<WAResponsePayload<Message>>{
         do {
             return try api.post( WAResponsePayload<Message>.self, endpoint: .message("send/media"), payload: SendMessageMediaRequest(
+                priority: priority,
                 chatId: chatId,
                 media: media,
                 url: nil,
@@ -74,12 +78,14 @@ extension MessageEndpoint {
     /// - Parameter media: MessageMedia
     /// - Returns: Promise containing Message that was just sent.
     public func sendMessage(
+        priority: WaWebMessageManagerPriority,
         chatId: WhatsAppChatId,
         mediaUrl: String,
         options: MessageSendOptions?
     ) throws -> EventLoopFuture<WAResponsePayload<Message>>{
         do {
             return try api.post( WAResponsePayload<Message>.self, endpoint: .message("send/media"), payload: SendMessageMediaRequest(
+                priority: priority,
                 chatId: chatId,
                 media: nil,
                 url: mediaUrl,
@@ -97,12 +103,14 @@ extension MessageEndpoint {
     /// - Parameter location: Location
     /// - Returns: Promise containing Message that was just sent.
     public func sendMessage(
+        priority: WaWebMessageManagerPriority,
         chatId: WhatsAppChatId,
         location: Location,
         options: MessageSendOptions?
     ) throws -> EventLoopFuture<WAResponsePayload<Message>>{
         do {
             return try api.post( WAResponsePayload<Message>.self, endpoint: .message("send/location"), payload: SendMessageLocationRequest(
+                priority: priority,
                 chatId: chatId,
                 location: location,
                 options: options
@@ -119,12 +127,14 @@ extension MessageEndpoint {
     /// - Parameter poll: Poll
     /// - Returns: Promise containing Message that was just sent.
     public func sendMessage(
+        priority: WaWebMessageManagerPriority,
         chatId: WhatsAppChatId,
         poll: Poll,
         options: MessageSendOptions?
     ) throws -> EventLoopFuture<WAResponsePayload<Message>>{
         do {
             return try api.post( WAResponsePayload<Message>.self, endpoint: .message("send/poll"), payload: SendMessagePollRequest(
+                priority: priority,
                 chatId: chatId,
                 poll: poll,
                 options: options
