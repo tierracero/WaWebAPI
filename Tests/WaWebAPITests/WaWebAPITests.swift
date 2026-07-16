@@ -1,4 +1,5 @@
 import XCTest
+import WaWebAPICore
 @testable import WaWebAPI
 
 final class WaWebAPITests: XCTestCase {
@@ -31,12 +32,15 @@ final class WaWebAPITests: XCTestCase {
             modifiedAt: 200,
             expiresAt: 300,
             sentAt: nil,
+            reqId: "request-test",
             instanceId: "instance-test",
             chatId: "chat-test",
+            mid: "message-test",
+            lid: "lid-test",
+            wid: nil,
             endpoint: .media,
             payload: "{}",
-            file: "file-test",
-            mid: "message-test",
+            file: nil,
             priority: .high,
             status: .queued
         )
@@ -48,12 +52,15 @@ final class WaWebAPITests: XCTestCase {
         XCTAssertEqual(item.modifiedAt, 200)
         XCTAssertEqual(item.expiresAt, 300)
         XCTAssertNil(item.sentAt)
+        XCTAssertEqual(item.reqId, "request-test")
         XCTAssertEqual(item.instanceId, "instance-test")
         XCTAssertEqual(item.chatId, "chat-test")
+        XCTAssertEqual(item.mid, "message-test")
+        XCTAssertEqual(item.lid, "lid-test")
+        XCTAssertNil(item.wid)
         XCTAssertEqual(item.endpoint.rawValue, "media")
         XCTAssertEqual(item.payload, "{}")
-        XCTAssertEqual(item.file, "file-test")
-        XCTAssertEqual(item.mid, "message-test")
+        XCTAssertNil(item.file)
         XCTAssertEqual(item.priority.rawValue, "high")
         XCTAssertEqual(item.status.rawValue, "queued")
     }

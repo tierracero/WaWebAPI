@@ -22,12 +22,13 @@ public struct CreateWaWebMessageManager: TableMigration {
             .column("sentAt", .bigint)
             .column("reqId", .text, .notNull)
             .column("instanceId", .text, .notNull)
-            .column("chatId", .text)
+            .column("chatId", .text, .notNull)
+            .column("mid", .text, .notNull)
+            .column("lid", .text)
+            .column("wid", .text)
             .column("endpoint", .auto(from: WaWebMessageManagerType.self), .notNull)
             .column("payload", .text, .notNull)
             .column("file", .text)
-            .column("mid", .text, .notNull)
-            .column("wid", .text)
             .column("priority", .auto(from: WaWebMessageManagerPriority.self), .notNull)
             .column("status", .auto(from: WaWebMessageManagerStatus.self), .notNull)
             .execute(on: conn)
@@ -64,7 +65,16 @@ public final class WaWebMessageManager: WaWebMessageManagerProtocable, Table, Sc
     public var instanceId: String
 
     @Column("chatId")
-    public var chatId: String?
+    public var chatId: String
+
+    @Column("mid")
+    public var mid: String
+
+    @Column("lid")
+    public var lid: String?
+
+    @Column("wid")
+    public var wid: String?
 
     @Column("endpoint")
     public var endpoint: WaWebMessageManagerType
@@ -74,12 +84,6 @@ public final class WaWebMessageManager: WaWebMessageManagerProtocable, Table, Sc
 
     @Column("file")
     public var file: String?
-
-    @Column("mid")
-    public var mid: String
-
-    @Column("wid")
-    public var wid: String?
 
     @Column("priority")
     public var priority: WaWebMessageManagerPriority
@@ -97,12 +101,13 @@ public final class WaWebMessageManager: WaWebMessageManagerProtocable, Table, Sc
         sentAt: Int64?,
         reqId: String,
         instanceId: String,
-        chatId: String?,
+        chatId: String,
+        mid: String,
+        lid: String?,
+        wid: String?,
         endpoint: WaWebMessageManagerType,
         payload: String,
         file: String?,
-        mid: String,
-        wid: String?,
         priority: WaWebMessageManagerPriority,
         status: WaWebMessageManagerStatus
     ) {
@@ -114,11 +119,12 @@ public final class WaWebMessageManager: WaWebMessageManagerProtocable, Table, Sc
         self.reqId = reqId
         self.instanceId = instanceId
         self.chatId = chatId
+        self.mid = mid
+        self.lid = lid
+        self.wid = wid
         self.endpoint = endpoint
         self.payload = payload
         self.file = file
-        self.mid = mid
-        self.wid = wid
         self.priority = priority
         self.status = status
     }
@@ -133,11 +139,12 @@ public final class WaWebMessageManager: WaWebMessageManagerProtocable, Table, Sc
             reqId: reqId,
             instanceId: instanceId,
             chatId: chatId,
+            mid: mid,
+            lid: lid,
+            wid: wid,
             endpoint: endpoint,
             payload: payload,
             file: file,
-            mid: mid,
-            wid: wid,
             priority: priority,
             status: status
         )
