@@ -22,7 +22,7 @@ public struct CreateWaWebMessageManager: TableMigration {
             .column("sentAt", .bigint)
             .column("reqId", .text, .notNull)
             .column("instanceId", .text, .notNull)
-            .column("chatId", .text, .notNull)
+            .column("chatId", .text)
             .column("endpoint", .auto(from: WaWebMessageManagerType.self), .notNull)
             .column("payload", .text, .notNull)
             .column("file", .text)
@@ -64,7 +64,7 @@ public final class WaWebMessageManager: WaWebMessageManagerProtocable, Table, Sc
     public var instanceId: String
 
     @Column("chatId")
-    public var chatId: String
+    public var chatId: String?
 
     @Column("endpoint")
     public var endpoint: WaWebMessageManagerType
@@ -97,7 +97,7 @@ public final class WaWebMessageManager: WaWebMessageManagerProtocable, Table, Sc
         sentAt: Int64?,
         reqId: String,
         instanceId: String,
-        chatId: String,
+        chatId: String?,
         endpoint: WaWebMessageManagerType,
         payload: String,
         file: String?,
