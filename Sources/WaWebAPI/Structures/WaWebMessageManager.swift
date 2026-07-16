@@ -20,6 +20,7 @@ public struct CreateWaWebMessageManager: TableMigration {
             .column("modifiedAt", .bigint, .notNull)
             .column("expiresAt", .bigint)
             .column("sentAt", .bigint)
+            .column("reqId", .text, .notNull)
             .column("instanceId", .text, .notNull)
             .column("chatId", .text, .notNull)
             .column("endpoint", .auto(from: WaWebMessageManagerType.self), .notNull)
@@ -56,6 +57,9 @@ public final class WaWebMessageManager: WaWebMessageManagerProtocable, Table, Sc
     @Column("sentAt")
     public var sentAt: Int64?
 
+    @Column("reqId")
+    public var reqId: String
+
     @Column("instanceId")
     public var instanceId: String
 
@@ -91,6 +95,7 @@ public final class WaWebMessageManager: WaWebMessageManagerProtocable, Table, Sc
         modifiedAt: Int64 = getNow(),
         expiresAt: Int64?,
         sentAt: Int64?,
+        reqId: String,
         instanceId: String,
         chatId: String,
         endpoint: WaWebMessageManagerType,
@@ -106,6 +111,7 @@ public final class WaWebMessageManager: WaWebMessageManagerProtocable, Table, Sc
         self.modifiedAt = modifiedAt
         self.expiresAt = expiresAt
         self.sentAt = sentAt
+        self.reqId = reqId
         self.instanceId = instanceId
         self.chatId = chatId
         self.endpoint = endpoint
@@ -124,6 +130,7 @@ public final class WaWebMessageManager: WaWebMessageManagerProtocable, Table, Sc
             modifiedAt: modifiedAt,
             expiresAt: expiresAt,
             sentAt: sentAt,
+            reqId: reqId,
             instanceId: instanceId,
             chatId: chatId,
             endpoint: endpoint,
