@@ -25,7 +25,7 @@ public struct CreateWaWebMessageManager: TableMigration {
             .column("chatId", .text, .notNull)
             .column("endpoint", .auto(from: WaWebMessageManagerType.self), .notNull)
             .column("payload", .text, .notNull)
-            .column("file", .text, .notNull)
+            .column("file", .text)
             .column("mid", .text, .notNull)
             .column("wid", .text)
             .column("priority", .auto(from: WaWebMessageManagerPriority.self), .notNull)
@@ -73,7 +73,7 @@ public final class WaWebMessageManager: WaWebMessageManagerProtocable, Table, Sc
     public var payload: String
 
     @Column("file")
-    public var file: String
+    public var file: String?
 
     @Column("mid")
     public var mid: String
@@ -100,7 +100,7 @@ public final class WaWebMessageManager: WaWebMessageManagerProtocable, Table, Sc
         chatId: String,
         endpoint: WaWebMessageManagerType,
         payload: String,
-        file: String,
+        file: String?,
         mid: String,
         wid: String?,
         priority: WaWebMessageManagerPriority,
