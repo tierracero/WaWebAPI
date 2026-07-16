@@ -58,36 +58,48 @@ public final class WaWebMessageManager: WaWebMessageManagerProtocable, Table, Sc
     @Column("sentAt")
     public var sentAt: Int64?
 
+    /// req.id HTTP Requste id
     @Column("reqId")
     public var reqId: String
 
+    /// Container / InstanceId
     @Column("instanceId")
     public var instanceId: String
 
+    /// Destination chat, group, or contact.
+    /// Example: 5215550000000@c.us
     @Column("chatId")
     public var chatId: String
 
+    /// internal message id
     @Column("mid")
     public var mid: String
 
+    /// 2311231231234@lid
     @Column("lid")
     public var lid: String?
 
+    /// Whatsapp message id Message.id.serilized
     @Column("wid")
     public var wid: String?
 
+    /// text, media, location, poll
     @Column("endpoint")
     public var endpoint: WaWebMessageManagerType
 
+    /// JSON Paylod
     @Column("payload")
     public var payload: String
 
+    /// File to download
     @Column("file")
     public var file: String?
 
+    /// low, med, high
     @Column("priority")
     public var priority: WaWebMessageManagerPriority
 
+    /// queued, sent, failed, cancelled, expired
     @Column("status")
     public var status: WaWebMessageManagerStatus
 
