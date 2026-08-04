@@ -15,6 +15,11 @@ import Vapor
 public final class ClientEndpoint: ClientComponents {
     
     var api: API
+
+    init(api: API) {
+        self.api = api
+        super.init()
+    }
     
     public init (
         app: Application,

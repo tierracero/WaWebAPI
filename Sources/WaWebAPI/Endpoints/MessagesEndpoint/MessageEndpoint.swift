@@ -14,6 +14,11 @@ import Vapor
 public final class MessageEndpoint: MessageComponents {
     
     public var api: API
+
+    init(api: API) {
+        self.api = api
+        super.init()
+    }
     
     public init (
         app: Application,

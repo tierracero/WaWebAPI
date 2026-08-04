@@ -29,21 +29,21 @@ public struct API {
         self.profile = profile
     }
     
-    public var auth: AuthEndpoint { .init(app: application, token: WAWEBAPI_TOKEN, profile: profile) }
+    public var auth: AuthEndpoint { .init(api: self) }
     
-    public var call: CallEndpoint { .init(app: application, token: WAWEBAPI_TOKEN, profile: profile) }
+    public var call: CallEndpoint { .init(api: self) }
     
-    public var chat: ChatEndpoint { .init(app: application, token: WAWEBAPI_TOKEN, profile: profile) }
+    public var chat: ChatEndpoint { .init(api: self) }
     
-    public var client: ClientEndpoint { .init(app: application, token: WAWEBAPI_TOKEN, profile: profile) }
+    public var client: ClientEndpoint { .init(api: self) }
     
-    public var contact: ContactEndpoint { .init(app: application, token: WAWEBAPI_TOKEN, profile: profile) }
+    public var contact: ContactEndpoint { .init(api: self) }
     
-    public var instace: InstanceEndpoint { .init(app: application, token: WAWEBAPI_TOKEN, profile: profile) }
+    public var instace: InstanceEndpoint { .init(api: self) }
     
-    public var label: LabelEndpoint { .init(app: application, token: WAWEBAPI_TOKEN, profile: profile) }
+    public var label: LabelEndpoint { .init(api: self) }
     
-    public var message: MessageEndpoint { .init(app: application, token: WAWEBAPI_TOKEN, profile: profile) }
+    public var message: MessageEndpoint { .init(api: self) }
     
     
     

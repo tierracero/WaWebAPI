@@ -1,5 +1,7 @@
 // The Swift Programming Language
 // https://docs.swift.org/swift-book
+// WaWebAPI.swift
+//
 
 import Foundation
 import TCFoundation
@@ -10,8 +12,6 @@ import VaporBridges
 import Bridges
 import SwifQL
 import Vapor
-
-// .waapi.profile(profile)
 
 public struct WaWebAPI {
     
@@ -36,14 +36,13 @@ public struct WaWebAPI {
         public static var environment: Self {
             
             return .init(
-                WAWEBAPI_TOKEN: Environment.get("WAAPI_TOKEN")
+                WAWEBAPI_TOKEN: Environment.get("WAWEBAPI_TOKEN")
             )
             
         }
     }
     
     public func profile(_ profile: WaWebInstances) -> API {
-        
         guard let token = Environment.get("WAWEBAPI_TOKEN") else {
             print("🔴  🔴  🔴  🔴  🔴  🔴  🔴  🔴  🔴  🔴  🔴  🔴  🔴  🔴  🔴  🔴  ")
             fatalError("[WaWebAPI] WAWEBAPI_TOKEN key not set.")
@@ -84,7 +83,7 @@ extension WaWebAPI {
     public var configuration: Configuration {
         get {
             guard let config = application.storage[ConfigurationKey.self] else {
-                fatalError("[WaAPI] Please configure WaAPI in app.swift")
+                fatalError("[WaWebAPI] Please configure WaWebAPI in app.swift")
             }
             return config
         }

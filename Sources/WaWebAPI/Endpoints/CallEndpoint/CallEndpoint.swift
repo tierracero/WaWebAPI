@@ -12,6 +12,11 @@ import Vapor
 public final class CallEndpoint: CallComponents {
     
     var api: API
+
+    init(api: API) {
+        self.api = api
+        super.init()
+    }
     
     public init (
         app: Application,
