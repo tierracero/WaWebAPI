@@ -42,7 +42,7 @@ public struct WaWebAPI {
         }
     }
     
-    public func profile(_ profile: WaWebInstances) -> API {
+    public func profile(_ profile: WaWebInstances) -> API { 
         return .init(app: application, profile: profile)
     }
     
