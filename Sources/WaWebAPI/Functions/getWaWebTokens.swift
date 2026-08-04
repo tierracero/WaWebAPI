@@ -68,8 +68,6 @@ func getWaWebTokens(app: Application, waWebAccount: UUID, instanceId: String) ->
                  \WaWebTokens.$instanceId ||> PgArray([instanceId]) => .textArray
             )
             
-            print(query.prepare(.psql).plain)
-            
             return query.execute(on: conn).first(decoding: WaWebTokens.self).flatMap { token in
                 
                 guard let token else {
@@ -118,10 +116,6 @@ func getWaWebTokens(app: Application, token tokenId: String, instanceId: String?
                 )|
             )
         }
-        
-        print("🟢   🟢   🟢   🟢   🟢   🟢   🟢   🟢   🟢   ")
-        print(query.prepare(.psql).plain)
-        print("-  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -")
         
         return app.postgres.transaction(to: .psqlEnvironment) { conn in
             
