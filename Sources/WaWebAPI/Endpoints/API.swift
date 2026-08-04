@@ -15,17 +15,13 @@ public struct API {
 
     let application: Application
     
-    let WAWEBAPI_TOKEN: String
-    
     let profile: WaWebInstances
     
     init (
         app: Application,
-        token: String,
         profile: WaWebInstances
     ) {
         self.application = app
-        self.WAWEBAPI_TOKEN = token
         self.profile = profile
     }
     

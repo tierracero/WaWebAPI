@@ -42,21 +42,9 @@ public struct WaWebAPI {
         }
     }
     
-    public func profile(_ profile: WaWebInstances) -> API {
-        guard let token = Environment.get("WAWEBAPI_TOKEN") else {
-            fatalError("[WaWebAPI] WAWEBAPI_TOKEN key not set.")
-        }
-        return .init(app: application, token: token, profile: profile)
+    public func profile(profile: WaWebInstances) -> API {
+        return .init(app: application, profile: profile)
     }
-    
-    public func profile(token: String, profile: WaWebInstances) -> API {
-        return .init(app: application, token: token, profile: profile)
-    }
-    
-//    public func instace(token: String) -> InstanceEndpoint {
-//        return .init(token: token)
-//    }
-    
     
 }
 

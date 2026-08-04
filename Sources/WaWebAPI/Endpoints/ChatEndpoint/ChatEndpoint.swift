@@ -22,10 +22,9 @@ public final class ChatEndpoint: ChatComponents {
     
     public init (
         app: Application,
-        token: String,
         profile: WaWebInstances
     ) {
-        self.api = .init(app: app, token: token, profile: profile)
+        self.api = .init(app: app, profile: profile)
         super.init()
     }
     
