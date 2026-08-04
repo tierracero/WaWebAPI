@@ -25,6 +25,7 @@ public struct CreateWaWebWebhookEventControleraWebTokens: TableMigration {
             .column("eventType", .auto(from: WebhookEvents.self), .notNull)
             .column("eventId", .text, .notNull, .notNull)
             .column("eventSubId", .text, .notNull)
+            .column("webhook", .text, .notNull)
             .column("payload", .text, .notNull)
             .column("status", .text, .notNull)
             .column("deliverd", .bool, .notNull)
@@ -68,6 +69,9 @@ public final class WaWebWebhookEventControler: Table, Schemable, Payloadable {
     @Column("eventSubId")
     public var eventSubId: String
     
+    @Column("webhook")
+    public var webhook: String
+    
     @Column("payload")
     public var payload: String
     
@@ -90,6 +94,7 @@ public final class WaWebWebhookEventControler: Table, Schemable, Payloadable {
         eventType: WebhookEvents,
         eventId: String,
         eventSubId: String,
+        webhook: String,
         payload: String,
         status: String,
         deliverd: Bool
@@ -102,6 +107,7 @@ public final class WaWebWebhookEventControler: Table, Schemable, Payloadable {
         self.eventType = eventType
         self.eventId = eventId
         self.eventSubId = eventSubId
+        self.webhook = webhook
         self.payload = payload
         self.status = status
         self.deliverd = deliverd
