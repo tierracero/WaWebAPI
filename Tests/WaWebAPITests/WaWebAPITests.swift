@@ -5,7 +5,7 @@ import WaWebAPICore
 final class WaWebAPITests: XCTestCase {
 
     func testSincRecivedMesagesRequestEncodesHours() throws {
-        let request = MessageEndpoint.SincRecivedMesagesRequest(hours: 8)
+        let request = InstanceEndpoint.SincRecivedMesagesRequest(hours: 8)
         let data = try JSONEncoder().encode(request)
         let object = try XCTUnwrap(
             JSONSerialization.jsonObject(with: data) as? [String: Any]
