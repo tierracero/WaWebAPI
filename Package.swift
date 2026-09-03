@@ -50,13 +50,8 @@ extension Array where Element == Dep {
 
 var deps: [Dep] = []
 
-#if os(macOS)
-deps.appendLocal("WaWebAPICore",
-                 targets: .product(name: "WaWebAPICore", package: "WaWebAPICore"))
-#else
 deps.appendFromMain("git@github.com:tierracero/WaWebAPICore.git",
                     targets: .product(name: "WaWebAPICore", package: "WaWebAPICore"))
-#endif
 
 deps.appendFromMain("git@github.com:tierracero/TCFoundation.git",
                              targets: .product(name: "TCFoundation", package: "TCFoundation"))
