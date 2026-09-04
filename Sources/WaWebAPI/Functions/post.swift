@@ -114,7 +114,9 @@ extension API {
                 path: "api/v1/\(path)"
             )
             
-            print(url.description)
+            print( "🌎  📡 \(url.description)")
+            
+            print(header)
             
             var PAYLOAD = "EMPTY_PAYLOAD"
             
