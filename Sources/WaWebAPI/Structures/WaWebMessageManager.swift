@@ -28,6 +28,7 @@ public struct CreateWaWebMessageManager: TableMigration {
             .column("wid", .text)
             .column("endpoint", .auto(from: WaWebMessageManagerType.self), .notNull)
             .column("payload", .text, .notNull)
+            .column("response", .text)
             .column("file", .text)
             .column("priority", .auto(from: WaWebMessageManagerPriority.self), .notNull)
             .column("status", .auto(from: WaWebMessageManagerStatus.self), .notNull)
@@ -36,6 +37,24 @@ public struct CreateWaWebMessageManager: TableMigration {
 
     public static func revert(on conn: any BridgeConnection) -> EventLoopFuture<Void> {
         dropBuilder.execute(on: conn)
+    }
+}
+
+/// Adds response logging to databases created before the response column existed.
+public struct AddResponseToWaWebMessageManager: TableMigration {
+
+    public typealias Table = WaWebMessageManager
+
+    public static func prepare(on conn: any BridgeConnection) -> EventLoopFuture<Void> {
+        updateBuilder
+            .addColumn("response", .text, checkIfNotExists: true)
+            .execute(on: conn)
+    }
+
+    public static func revert(on conn: any BridgeConnection) -> EventLoopFuture<Void> {
+        updateBuilder
+            .dropColumn("response", checkIfExists: true)
+            .execute(on: conn)
     }
 }
 
@@ -91,6 +110,10 @@ public final class WaWebMessageManager: WaWebMessageManagerProtocable, Table, Sc
     @Column("payload")
     public var payload: String
 
+    /// JSON response returned by the destination server, when available.
+    @Column("response")
+    public var response: String?
+
     /// File to download
     @Column("file")
     public var file: String?
@@ -119,6 +142,7 @@ public final class WaWebMessageManager: WaWebMessageManagerProtocable, Table, Sc
         wid: String?,
         endpoint: WaWebMessageManagerType,
         payload: String,
+        response: String? = nil,
         file: String?,
         priority: WaWebMessageManagerPriority,
         status: WaWebMessageManagerStatus
@@ -136,6 +160,7 @@ public final class WaWebMessageManager: WaWebMessageManagerProtocable, Table, Sc
         self.wid = wid
         self.endpoint = endpoint
         self.payload = payload
+        self.response = response
         self.file = file
         self.priority = priority
         self.status = status
@@ -156,6 +181,7 @@ public final class WaWebMessageManager: WaWebMessageManagerProtocable, Table, Sc
             wid: wid,
             endpoint: endpoint,
             payload: payload,
+            response: response,
             file: file,
             priority: priority,
             status: status
