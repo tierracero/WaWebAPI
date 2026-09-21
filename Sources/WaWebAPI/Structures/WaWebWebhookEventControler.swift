@@ -86,7 +86,7 @@ public final class WaWebWebhookEventControler: Table, Schemable, Payloadable {
     public init () {}
     
     public init(
-        id: UUID = .init(),
+        id: UUID = .v7(),
         createdAt: Int64 = getNow(),
         modifiedAt: Int64 = getNow(),
         waWebAccount: UUID,

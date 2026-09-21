@@ -129,7 +129,7 @@ public final class WaWebMessageManager: WaWebMessageManagerProtocable, Table, Sc
     public init() {}
 
     public init(
-        id: UUID = .init(),
+        id: UUID = .v7(),
         createdAt: Int64 = getNow(),
         modifiedAt: Int64 = getNow(),
         expiresAt: Int64?,

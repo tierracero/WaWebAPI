@@ -121,7 +121,7 @@ public final class WaWebAccounts: WaWebAccountsProtocable, Table, Schemable {
     public init () {}
     
     public init(
-        id: UUID = .init(),
+        id: UUID = .v7(),
         createdAt: Int64 = getNow(),
         modifiedAt: Int64 = getNow(),
         folio: String = "\(getNow().toString)\(callKey(7))",
