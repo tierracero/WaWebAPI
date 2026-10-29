@@ -68,7 +68,7 @@ deps.append("https://github.com/SwifQL/VaporBridges.git", from: "1.0.0-rc",
 deps.append("https://github.com/tierracero/PostgresBridge.git", from: "1.0.0-rc",
                 targets: .product(name: "PostgresBridge", package: "PostgresBridge"))
 
-deps.append("https://github.com/SwifQL/SwifQL.git", from: "2.0.0-beta.3.21.0",
+deps.append("https://github.com/SwifQL/SwifQL.git", exact: "2.0.0-beta.3.21.0",
                 targets: .product(name: "SwifQL", package: "SwifQL"))
 
 
