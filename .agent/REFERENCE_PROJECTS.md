@@ -29,9 +29,8 @@ Verify behavior in the dependency source before assuming helper semantics.
 
 ## Persistence Stack
 
-- `VaporBridges`
 - `PostgresBridge`
-- `SwifQL`
+- `SQL`
 
 Use their current source/docs for migration builders, property wrappers, query operators, decoding, and EventLoop behavior.
 

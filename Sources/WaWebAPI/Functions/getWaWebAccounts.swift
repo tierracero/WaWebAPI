@@ -7,7 +7,7 @@
 
 import Foundation
 import Vapor
-import SwifQL
+import SQL
 import PostgresBridge
 import Bridges
 import WaWebAPICore
@@ -23,7 +23,7 @@ func getWaWebAccounts(app: Application, id: UUID) -> EventLoopFuture<WaWebAccoun
     
     return app.postgres.transaction(to: .psqlEnvironment) { conn in
         
-        return SwifQL.select(WaWebAccounts.table.*).from(WaWebAccounts.table).where(
+        return SQL.select(WaWebAccounts.table.*).from(WaWebAccounts.table).where(
             \WaWebAccounts.$id == id
         ).execute(on: conn).first(decoding: WaWebAccounts.self).map { account in
             

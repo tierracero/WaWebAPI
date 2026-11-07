@@ -1,4 +1,4 @@
-// swift-tools-version: 5.10
+// swift-tools-version: 6.3
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -13,7 +13,9 @@ struct Dep {
 extension Array where Element == Dep {
     
     mutating func appendLocal(_ path: String, targets: Target.Dependency...) {
-        append(.init(package: .package(path: "~/Development/Packages/\(path)"), targets: targets))
+        let packagePath = URL(fileURLWithPath: NSHomeDirectory())
+            .appendingPathComponent("Development/Packages/\(path)").path
+        append(.init(package: .package(path: packagePath), targets: targets))
     }
     
     mutating func append(_ url: String, from: Version, targets: Target.Dependency...) {
@@ -52,24 +54,19 @@ var deps: [Dep] = []
 
 deps.appendFromMain("git@github.com:tierracero/WaWebAPICore.git",
                     targets: .product(name: "WaWebAPICore", package: "WaWebAPICore"))
-
 deps.appendFromMain("git@github.com:tierracero/TCFoundation.git",
-                             targets: .product(name: "TCFoundation", package: "TCFoundation"))
-
+                    targets: .product(name: "TCFoundation", package: "TCFoundation"))
 deps.appendFromMain("git@github.com:tierracero/TCFundamentals.git",
-                             targets: .product(name: "TCFundamentals", package: "TCFundamentals"))
+                    targets: .product(name: "TCFundamentals", package: "TCFundamentals"))
 
 deps.append("https://github.com/vapor/vapor.git", from: "4.0.0",
             targets: .product(name: "Vapor", package: "vapor"))
 
-deps.append("https://github.com/SwifQL/VaporBridges.git", from: "1.0.0-rc",
-                targets: .product(name: "VaporBridges", package: "VaporBridges"))
+deps.append("https://github.com/tierracero/PostgresBridge.git", from: "2.0.0",
+                targets: .product(name: "PostgresBridge", package: "PostgresBridge", condition: .when(platforms: [.macOS,.linux])))
 
-deps.append("https://github.com/tierracero/PostgresBridge.git", from: "1.0.0-rc",
-                targets: .product(name: "PostgresBridge", package: "PostgresBridge"))
-
-deps.append("https://github.com/SwifQL/SwifQL.git", exact: "2.0.0-beta.3.21.0",
-                targets: .product(name: "SwifQL", package: "SwifQL"))
+deps.append("https://github.com/swiftstream/SQL.git", from: "2.0.0",
+                targets: .product(name: "SQL", package: "SQL"))
 
 
 let package = Package(

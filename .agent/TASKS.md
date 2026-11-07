@@ -4,8 +4,6 @@ This file contains approved, executable work only.
 
 ## Current State
 
-No active tasks.
-
 ## Adding a Task
 
 Use [templates/task_template.md](templates/task_template.md). Every task must include:

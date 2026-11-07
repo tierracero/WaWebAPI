@@ -4,7 +4,7 @@
 
 WaWebAPI is a Swift Package that exposes a Vapor-integrated client for Tierra Cero's WaWeb API and persistence models for WaWeb accounts, instances, tokens, and webhook events.
 
-The package manifest currently declares Swift tools 5.7, macOS 11+, and iOS 13+. The library depends on WaWebAPICore, TCFoundation, TCFundamentals, Vapor, VaporBridges, PostgresBridge, and SwifQL.
+The package manifest declares Swift tools 6.3, macOS 11+, and iOS 13+. The library depends on WaWebAPICore, TCFoundation, TCFundamentals, Vapor, PostgresBridge 2, and SQL 2. Set `LIBS_DEVELOPMENT=1` to resolve local clones of the shared Tierra Cero packages.
 
 ## Authority Hierarchy
 

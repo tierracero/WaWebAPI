@@ -8,9 +8,7 @@ import TCFoundation
 import TCFundamentals
 import WaWebAPICore
 import PostgresBridge
-import VaporBridges
 import Bridges
-import SwifQL
 import Vapor
 
 public struct WaWebAPI {

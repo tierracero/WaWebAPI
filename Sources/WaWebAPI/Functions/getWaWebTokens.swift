@@ -8,7 +8,7 @@
 import Foundation
 import WaWebAPICore
 import Vapor
-import SwifQL
+import SQL
 import PostgresBridge
 import Bridges
 
@@ -63,7 +63,7 @@ func getWaWebTokens(app: Application, waWebAccount: UUID, instanceId: String) ->
         }
         return app.postgres.transaction(to: .psqlEnvironment) { conn in
             
-            let query = SwifQL.select(WaWebTokens.table.*).from(WaWebTokens.table).where(
+            let query = SQL.select(WaWebTokens.table.*).from(WaWebTokens.table).where(
                 \WaWebTokens.$waWebAccount == waWebAccount &&
                  \WaWebTokens.$instanceId ||> PgArray([instanceId]) => .textArray
             )
@@ -104,7 +104,7 @@ func getWaWebTokens(app: Application, token tokenId: String, instanceId: String?
             
         }
         
-        var query = SwifQL.select(WaWebTokens.table.*).from(WaWebTokens.table).where(
+        var query = SQL.select(WaWebTokens.table.*).from(WaWebTokens.table).where(
             \WaWebTokens.$token == tokenId
         )
         

@@ -30,3 +30,17 @@ Completed and verified tracked work.
   - Schema columns, model properties, initializer, and Core-item projection were audited field-by-field against `WaWebMessageManagerProtocable`.
   - A live PostgreSQL migration cycle was not run because no test database is configured in this package environment.
 - **Architecture IDs**: `DEP-001`, `PUBLIC-001`, `DB-001`, `DB-002`, `TEST-001`, `TEST-002`
+
+
+## SQL-MIG-001 — Migrate WaWebAPI persistence to SQL 2
+
+- **Completed**: 2026-11-07
+- **Status**: Completed
+- **Scope**: WaWebAPI and CommunicationsAPI `Package.swift`; WaWebAPI account/token query helpers and facade imports; `AGENTS.md`; and current package/dependency documentation.
+- **Result**: WaWebAPI now uses SQL 2 and PostgresBridge 2. Account lookup and both token lookups retain their existing filters, array predicate, and decoded model. `LIBS_DEVELOPMENT=1` selects local WaWebAPICore, TCFoundation, TCFundamentals, and WaWebAPI clones; default mode keeps the remote main-branch dependencies. Removed the direct SwifQL and VaporBridges dependencies/imports.
+- **Validation**:
+  - `swift package dump-package` passed for WaWebAPI and CommunicationsAPI with `LIBS_DEVELOPMENT=1` and the module cache directed to `/private/tmp`.
+  - `rg --hidden -n 'SwifQL|VaporBridges' Package.swift Sources` found no code/manifest references.
+  - `git diff --check` passed for WaWebAPI and CommunicationsAPI changes.
+  - Build and tests were not run; repository instructions require user confirmation before build/test commands.
+- **Architecture IDs**: `PKG-001`, `DB-001`, `CACHE-001`, `REL-001`

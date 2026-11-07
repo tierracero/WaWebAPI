@@ -6,7 +6,7 @@ Authoritative verified scope for WaWebAPI.
 
 - **Name**: `WaWebAPI`
 - **Type**: Swift Package library
-- **Swift tools version**: 5.7
+- **Swift tools version**: 6.3
 - **Declared platforms**: macOS 11+, iOS 13+
 - **Primary integration**: Vapor `Application` and `Request`
 - **Current remote service base**: `https://waweb.tierracero.co/api/v1/`
@@ -20,7 +20,7 @@ Authoritative verified scope for WaWebAPI.
 - Resolve WaWeb tokens from PostgreSQL with an in-process cache.
 - Build authenticated POST requests, optionally signing payloads with HMAC-SHA256.
 - Decode common `WAResponse` and `WAResponsePayload<T>` envelopes.
-- Define Bridges/SwifQL persistence models and migrations for accounts, instances, tokens, webhook events, the message-manager queue, and related enums.
+- Define Bridges/SQL persistence models and migrations for accounts, instances, tokens, webhook events, the message-manager queue, and related enums.
 
 ## Dependency Boundary
 

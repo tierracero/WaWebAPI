@@ -5,7 +5,7 @@ Architecture rules for package identity, dependencies, configuration, and public
 ## Verified Current Facts
 
 - `Package.swift` declares one library target and one XCTest target.
-- The target imports Vapor plus Tierra Cero and SwifQL ecosystem packages.
+- The target imports Vapor plus Tierra Cero packages and the SQL 2/PostgresBridge 2 persistence stack.
 - `Application` and `Request` expose `wawebapi` computed properties.
 - `WaWebAPI.profile(_:)` and `profile(token:profile:)` return a profile-scoped `API` facade.
 - The package contains numerous public endpoint methods and persistence models.
@@ -32,7 +32,7 @@ Dependency edits must review:
 
 WaWebAPICore owns shared endpoint component classes, request/response DTOs, route controller types, and WhatsApp domain models imported by WaWebAPI. Before adding a parallel type, inspect WaWebAPICore and extend or adapt the existing contract when appropriate.
 
-TCFoundation, TCFundamentals, Bridges, PostgresBridge, VaporBridges, SwifQL, and Vapor remain authoritative for their own APIs and conventions.
+TCFoundation, TCFundamentals, Bridges, PostgresBridge, SQL, and Vapor remain authoritative for their own APIs and conventions.
 
 ### PUBLIC-001 — Public Compatibility
 

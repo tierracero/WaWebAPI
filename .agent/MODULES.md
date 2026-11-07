@@ -36,8 +36,8 @@ Repository module map.
 | WaWebAPICore | Endpoint components, DTOs, route/domain contracts |
 | TCFoundation / TCFundamentals | Shared Tierra Cero utilities and protocols |
 | Vapor | Application, Request, HTTP client, Content, NIO futures |
-| VaporBridges / PostgresBridge / Bridges | Database integration and migrations |
-| SwifQL | Typed PostgreSQL query construction |
+| PostgresBridge / Bridges | Database integration and migrations |
+| SQL | Typed PostgreSQL query construction |
 
 ## Ownership Rule
 

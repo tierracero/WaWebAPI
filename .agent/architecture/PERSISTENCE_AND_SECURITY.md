@@ -4,7 +4,7 @@ Architecture rules for database models, migrations, token caching, secrets, and 
 
 ## Verified Current Facts
 
-- Persistence uses Bridges/PostgresBridge/SwifQL.
+- Persistence uses Bridges, PostgresBridge 2, and SQL 2.
 - Models use the `wawebapi` schema.
 - Table models and migration types currently share source files.
 - Token lookup queries `WaWebTokens` by account/instance or token ID.
