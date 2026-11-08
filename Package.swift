@@ -79,8 +79,13 @@ if ProcessInfo.processInfo.environment["LIBS_DEVELOPMENT"] == "1" {
                 targets: .product(name: "PostgresBridge", package: "PostgresBridge", condition: .when(platforms: [.macOS,.linux])))
 }
 
-deps.append("https://github.com/tierracero/VaporBridges.git", from: "2.0.0",
-            targets: .product(name: "VaporBridges", package: "VaporBridges", condition: .when(platforms: [.macOS,.linux])))
+if ProcessInfo.processInfo.environment["LIBS_DEVELOPMENT"] == "1" {
+    deps.appendLocal("VaporBridges",
+                     targets: .product(name: "VaporBridges", package: "VaporBridges", condition: .when(platforms: [.macOS,.linux])))
+} else {
+    deps.append("https://github.com/tierracero/VaporBridges.git", from: "2.0.0",
+                targets: .product(name: "VaporBridges", package: "VaporBridges", condition: .when(platforms: [.macOS,.linux])))
+}
 
 deps.append("https://github.com/swiftstream/SQL.git", from: "2.0.0",
                 targets: .product(name: "SQL", package: "SQL"))

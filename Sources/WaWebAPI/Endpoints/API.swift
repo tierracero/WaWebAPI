@@ -15,14 +15,28 @@ public struct API {
 
     let application: Application
     
-    let profile: WaWebInstances
+    let profile: WaWebInstancesItem
     
-    init (
+    init<Profile: WaWebInstancesProtocable>(
         app: Application,
-        profile: WaWebInstances
+        profile: Profile
     ) {
         self.application = app
-        self.profile = profile
+        self.profile = WaWebInstancesItem(
+            id: profile.id,
+            createdAt: profile.createdAt,
+            modifiedAt: profile.modifiedAt,
+            waWebAccount: profile.waWebAccount,
+            instanceId: profile.instanceId,
+            relationType: profile.relationType,
+            relationId: profile.relationId,
+            secret: profile.secret,
+            webhook: profile.webhook,
+            port: profile.port,
+            cc: profile.cc,
+            mobile: profile.mobile,
+            status: profile.status
+        )
     }
     
     public var auth: AuthEndpoint { .init(api: self) }

@@ -119,7 +119,7 @@ public final class WaWebInstances: WaWebInstancesProtocable, Table, Schemable {
     }
     
     
-    public init( profile: WhatsAppProfiles) {
+    public init<Profile: WhatsAppProfilesProtocable>(profile: Profile) {
         
         guard let waWebAccount = profile.vendorId else {
             fatalError("WhatsAppProfiles Fail to init WhatsAppProfiles.vendorId is null")
