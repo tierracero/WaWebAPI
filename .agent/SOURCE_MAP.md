@@ -15,8 +15,8 @@ Targeted navigation guide for source-touching tasks.
 | Path | Purpose |
 |---|---|
 | `Sources/WaWebAPI/Functions/post.swift` | URL/path composition, headers, HMAC, HTTP POST, decode/error flow |
-| `Sources/WaWebAPI/Functions/getWaWebTokens.swift` | Actor cache and PostgreSQL token lookup |
-| `Sources/WaWebAPI/Functions/getWaWebAccounts.swift` | Account lookup helper |
+| `Sources/WaWebAPI/Functions/getWaWebTokens.swift` | Actor-isolated token-item cache and PostgreSQL token lookup |
+| `Sources/WaWebAPI/Functions/getWaWebAccounts.swift` | Actor-isolated account-item cache and PostgreSQL account lookup |
 
 ## Endpoint Families
 

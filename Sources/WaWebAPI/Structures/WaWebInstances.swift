@@ -41,7 +41,7 @@ public struct CreateWaWebInstances: TableMigration {
 
 public final class WaWebInstances: WaWebInstancesProtocable, Table, Schemable {
     
-    public static var schemaName = "wawebapi"
+    public static let schemaName = "wawebapi"
     
     @Column("id")
     public var id: UUID

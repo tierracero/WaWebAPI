@@ -21,7 +21,7 @@ public struct WaWebAPI {
         
     }
     
-    public struct Configuration {
+    public struct Configuration: Sendable {
         
         let WAWEBAPI_TOKEN: String?
         

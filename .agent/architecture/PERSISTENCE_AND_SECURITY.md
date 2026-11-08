@@ -8,7 +8,8 @@ Architecture rules for database models, migrations, token caching, secrets, and 
 - Models use the `wawebapi` schema.
 - Table models and migration types currently share source files.
 - Token lookup queries `WaWebTokens` by account/instance or token ID.
-- An actor-backed in-process dictionary caches token records.
+- Actor-backed in-process dictionaries cache `WaWebTokensItem` and `WaWebAccountsItem` snapshots.
+- Mutable persistence table classes are not transport `Payloadable` values; shared field protocols describe storage shape, while corresponding `*Item` values own transport sendability.
 - Payload requests may include an `x-wawebapi-hmac` header generated with HMAC-SHA256 and the stored secret.
 
 ## Stable Rules

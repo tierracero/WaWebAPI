@@ -60,7 +60,7 @@ public struct AddResponseToWaWebMessageManager: TableMigration {
 
 public final class WaWebMessageManager: WaWebMessageManagerProtocable, Table, Schemable {
 
-    public static var schemaName = "wawebapi"
+    public static let schemaName = "wawebapi"
 
     @Column("id")
     public var id: UUID

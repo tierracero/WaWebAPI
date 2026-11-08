@@ -50,7 +50,7 @@ public struct CreateWaWebAccounts: TableMigration {
 
 public final class WaWebAccounts: WaWebAccountsProtocable, Table, Schemable {
     
-    public static var schemaName = "wawebapi"
+    public static let schemaName = "wawebapi"
     
     @Column("id")
     public var id: UUID

@@ -41,7 +41,7 @@ public struct CreateWaWebTokens: TableMigration {
 
 public final class WaWebTokens: WaWebTokensProtocable, Table, Schemable {
     
-    public static var schemaName = "wawebapi"
+    public static let schemaName = "wawebapi"
     
     @Column("id")
     public var id: UUID

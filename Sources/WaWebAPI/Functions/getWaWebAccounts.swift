@@ -7,34 +7,47 @@
 
 import Foundation
 import Vapor
+import VaporBridges
 import SQL
 import PostgresBridge
 import Bridges
 import WaWebAPICore
 
-/// [ WaWebAccounts.id : WaWebAccounts ]
-fileprivate var waWebAccountsCatch: [UUID: WaWebAccounts] = [:]
+/// Actor-isolated cache for account snapshots used by this package.
+private actor WaWebAccountsCache {
+    static let shared = WaWebAccountsCache()
 
-func getWaWebAccounts(app: Application, id: UUID) -> EventLoopFuture<WaWebAccounts?> {
- 
-    if let account = waWebAccountsCatch[id] {
-        return app.eventLoopGroup.future(account)
+    private var accounts: [UUID: WaWebAccountsItem] = [:]
+
+    func get(_ id: UUID) -> WaWebAccountsItem? {
+        accounts[id]
     }
-    
-    return app.postgres.transaction(to: .psqlEnvironment) { conn in
-        
-        return SQL.select(WaWebAccounts.table.*).from(WaWebAccounts.table).where(
-            \WaWebAccounts.$id == id
-        ).execute(on: conn).first(decoding: WaWebAccounts.self).map { account in
-            
+
+    func set(_ account: WaWebAccountsItem, for id: UUID) {
+        accounts[id] = account
+    }
+}
+
+func getWaWebAccounts(app: Application, id: UUID) -> EventLoopFuture<WaWebAccountsItem?> {
+    return app.eventLoopGroup.next().makeFutureWithTask { () async throws -> WaWebAccountsItem? in
+        return await WaWebAccountsCache.shared.get(id)
+    }.flatMap { cachedAccount in
+        if let cachedAccount {
+            return app.eventLoopGroup.next().makeSucceededFuture(cachedAccount)
+        }
+
+        return app.postgres.transaction(to: .psqlEnvironment) { conn in
+            SQL.select(WaWebAccounts.table.*).from(WaWebAccounts.table).where(
+                \WaWebAccounts.$id == id
+            ).execute(on: conn).first(decoding: WaWebAccountsItem.self)
+        }.flatMap { account in
             guard let account else {
-                return nil
+                return app.eventLoopGroup.next().makeSucceededFuture(nil)
             }
-     
-            waWebAccountsCatch[id] = account
-            
-            return account
-            
+
+            return app.eventLoopGroup.next().makeFutureWithTask {
+                await WaWebAccountsCache.shared.set(account, for: id)
+            }.map { account }
         }
     }
 }

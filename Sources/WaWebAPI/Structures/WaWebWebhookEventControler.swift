@@ -37,9 +37,9 @@ public struct CreateWaWebWebhookEventControleraWebTokens: TableMigration {
     }
 }
 
-public final class WaWebWebhookEventControler: Table, Schemable, Payloadable {
+public final class WaWebWebhookEventControler: Table, Schemable {
     
-    public static var schemaName = "wawebapi"
+    public static let schemaName = "wawebapi"
     
     @Column("id")
     public var id: UUID
