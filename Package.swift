@@ -52,21 +52,12 @@ extension Array where Element == Dep {
 
 var deps: [Dep] = []
 
-if ProcessInfo.processInfo.environment["LIBS_DEVELOPMENT"] == "1" {
-    deps.appendLocal("WaWebAPICore",
-                     targets: .product(name: "WaWebAPICore", package: "WaWebAPICore"))
-    deps.appendLocal("TCFoundation",
-                     targets: .product(name: "TCFoundation", package: "TCFoundation"))
-    deps.appendLocal("TCFundamentals",
-                     targets: .product(name: "TCFundamentals", package: "TCFundamentals"))
-} else {
-    deps.appendFromMain("git@github.com:tierracero/WaWebAPICore.git",
-                        targets: .product(name: "WaWebAPICore", package: "WaWebAPICore"))
-    deps.appendFromMain("git@github.com:tierracero/TCFoundation.git",
-                        targets: .product(name: "TCFoundation", package: "TCFoundation"))
-    deps.appendFromMain("git@github.com:tierracero/TCFundamentals.git",
-                        targets: .product(name: "TCFundamentals", package: "TCFundamentals"))
-}
+deps.appendFromMain("git@github.com:tierracero/WaWebAPICore.git",
+                    targets: .product(name: "WaWebAPICore", package: "WaWebAPICore"))
+deps.appendFromMain("git@github.com:tierracero/TCFoundation.git",
+                    targets: .product(name: "TCFoundation", package: "TCFoundation"))
+deps.appendFromMain("git@github.com:tierracero/TCFundamentals.git",
+                    targets: .product(name: "TCFundamentals", package: "TCFundamentals"))
 
 deps.append("https://github.com/vapor/vapor.git", from: "4.0.0",
             targets: .product(name: "Vapor", package: "vapor"))
