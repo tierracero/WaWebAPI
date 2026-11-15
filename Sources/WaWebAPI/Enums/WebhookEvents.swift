@@ -24,4 +24,4 @@ public struct CreateWaWebWebhookEvents: EnumMigration {
     }
 }
 
-extension WebhookEvents: BridgesEnum {}
+extension WebhookEvents: @retroactive BridgesEnum {}

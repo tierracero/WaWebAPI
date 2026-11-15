@@ -1,6 +1,6 @@
 //
 //  Chat+MarkUnread.swift
-//  
+//
 //
 //  Created by Victor Cantu on 3/31/24.
 //
@@ -8,28 +8,7 @@
 import Foundation
 import TCFoundation
 import TCFundamentals
-import WaWebAPICore
 import Vapor
+import WaWebAPICore
 
-extension ChatEndpoint.MarkUnreadRequst : Content {}
-
-extension ChatEndpoint {
-    
-    /// Mark this chat as unread
-    /// `POST` https://waweb.tierracero.co/api/v1/chat/markUnread
-    /// - Parameter chatId: WhatsAppChatId
-    /// - Returns: Promise containing Boolean
-    public func markUnread(
-        chatId: WhatsAppChatId
-    ) throws -> EventLoopFuture<WAResponse>{
-        do {
-            return try api.post( WAResponse.self, endpoint: .chat("markUnread"), payload: MarkUnreadRequst(
-                chatId: chatId
-            ))
-        }
-        catch {
-            throw error
-        }
-    }
-    
-}
+extension ChatEndpoint.MarkUnreadRequst: @retroactive Content {}

@@ -8,28 +8,7 @@
 import Foundation
 import TCFoundation
 import TCFundamentals
-import WaWebAPICore
 import Vapor
+import WaWebAPICore
 
-extension ClientEndpoint.SetDisplayNameRequest: Content {}
-
-
-extension ClientEndpoint {
-    
-    /// Sets the current user's display name. This is the name shown to WhatsApp users that have not added you as a contact beside your number in groups and in your profile.
-    /// `POST` https://waweb.tierracero.co/api/v1/client/setDisplayName
-    /// - Returns: Promise containing boolean
-    public func setDisplayName(
-        displayName: String
-    ) throws -> EventLoopFuture<WAResponse>{
-        do {
-            return try api.post(WAResponse.self, endpoint: .client("setDisplayName"), payload: SetDisplayNameRequest(
-                displayName: displayName
-            ))
-        }
-        catch {
-            throw error
-        }
-    }
-    
-}
+extension ClientEndpoint.SetDisplayNameRequest: @retroactive Content {}

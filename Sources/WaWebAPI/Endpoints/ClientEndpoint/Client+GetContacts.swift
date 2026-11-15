@@ -1,6 +1,6 @@
 //
 //  Client+GetContacts.swift
-//  
+//
 //
 //  Created by Victor Cantu on 4/1/24.
 //
@@ -8,21 +8,5 @@
 import Foundation
 import TCFoundation
 import TCFundamentals
-import WaWebAPICore
 import Vapor
-
-extension ClientEndpoint {
-
-    /// Get all current contact instances
-    /// `POST` https://waweb.tierracero.co/api/v1/client/getContacts
-    /// - Returns: Promise containing Array of Contact
-    public func getContacts() throws -> EventLoopFuture<WAResponsePayload<[Contact]>>{
-        do {
-            return try api.post(WAResponsePayload<[Contact]>.self, endpoint: .client("getContacts"))
-        }
-        catch {
-            throw error
-        }
-    }
-    
-}
+import WaWebAPICore

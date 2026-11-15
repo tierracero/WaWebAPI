@@ -8,8 +8,7 @@
 import Foundation
 import TCFoundation
 import TCFundamentals
-import WaWebAPICore
 import Vapor
+import WaWebAPICore
 
 //MARK: markChatUnread handeld in ChatEndpoint/sendSeen
-

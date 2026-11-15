@@ -8,29 +8,7 @@
 import Foundation
 import TCFoundation
 import TCFundamentals
-import WaWebAPICore
 import Vapor
+import WaWebAPICore
 
-extension InstanceEndpoint.StartRequest: Content {}
-
-extension InstanceEndpoint {
-    
-    /// Trurn on instace container
-    /// `POST` https://waweb.tierracero.co/api/v1/instance/start
-    /// - Parameter containerId: String
-    /// - Returns: Promise containing Boolean
-    public func start(
-        containerId: String
-    ) throws -> EventLoopFuture<WAResponse>{
-        do {
-            return try api.post(WAResponse.self, endpoint: .instance("start"), payload: StartRequest(
-                containerId: containerId
-            ))
-        }
-        catch {
-            throw error
-        }
-    }
-    
-}
-
+extension InstanceEndpoint.StartRequest: @retroactive Content {}

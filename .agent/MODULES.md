@@ -23,7 +23,7 @@ Repository module map.
 | `Endpoints/InstanceEndpoint/` | Instance lifecycle operations |
 | `Endpoints/LabelEndpoint/` | Label operations |
 | `Endpoints/MessagesEndpoint/` | Message send/edit/reply/media/info/reaction operations |
-| `Functions/post.swift` | Shared HTTP POST transport and decoding |
+| `Functions/post.swift` | Native async HTTP POST transport, decoding, and error handling |
 | `Functions/getWaWebTokens.swift` | Token cache and database token lookup |
 | `Functions/getWaWebAccounts.swift` | Account lookup helpers |
 | `Structures/` | Response envelopes and database tables/migrations, including the message-manager queue |

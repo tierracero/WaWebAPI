@@ -8,28 +8,7 @@
 import Foundation
 import TCFoundation
 import TCFundamentals
-import WaWebAPICore
 import Vapor
+import WaWebAPICore
 
-extension ClientEndpoint.SetProfilePictureRequest: Content {}
-
-
-extension ClientEndpoint {
-    
-    /// Sets the current user's profile picture.
-    /// `POST` https://waweb.tierracero.co/api/v1/client/setProfilePicture
-    /// - Returns: Promise containing boolean, Returns true if the picture was properly updated.
-    public func setProfilePicture(
-        media: MessageMedia
-    ) throws -> EventLoopFuture<WAResponse>{
-        do {
-            return try api.post(WAResponse.self, endpoint: .client("setProfilePicture"), payload: SetProfilePictureRequest(
-                media: media
-            ))
-        }
-        catch {
-            throw error
-        }
-    }
-    
-}
+extension ClientEndpoint.SetProfilePictureRequest: @retroactive Content {}

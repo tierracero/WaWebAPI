@@ -8,27 +8,7 @@
 import Foundation
 import TCFoundation
 import TCFundamentals
-import WaWebAPICore
 import Vapor
+import WaWebAPICore
 
-extension ClientEndpoint.GetNumberIdRequests: Content {}
-
-extension ClientEndpoint {
-    
-    /// Get the registered WhatsApp ID for a number. Will return null if the number is not registered on WhatsApp.
-    /// `POST` https://waweb.tierracero.co/api/v1/client/getNumberId
-    /// - Returns: Promise containing (Object or null)
-    public func getNumberId(
-        number: String
-    ) throws -> EventLoopFuture<WAResponsePayload<String>>{
-        do {
-            return try api.post(WAResponsePayload<String>.self, endpoint: .client("getNumberId"), payload: GetNumberIdRequests(
-                number: number
-            ))
-        }
-        catch {
-            throw error
-        }
-    }
-    
-}
+extension ClientEndpoint.GetNumberIdRequests: @retroactive Content {}

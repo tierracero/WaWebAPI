@@ -1,6 +1,6 @@
 //
 //  Client+GetChatLabels.swift
-//  
+//
 //
 //  Created by Victor Cantu on 3/31/24.
 //
@@ -8,27 +8,7 @@
 import Foundation
 import TCFoundation
 import TCFundamentals
-import WaWebAPICore
 import Vapor
+import WaWebAPICore
 
-extension ClientEndpoint.GetChatLabelsRequest: Content {}
-
-extension ClientEndpoint {
-    
-    /// Get all Labels assigned to a chat
-    /// `POST` https://waweb.tierracero.co/api/v1/client/getChatLabels
-    /// - Returns: Promise containing Array of Label
-    public func getChatLabels(
-        chatId: WhatsAppChatId
-    ) throws -> EventLoopFuture<WAResponsePayload<[Label]>>{
-        do {
-            return try api.post(WAResponsePayload<[Label]>.self, endpoint: .client("getChatLabels"), payload: GetChatLabelsRequest(
-                chatId: chatId
-            ))
-        }
-        catch {
-            throw error
-        }
-    }
-
-}
+extension ClientEndpoint.GetChatLabelsRequest: @retroactive Content {}

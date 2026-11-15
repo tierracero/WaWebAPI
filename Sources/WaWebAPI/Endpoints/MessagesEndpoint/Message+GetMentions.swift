@@ -8,27 +8,7 @@
 import Foundation
 import TCFoundation
 import TCFundamentals
-import WaWebAPICore
 import Vapor
+import WaWebAPICore
 
-extension MessageEndpoint.GetMentionsRequest: Content {}
-
-extension MessageEndpoint {
-    
-    /// `POST` https://waweb.tierracero.co/api/v1/message/getMentions
-    /// - Parameter messageId: String
-    /// - Returns:
-    public func getMentions(
-        messageId: String
-    ) throws -> EventLoopFuture<WAResponsePayload<[Contact]>>{
-        do {
-            return try api.post( WAResponsePayload<[Contact]>.self, endpoint: .chat("getMentions"), payload: GetMentionsRequest(
-                messageId: messageId
-            ))
-        }
-        catch {
-            throw error
-        }
-    }
-    
-}
+extension MessageEndpoint.GetMentionsRequest: @retroactive Content {}

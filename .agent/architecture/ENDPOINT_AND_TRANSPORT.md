@@ -6,8 +6,9 @@ Architecture rules for the public API facade, endpoint methods, routing, HTTP be
 
 - `API` stores a Vapor `Application`, a token string, and a `WaWebInstances` profile.
 - Endpoint families are exposed as computed properties and implemented as WaWebAPICore component subclasses.
-- Endpoint methods live in family-specific extension files and generally return `EventLoopFuture<WAResponse...>`.
-- `Functions/post.swift` constructs URLs, headers, optional HMAC values, sends POST requests, and decodes responses.
+- Endpoint methods live in family-specific extension files. Supported operations expose `async throws` forms in the family `Async+*.swift` files.
+- `Functions/post.swift` constructs URLs, headers, optional HMAC values, sends POST requests, and decodes responses using native async control flow.
+- Token and account lookup helpers use async control flow for cache access and database lookup.
 - Token records are loaded before each transport operation through `getWaWebTokens`.
 
 ## Stable Rules
@@ -66,6 +67,8 @@ Routes are composed from the API base/version and `EndpointControler` path/case 
 - Do not perform blocking database, file, cryptographic, or network work on an EventLoop.
 - Preserve futures and failures rather than converting them into hidden side effects.
 - When bridging actors/async tasks to futures, retain clear lifecycle and EventLoop ownership.
+- Async endpoint methods must await the centralized transport and must not call `.wait()`.
+- Event-loop futures remain only on the database migration protocol hooks, whose `TableMigration` contract requires `prepare` and `revert` to return `EventLoopFuture<Void>`.
 
 ### ERROR-001 — Redacted Diagnostic Context
 

@@ -8,29 +8,7 @@
 import Foundation
 import TCFoundation
 import TCFundamentals
-import WaWebAPICore
 import Vapor
+import WaWebAPICore
 
-extension ChatEndpoint.ArchiveRequest: Content {}
-
-extension ChatEndpoint {
-    
-    /// Archives this chat
-    /// `POST` https://waweb.tierracero.co/api/v1/chat/archive
-    /// - Parameter chatId: WhatsAppChatId
-    /// - Returns: Promise containing Boolean
-    public func archive(
-        chatId: WhatsAppChatId
-    ) throws -> EventLoopFuture<WAResponse>{
-        do {
-            return try api.post(WAResponse.self, endpoint: .chat("archive"), payload: ArchiveRequest(
-                chatId: chatId
-            ))
-        }
-        catch {
-            throw error
-        }
-    }
-    
-}
-
+extension ChatEndpoint.ArchiveRequest: @retroactive Content {}

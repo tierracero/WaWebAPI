@@ -1,6 +1,6 @@
 //
 //  Contact+GetProfilePicUrl.swift
-//  
+//
 //
 //  Created by Victor Cantu on 3/30/24.
 //
@@ -8,28 +8,7 @@
 import Foundation
 import TCFoundation
 import TCFundamentals
-import WaWebAPICore
 import Vapor
+import WaWebAPICore
 
-extension ContactEndpoint.GetProfilePicUrlRequest: Content {}
-
-extension ContactEndpoint {
-    
-    /// Returns the contact's profile picture URL, if privacy settings allow it
-    /// `POST` https://waweb.tierracero.co/api/v1/contact/getProfilePicUrl
-    /// - Parameter contactId: String
-    /// - Returns: Promise containing Boolean
-    public func getProfilePicUrl(
-        contactId: String
-    ) throws -> EventLoopFuture<WAResponsePayload<String>>{
-        do {
-            return try api.post(WAResponsePayload<String>.self, endpoint: .client("getProfilePicUrl"), payload: GetProfilePicUrlRequest(
-                contactId: contactId
-            ))
-        }
-        catch {
-            throw error
-        }
-    }
-    
-}
+extension ContactEndpoint.GetProfilePicUrlRequest: @retroactive Content {}

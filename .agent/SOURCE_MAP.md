@@ -14,9 +14,9 @@ Targeted navigation guide for source-touching tasks.
 
 | Path | Purpose |
 |---|---|
-| `Sources/WaWebAPI/Functions/post.swift` | URL/path composition, headers, HMAC, HTTP POST, decode/error flow |
-| `Sources/WaWebAPI/Functions/getWaWebTokens.swift` | Actor-isolated token-item cache and PostgreSQL token lookup |
-| `Sources/WaWebAPI/Functions/getWaWebAccounts.swift` | Actor-isolated account-item cache and PostgreSQL account lookup |
+| `Sources/WaWebAPI/Functions/post.swift` | URL/path composition, headers, HMAC, async HTTP POST, decode/error flow |
+| `Sources/WaWebAPI/Functions/getWaWebTokens.swift` | Actor-isolated token-item cache and async PostgreSQL token lookup |
+| `Sources/WaWebAPI/Functions/getWaWebAccounts.swift` | Actor-isolated account-item cache and async PostgreSQL account lookup |
 
 ## Endpoint Families
 
@@ -32,6 +32,8 @@ Each family has a base class file plus operation extensions:
 | `Sources/WaWebAPI/Endpoints/InstanceEndpoint/` | Instance lifecycle |
 | `Sources/WaWebAPI/Endpoints/LabelEndpoint/` | Labels |
 | `Sources/WaWebAPI/Endpoints/MessagesEndpoint/` | Messages |
+
+Each family with operations also contains an `Async+*.swift` extension file exposing the `async throws` operations that reuse the same request DTOs and routes.
 
 ## Persistence
 

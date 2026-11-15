@@ -1,6 +1,6 @@
 //
 //  Message+GetInfo.swift
-//  
+//
 //
 //  Created by Victor Cantu on 4/2/24.
 //
@@ -8,27 +8,7 @@
 import Foundation
 import TCFoundation
 import TCFundamentals
-import WaWebAPICore
 import Vapor
+import WaWebAPICore
 
-extension MessageEndpoint.GetInfoRequest: Content {}
-
-extension MessageEndpoint {
-    
-    /// `POST` https://waweb.tierracero.co/api/v1/message/getInfo
-    /// - Parameter messageId: String
-    /// - Returns:
-    public func getInfo(
-        messageId: String
-    ) throws -> EventLoopFuture<WAResponsePayload<Contact>>{
-        do {
-            return try api.post( WAResponsePayload<Contact>.self, endpoint: .chat("getInfo"), payload: GetInfoRequest(
-                messageId: messageId
-            ))
-        }
-        catch {
-            throw error
-        }
-    }
-    
-}
+extension MessageEndpoint.GetInfoRequest: @retroactive Content {}

@@ -8,27 +8,7 @@
 import Foundation
 import TCFoundation
 import TCFundamentals
-import WaWebAPICore
 import Vapor
+import WaWebAPICore
 
-extension MessageEndpoint.DeleteRequest: Content {}
-
-extension MessageEndpoint {
-    
-    /// `POST` https://waweb.tierracero.co/api/v1/message/delete
-    /// - Parameter messageId: String
-    /// - Returns:
-    public func delete(
-        messageId: String
-    ) throws -> EventLoopFuture<WAResponse>{
-        do {
-            return try api.post( WAResponse.self, endpoint: .chat("delete"), payload: DeleteRequest(
-                messageId: messageId
-            ))
-        }
-        catch {
-            throw error
-        }
-    }
-    
-}
+extension MessageEndpoint.DeleteRequest: @retroactive Content {}

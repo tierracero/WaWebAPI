@@ -1,6 +1,6 @@
 //
 //  Client+CreateGroup.swift
-//  
+//
 //
 //  Created by Victor Cantu on 3/31/24.
 //
@@ -8,32 +8,7 @@
 import Foundation
 import TCFoundation
 import TCFundamentals
-import WaWebAPICore
 import Vapor
+import WaWebAPICore
 
-extension ClientEndpoint.CreateGroupRequest: Content {}
-
-extension ClientEndpoint {
-    
-    /// Creates a new group
-    /// `POST` https://waweb.tierracero.co/api/v1/client/createGroup
-    /// - Parameter inviteCode: String
-    /// - Returns: Promise containing Boolean
-    public func createGroup(
-        title: String,
-        participants: [WhatsAppChatId],
-        options: CreateGroupOptions
-    ) throws -> EventLoopFuture<WAResponsePayload<CreateGroupResult>>{
-        do {
-            return try api.post(WAResponsePayload<CreateGroupResult>.self, endpoint: .client("createGroup"), payload: CreateGroupRequest(
-                title: title,
-                participants: participants,
-                options: options
-            ))
-        }
-        catch {
-            throw error
-        }
-    }
-
-}
+extension ClientEndpoint.CreateGroupRequest: @retroactive Content {}
