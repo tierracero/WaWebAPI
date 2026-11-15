@@ -28,9 +28,9 @@ extension MessageEndpoint {
 
   public func edit(
     messageId: String
-  ) async throws -> WAResponsePayload<Message> {
+  ) async throws -> WAResponsePayload<MessageItem> {
     return try await api.post(
-      WAResponsePayload<Message>.self, endpoint: .chat("edit"),
+      WAResponsePayload<MessageItem>.self, endpoint: .chat("edit"),
       payload: EditRequest(
         messageId: messageId
       ))
@@ -108,9 +108,9 @@ extension MessageEndpoint {
 
   public func getQuotedMessage(
     messageId: String
-  ) async throws -> WAResponsePayload<Message> {
+  ) async throws -> WAResponsePayload<MessageItem> {
     return try await api.post(
-      WAResponsePayload<Message>.self, endpoint: .chat("getQuotedMessage"),
+      WAResponsePayload<MessageItem>.self, endpoint: .chat("getQuotedMessage"),
       payload: GetQuotedMessageRequest(
         messageId: messageId
       ))
@@ -138,9 +138,9 @@ extension MessageEndpoint {
 
   public func reload(
     messageId: String
-  ) async throws -> WAResponsePayload<Message> {
+  ) async throws -> WAResponsePayload<MessageItem> {
     return try await api.post(
-      WAResponsePayload<Message>.self, endpoint: .chat("reload"),
+      WAResponsePayload<MessageItem>.self, endpoint: .chat("reload"),
       payload: ReloadRequest(
         messageId: messageId
       ))
@@ -148,9 +148,9 @@ extension MessageEndpoint {
 
   public func reply(
     messageId: String
-  ) async throws -> WAResponsePayload<Message> {
+  ) async throws -> WAResponsePayload<MessageItem> {
     return try await api.post(
-      WAResponsePayload<Message>.self, endpoint: .chat("reply/message"),
+      WAResponsePayload<MessageItem>.self, endpoint: .chat("reply/message"),
       payload: ReplyRequest(
         messageId: messageId
       ))

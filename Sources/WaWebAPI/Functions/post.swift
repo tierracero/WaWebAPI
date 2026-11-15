@@ -81,18 +81,30 @@ extension API {
 
   private func send<Payload: Content & Sendable>(
     endpoint: EndpointControler,
-    payload: Payload
+    payload: Payload?
   ) async throws -> ClientResponse {
     let payloadData = try JSONEncoder().encode(payload)
     let context = try await requestContext(endpoint: endpoint, payloadData: payloadData)
 
-    do {
-      return try await application.client.post(context.url, headers: context.headers) { request in
-        try request.content.encode(payload)
-      }.get()
-    } catch {
-      throw TCErrors.generalError(error: "Request failed for \(context.url.path)")
-    }
+      if let payload {
+          
+        do {
+          return try await application.client.post(context.url, headers: context.headers) { request in
+            try request.content.encode(payload)
+          }.get()
+        } catch {
+          throw TCErrors.generalError(error: "Request failed for \(context.url.path)")
+        }
+      }
+      else {
+          
+        do {
+          return try await application.client.post(context.url, headers: context.headers).get()
+        } catch {
+          throw TCErrors.generalError(error: "Request failed for \(context.url.path)")
+        }
+      }
+      
   }
 
   private func send(endpoint: EndpointControler) async throws -> ClientResponse {
@@ -132,12 +144,12 @@ extension API {
     _ type: T.Type,
     endpoint: EndpointControler
   ) async throws -> T {
-    let response = try await send(endpoint: endpoint, payload: nil)
+    let response = try await send(endpoint: endpoint)
     return try decode(T.self, from: response, endpoint: endpoint)
   }
 
   func post(endpoint: EndpointControler) async throws -> WAResponse {
-    let response = try await send(endpoint: endpoint, payload: nil)
+    let response = try await send(endpoint: endpoint)
     return try decode(WAResponse.self, from: response, endpoint: endpoint)
   }
 }

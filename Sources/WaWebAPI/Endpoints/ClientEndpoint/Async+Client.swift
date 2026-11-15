@@ -276,9 +276,9 @@ extension ClientEndpoint {
   public func searchMessages(
     query: String,
     option: SearchOptions?
-  ) async throws -> WAResponsePayload<[Message]> {
+  ) async throws -> WAResponsePayload<[MessageItem]> {
     return try await api.post(
-      WAResponsePayload<[Message]>.self, endpoint: .client("searchMessages"),
+      WAResponsePayload<[MessageItem]>.self, endpoint: .client("searchMessages"),
       payload: SearchMessagesRequest(
         query: query,
         option: option
