@@ -63,7 +63,8 @@ extension API {
       let token = try await getWaWebTokens(
         app: application,
         waWebAccount: profile.waWebAccount,
-        instanceId: profile.instanceId
+        instanceId: profile.instanceId,
+        conn: conn
       )
     else {
       throw TCErrors.generalError(error: "Failed to locate token")

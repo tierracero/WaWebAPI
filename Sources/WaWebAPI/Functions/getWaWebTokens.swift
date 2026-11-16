@@ -33,20 +33,26 @@ private actor TokenControler {
 func getWaWebTokens(
   app: Application,
   waWebAccount: UUID,
-  instanceId: String
+  instanceId: String,
+  conn: PostgresConnection? = nil
 ) async throws -> WaWebTokensItem? {
   if let token = await TokenControler.shared.get(instanceId: instanceId) {
     return token
   }
 
-  let token = try await app.postgres.transaction(to: .psqlEnvironment) { conn in
-    let query = SQL.select(WaWebTokens.table.*).from(WaWebTokens.table).where(
-      \WaWebTokens.$waWebAccount == waWebAccount
-        && \WaWebTokens.$instanceId ||> PgArray([instanceId]) => .textArray
-    )
+  let query = SQL.select(WaWebTokens.table.*).from(WaWebTokens.table).where(
+    \WaWebTokens.$waWebAccount == waWebAccount
+      && \WaWebTokens.$instanceId ||> PgArray([instanceId]) => .textArray
+  )
 
-    return query.execute(on: conn).first(decoding: WaWebTokensItem.self)
-  }.get()
+  let token: WaWebTokensItem?
+  if let conn {
+    token = try await query.execute(on: conn).first(decoding: WaWebTokensItem.self).get()
+  } else {
+    token = try await app.postgres.transaction(to: .psqlEnvironment) { conn in
+      query.execute(on: conn).first(decoding: WaWebTokensItem.self)
+    }.get()
+  }
 
   guard let token else {
     return nil
@@ -60,7 +66,8 @@ func getWaWebTokens(
 func getWaWebTokens(
   app: Application,
   token tokenId: String,
-  instanceId: String?
+  instanceId: String?,
+  conn: PostgresConnection? = nil
 ) async throws -> WaWebTokensItem? {
   if let token = await TokenControler.shared.get(tokenId: tokenId) {
     if let instanceId, let tokens = token.instanceId, !tokens.contains(instanceId) {
@@ -80,9 +87,14 @@ func getWaWebTokens(
     )
   }
 
-  let token = try await app.postgres.transaction(to: .psqlEnvironment) { conn in
-    query.execute(on: conn).first(decoding: WaWebTokensItem.self)
-  }.get()
+  let token: WaWebTokensItem?
+  if let conn {
+    token = try await query.execute(on: conn).first(decoding: WaWebTokensItem.self).get()
+  } else {
+    token = try await app.postgres.transaction(to: .psqlEnvironment) { conn in
+      query.execute(on: conn).first(decoding: WaWebTokensItem.self)
+    }.get()
+  }
 
   guard let token else {
     return nil

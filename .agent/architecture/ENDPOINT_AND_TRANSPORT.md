@@ -4,7 +4,7 @@ Architecture rules for the public API facade, endpoint methods, routing, HTTP be
 
 ## Verified Current Facts
 
-- `API` stores a Vapor `Application`, a token string, and a `WaWebInstances` profile.
+- API stores a Vapor Application, a WaWebInstancesItem profile snapshot and an optional caller-owned PostgresConnection. WaWebAPI.profile accepts conn with a default of nil; endpoint families retain the same API handle and shared transport forwards its conn to token lookup.
 - Endpoint families are exposed as computed properties and implemented as WaWebAPICore component subclasses.
 - Endpoint methods live in family-specific extension files. Supported operations expose `async throws` forms in the family `Async+*.swift` files.
 - `Functions/post.swift` constructs URLs, headers, optional HMAC values, sends POST requests, and decodes responses using native async control flow.

@@ -9,19 +9,24 @@ import Foundation
 import TCFoundation
 import TCFundamentals
 import Vapor
+import PostgresBridge
 import WaWebAPICore
 
 public struct API {
 
   let application: Application
 
+  let conn: PostgresConnection?
+
   let profile: WaWebInstancesItem
 
   init<Profile: WaWebInstancesProtocable>(
     app: Application,
-    profile: Profile
+    profile: Profile,
+    conn: PostgresConnection? = nil
   ) {
     self.application = app
+    self.conn = conn
     self.profile = WaWebInstancesItem(
       id: profile.id,
       createdAt: profile.createdAt,

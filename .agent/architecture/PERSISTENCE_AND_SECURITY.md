@@ -12,6 +12,8 @@ Architecture rules for database models, migrations, token caching, secrets, and 
 - Mutable persistence table classes are not transport `Payloadable` values; shared field protocols describe storage shape, while corresponding `*Item` values own transport sendability.
 - Payload requests may include an `x-wawebapi-hmac` header generated with HMAC-SHA256 and the stored secret.
 
+- Profile-scoped APIs can borrow a caller-owned PostgresConnection. Token cache hits still avoid SQL; on cache misses, supplied connections execute the existing lookup before any standalone transaction fallback. The caller retains lease/transaction ownership, and the API handle must not outlive that scope. Default nil preserves standalone behavior.
+
 ## Stable Rules
 
 ### DB-001 — Coordinated Schema Ownership

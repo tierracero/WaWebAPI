@@ -2,6 +2,11 @@
 
 Completed and verified tracked work.
 
+## DB-CALLER-CONNECTION-001 — Reuse caller connections for token lookup
+
+- Completed: 2026-11-16. WaWebAPI.profile and API carry an optional caller-owned PostgresConnection; shared transport forwards it to account/instance token lookup. Both token lookup overloads reuse a supplied connection on cache misses and retain standalone transactions when nil. No Core/DTO/schema/cache-key/filter/HTTP/HMAC changes.
+- Verified in SkylineServer's selected local package graph: build passes (16.64 s), all 39 server profile calls and six CommunicationsAPI transports forward conn; query and transport-body preservation checks pass. Seven approved isolated server lease regressions pass. No database/provider calls, checkout edits, staging/commits or pushes. Publish this package before remote Linux consumers adopt the conn argument.
+
 ## AGENT-DOC-001 — Agent Governance Bootstrap
 
 - **Completed**: 2026-07-14

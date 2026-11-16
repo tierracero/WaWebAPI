@@ -8,14 +8,14 @@ Targeted navigation guide for source-touching tasks.
 |---|---|
 | `Package.swift` | Package platforms, products, dependencies, targets |
 | `Sources/WaWebAPI/WaWebAPI.swift` | `WaWebAPI`, configuration storage, `Application`/`Request` extensions |
-| `Sources/WaWebAPI/Endpoints/API.swift` | Profile-scoped facade and endpoint-family accessors |
+| `Sources/WaWebAPI/Endpoints/API.swift` | Profile-scoped facade, optional caller-owned connection and endpoint-family accessors |
 
 ## Shared Request Flow
 
 | Path | Purpose |
 |---|---|
 | `Sources/WaWebAPI/Functions/post.swift` | URL/path composition, headers, HMAC, async HTTP POST, decode/error flow |
-| `Sources/WaWebAPI/Functions/getWaWebTokens.swift` | Actor-isolated token-item cache and async PostgreSQL token lookup |
+| `Sources/WaWebAPI/Functions/getWaWebTokens.swift` | Actor-isolated token-item cache; supplied-connection SQL on misses before optional standalone transaction fallback |
 | `Sources/WaWebAPI/Functions/getWaWebAccounts.swift` | Actor-isolated account-item cache and async PostgreSQL account lookup |
 
 ## Endpoint Families

@@ -40,8 +40,8 @@ public struct WaWebAPI {
         }
     }
     
-    public func profile<Profile: WaWebInstancesProtocable>(_ profile: Profile) -> API { 
-        return .init(app: application, profile: profile)
+    public func profile<Profile: WaWebInstancesProtocable>(_ profile: Profile, conn: PostgresConnection? = nil) -> API { 
+        return .init(app: application, profile: profile, conn: conn)
     }
     
 }
